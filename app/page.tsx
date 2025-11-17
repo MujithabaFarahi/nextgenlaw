@@ -515,6 +515,32 @@ export default function NextGenLawsLanding() {
         </div>
       </section>
 
+      {/* Who is NextGenLaws For */}
+      <div className="container mx-auto px-4 text-center mb-8">
+        <Badge className="mb-4 bg-violet-100 dark:bg-violet-500/20 border-violet-400/50 text-violet-700 dark:text-violet-200">AI For All Professions</Badge>
+        <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white">Who is NextGen<span className="text-violet-600 dark:text-violet-400">Laws</span> for?</h2>
+      </div>
+      <section className="relative overflow-hidden py-32 min-h-[460px]">
+        <div className="absolute inset-0">
+          <div
+            className="absolute inset-0 bg-cover"
+            style={{ backgroundImage: `url('/group.jpg')`, backgroundPosition: 'center top' }}
+          />
+        </div>
+        <div className="container mx-auto px-4 absolute inset-x-0 bottom-8 md:bottom-12 z-10">
+          <div className="flex flex-wrap justify-center gap-3 md:gap-4">
+            <span className="px-4 py-1.5 md:px-5 md:py-2 rounded-full text-sm text-white bg-linear-to-b from-white/50 to-white/20 dark:from-white/15 dark:to-white/5 backdrop-blur-xl border border-white/50 dark:border-white/20 shadow-lg">Law students</span>
+            <span className="px-4 py-1.5 md:px-5 md:py-2 rounded-full text-sm text-white bg-linear-to-b from-white/50 to-white/20 dark:from-white/15 dark:to-white/5 backdrop-blur-xl border border-white/50 dark:border-white/20 shadow-lg">Associates</span>
+            <span className="px-4 py-1.5 md:px-5 md:py-2 rounded-full text-sm text-white bg-linear-to-b from-white/50 to-white/20 dark:from-white/15 dark:to-white/5 backdrop-blur-xl border border-white/50 dark:border-white/20 shadow-lg">Senior attorneys</span>
+            <span className="px-4 py-1.5 md:px-5 md:py-2 rounded-full text-sm text-white bg-linear-to-b from-white/50 to-white/20 dark:from-white/15 dark:to-white/5 backdrop-blur-xl border border-white/50 dark:border-white/20 shadow-lg">Legal researchers</span>
+            <span className="px-4 py-1.5 md:px-5 md:py-2 rounded-full text-sm text-white bg-linear-to-b from-white/50 to-white/20 dark:from-white/15 dark:to-white/5 backdrop-blur-xl border border-white/50 dark:border-white/20 shadow-lg">In-house counsel</span>
+            <span className="px-4 py-1.5 md:px-5 md:py-2 rounded-full text-sm text-white bg-linear-to-b from-white/50 to-white/20 dark:from-white/15 dark:to-white/5 backdrop-blur-xl border border-white/50 dark:border-white/20 shadow-lg">Legal ops teams</span>
+            <span className="px-4 py-1.5 md:px-5 md:py-2 rounded-full text-sm text-white bg-linear-to-b from-white/50 to-white/20 dark:from-white/15 dark:to-white/5 backdrop-blur-xl border border-white/50 dark:border-white/20 shadow-lg">Paralegals</span>
+          </div
+        >
+        </div>
+      </section>
+
       {/* Featured Courses Section */}
       <section
         id="courses"
@@ -552,14 +578,14 @@ export default function NextGenLawsLanding() {
                 transition={{ delay: index * 0.1 }}
                 whileHover={{ y: -10 }}
               >
-                <Card className="h-full bg-white/80 dark:bg-white/5 backdrop-blur-xl border border-gray-200 dark:border-white/20 hover:border-violet-400/50 transition-all shadow-lg overflow-hidden group">
+                <Card className="h-full pt-0 bg-white/80 dark:bg-white/5 backdrop-blur-xl border border-gray-200 dark:border-white/20 hover:border-violet-400/50 transition-all shadow-lg overflow-hidden group">
                   {/* Course Image */}
-                  <div className="relative h-48 overflow-hidden">
+                  <div className="relative h-56 sm:h-56 md:h-60 overflow-hidden rounded-t-xl">
                     <div
-                      className="absolute inset-0 bg-cover bg-center group-hover:scale-110 transition-transform duration-500"
+                      className="absolute inset-0 bg-cover bg-center scale-105 group-hover:scale-110 transition-transform duration-500"
                       style={{ backgroundImage: `url('${course.image}')` }}
                     />
-                    <div className="absolute inset-0 bg-linear-to-t from-white/80 dark:from-black/80 to-transparent" />
+                    <div className="absolute inset-0 bg-linear-to-t from-transparent dark:from-black/60 to-transparent rounded-t-xl" />
                     {course.badge && (
                       <Badge className="absolute top-4 right-4 bg-violet-600 text-white border-none">
                         {course.badge}
@@ -567,14 +593,14 @@ export default function NextGenLawsLanding() {
                     )}
                   </div>
 
-                  <CardHeader>
+                  <CardHeader className="px-5 pt-4">
                     <CardTitle>{course.title}</CardTitle>
                     <CardDescription className="text-gray-600 dark:text-slate-300">
                       {course.description}
                     </CardDescription>
                   </CardHeader>
 
-                  <CardContent className="space-y-4">
+                  <CardContent className="space-y-4 p-5 pt-0">
                     <div className="flex items-center justify-between text-sm">
                       <div className="flex items-center gap-2">
                         <Clock className="w-4 h-4 text-violet-600 dark:text-violet-400" />

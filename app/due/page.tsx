@@ -347,7 +347,7 @@ export default function Home() {
   ];
 
   return (
-    <div className="min-h-screen overflow-x-hidden">
+    <div className="glass-on-page min-h-screen overflow-x-hidden">
       {/* Hero Section with Enhanced Grain */}
       <div className="fixed z-50 top-4 left-4">
         <ThemeToggle />
@@ -447,7 +447,7 @@ export default function Home() {
             {/* Workshop Details Grid */}
             <motion.div
               variants={fadeInUp}
-              className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12 max-w-4xl mx-auto"
+              className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 mb-12 max-w-4xl mx-auto"
             >
               {workshopDetails.map((detail, index) => {
                 const Icon = detail.icon;
@@ -522,7 +522,7 @@ export default function Home() {
             {/* Stats with Icons */}
             <motion.div
               variants={fadeInUp}
-              className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-5xl mx-auto"
+              className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 max-w-5xl mx-auto"
             >
               {statsData.map((stat, index) => {
                 const Icon = stat.icon;
@@ -576,10 +576,10 @@ export default function Home() {
             viewport={{ once: true }}
             className="text-center mb-8"
           >
-            <p className="text-sm text-violet-400 uppercase tracking-wider mb-6">
+            <p className="text-sm text-violet-700 dark:text-violet-400 uppercase tracking-wider mb-6">
               Trusted Partners
             </p>
-            <h3 className="text-2xl font-semibold text-white mb-2">
+            <h3 className="text-2xl font-semibold text-gray-900 dark:text-white mb-2">
               {`Collaborating with World's Leading AI Companies`}
             </h3>
           </motion.div>
@@ -603,7 +603,7 @@ export default function Home() {
                 {/* <div className="text-5xl opacity-70 group-hover:opacity-100 transition-opacity">
                   {partner.logo}
                 </div> */}
-                <span className="text-sm text-slate-400 group-hover:text-white transition-colors">
+                <span className="text-sm text-gray-600 group-hover:text-gray-900 dark:text-slate-400 dark:group-hover:text-white transition-colors">
                   {partner.name}
                 </span>
               </motion.div>
@@ -644,18 +644,18 @@ export default function Home() {
                 >
                   <Scale className="w-16 h-16 text-violet-400 mx-auto mb-6" />
                 </motion.div>
-                <blockquote className="text-2xl md:text-3xl font-bold text-white mb-4 leading-relaxed">
+                <blockquote className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-4 leading-relaxed">
                   {`"AI is not replacing lawyers - but lawyers who use AI are
                   replacing those who don't."`}
                 </blockquote>
-                <p className="text-lg text-slate-200 leading-relaxed">
+                <p className="text-lg text-gray-700 dark:text-slate-200 leading-relaxed">
                   Top law firms, startups, and even solo practitioners are
                   already using AI tools to draft contracts, summarize cases,
                   and automate compliance. The lawyers who master this skill
                   early are earning more, finishing faster, and getting better
                   clients.
                 </p>
-                <p className="text-xl font-semibold text-violet-300 mt-6">
+                <p className="text-xl font-semibold text-violet-800 dark:text-violet-300 mt-6">
                   The question is - will you be one of them in 2025?
                 </p>
               </CardContent>
@@ -684,14 +684,14 @@ export default function Home() {
             viewport={{ once: true }}
             className="text-center mb-20"
           >
-            <Badge className="mb-4 bg-violet-500/20 border-violet-400/50 text-violet-200">
+            <Badge className="mb-4 bg-violet-100/90 dark:bg-violet-500/20 border border-violet-300 dark:border-violet-400/50 text-violet-700 dark:text-violet-200 backdrop-blur-sm shadow-sm">
               <Cpu className="w-4 h-4 mr-2" />
               {`By Monday, You'll Be Able To`}
             </Badge>
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gray-900 dark:text-white">
               {`Skills You'll Master This Weekend`}
             </h2>
-            <p className="text-xl text-slate-200 max-w-2xl mx-auto">
+            <p className="text-xl text-gray-700 dark:text-slate-200 max-w-2xl mx-auto">
               Transform from AI novice to confident practitioner in just 48
               hours
             </p>
@@ -709,7 +709,7 @@ export default function Home() {
                   transition={{ delay: index * 0.1, duration: 0.5 }}
                   whileHover={{ y: -10, scale: 1.02 }}
                 >
-                  <Card className="h-full bg-white/5 backdrop-blur-xl border border-white/20 hover:border-violet-400/50 hover:bg-white/10 transition-all group shadow-lg">
+                  <Card className="h-full bg-transparent backdrop-blur-xl border border-slate-200/70 dark:border-white/20 hover:border-violet-400/50 transition-all group shadow-lg">
                     <CardHeader>
                       <motion.div
                         whileHover={{ rotate: 360 }}
@@ -718,12 +718,12 @@ export default function Home() {
                       >
                         <Icon className="w-7 h-7" />
                       </motion.div>
-                      <CardTitle className="text-xl mb-3 text-white">
+                      <CardTitle className="text-xl mb-3 text-gray-900 dark:text-white">
                         {skill.title}
                       </CardTitle>
                     </CardHeader>
                     <CardContent>
-                      <CardDescription className="text-slate-200 text-base leading-relaxed">
+                      <CardDescription className="text-gray-700 dark:text-slate-200 text-base leading-relaxed">
                         {skill.description}
                       </CardDescription>
                     </CardContent>
@@ -756,10 +756,10 @@ export default function Home() {
             transition={{ duration: 0.6 }}
             className="text-center mb-20"
           >
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gray-900 dark:text-white">
               Everything You Need to Succeed
             </h2>
-            <p className="text-xl text-slate-200 max-w-2xl mx-auto">
+            <p className="text-xl text-gray-700 dark:text-slate-200 max-w-2xl mx-auto">
               A comprehensive learning experience designed to take you from AI
               beginner to confident practitioner
             </p>
@@ -777,7 +777,7 @@ export default function Home() {
                   transition={{ delay: index * 0.1, duration: 0.5 }}
                   whileHover={{ y: -10 }}
                 >
-                  <Card className="h-full bg-white/5 backdrop-blur-xl border border-white/20 hover:border-violet-400/50 hover:bg-white/10 transition-all group shadow-lg">
+                  <Card className="h-full bg-transparent backdrop-blur-xl border border-slate-200/70 dark:border-white/20 hover:border-violet-400/50 transition-all group shadow-lg">
                     <CardHeader>
                       <motion.div
                         whileHover={{ scale: 1.1, rotate: 5 }}
@@ -785,12 +785,12 @@ export default function Home() {
                       >
                         <Icon className="w-7 h-7" />
                       </motion.div>
-                      <CardTitle className="text-2xl mb-3 text-white">
+                      <CardTitle className="text-2xl mb-3 text-gray-900 dark:text-white">
                         {feature.title}
                       </CardTitle>
                     </CardHeader>
                     <CardContent>
-                      <CardDescription className="text-slate-200 text-base leading-relaxed">
+                      <CardDescription className="text-gray-700 dark:text-slate-200 text-base leading-relaxed">
                         {feature.description}
                       </CardDescription>
                     </CardContent>
@@ -822,19 +822,19 @@ export default function Home() {
             viewport={{ once: true }}
             className="text-center mb-20"
           >
-            <Badge className="mb-4 bg-violet-500/20 border-violet-400/50 text-violet-200">
+            <Badge className="mb-4 bg-violet-100/90 dark:bg-violet-500/20 border border-violet-300 dark:border-violet-400/50 text-violet-700 dark:text-violet-200 backdrop-blur-sm shadow-sm">
               <Zap className="w-4 h-4 mr-2" />
               Hands-On with Real Tools
             </Badge>
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gray-900 dark:text-white">
               Master the AI Stack Professionals Use
             </h2>
-            <p className="text-xl text-slate-200 max-w-2xl mx-auto">
+            <p className="text-xl text-gray-700 dark:text-slate-200 max-w-2xl mx-auto">
               Get hands-on experience with industry-leading AI tools
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 max-w-6xl mx-auto">
             {aiTools.map((tool, index) => (
               <motion.div
                 key={index}
@@ -844,14 +844,14 @@ export default function Home() {
                 transition={{ delay: index * 0.1 }}
                 whileHover={{ scale: 1.1, y: -5 }}
               >
-                <Card className="bg-white/5 backdrop-blur-xl border border-white/20 hover:border-violet-400/50 transition-all text-center p-6 group">
+                <Card className="bg-transparent backdrop-blur-xl border border-slate-200/70 dark:border-white/20 hover:border-violet-400/50 transition-all text-center p-6 group shadow-lg">
                   {/* <div className="text-5xl mb-3 group-hover:scale-110 transition-transform">
                     {tool.icon}
                   </div> */}
-                  <h3 className="text-sm font-semibold text-white mb-1">
+                  <h3 className="text-sm font-semibold text-gray-900 dark:text-white mb-1">
                     {tool.name}
                   </h3>
-                  <p className="text-xs text-slate-400">{tool.category}</p>
+                  <p className="text-xs text-gray-600 dark:text-slate-400">{tool.category}</p>
                 </Card>
               </motion.div>
             ))}
@@ -879,14 +879,14 @@ export default function Home() {
             viewport={{ once: true }}
             className="text-center mb-20"
           >
-            <Badge className="mb-4 bg-violet-500/20 border-violet-400/50 text-violet-200">
+            <Badge className="mb-4 bg-violet-100/90 dark:bg-violet-500/20 border border-violet-300 dark:border-violet-400/50 text-violet-700 dark:text-violet-200 backdrop-blur-sm shadow-sm">
               <Calendar className="w-4 h-4 mr-2" />
               Weekend Schedule
             </Badge>
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gray-900 dark:text-white">
               48 Hours That Change Everything
             </h2>
-            <p className="text-xl text-slate-200 max-w-2xl mx-auto">
+            <p className="text-xl text-gray-700 dark:text-slate-200 max-w-2xl mx-auto">
               A structured 2-day curriculum designed for maximum impact
             </p>
           </motion.div>
@@ -901,16 +901,16 @@ export default function Home() {
                 transition={{ delay: index * 0.2 }}
                 whileHover={{ scale: 1.02 }}
               >
-                <Card className="h-full bg-white/5 backdrop-blur-xl border border-white/20 shadow-lg hover:border-violet-400/50 transition-all">
+                <Card className="h-full bg-transparent backdrop-blur-xl border border-slate-200/70 dark:border-white/20 shadow-lg hover:border-violet-400/50 transition-all">
                   <CardHeader>
-                    <Badge className="w-fit mb-4 bg-violet-500/30 border-violet-400/50 text-violet-200">
+                    <Badge className="w-fit mb-4 bg-violet-100/90 dark:bg-violet-500/20 border border-violet-300 dark:border-violet-400/50 text-violet-700 dark:text-violet-200 backdrop-blur-sm">
                       {day.day}
                     </Badge>
-                    <CardTitle className="text-2xl text-white mb-2">
+                    <CardTitle className="text-2xl text-gray-900 dark:text-white mb-2">
                       {day.title}
                     </CardTitle>
-                    <div className="flex items-center gap-2 text-violet-300">
-                      <Clock className="w-4 h-4" />
+                    <div className="flex items-center gap-2 text-violet-700 dark:text-violet-300">
+                      <Clock className="w-4 h-4 text-violet-700 dark:text-violet-300" />
                       <span className="text-sm">{day.timing}</span>
                     </div>
                   </CardHeader>
@@ -926,7 +926,7 @@ export default function Home() {
                           className="flex items-start gap-3"
                         >
                           <CheckCircle2 className="w-5 h-5 text-violet-400 mt-0.5 shrink-0" />
-                          <span className="text-slate-200">{topic}</span>
+                          <span className="text-gray-700 dark:text-slate-200">{topic}</span>
                         </motion.li>
                       ))}
                     </ul>
@@ -943,15 +943,15 @@ export default function Home() {
             viewport={{ once: true }}
             className="mt-16 max-w-5xl mx-auto"
           >
-            <Card className="bg-white/5 backdrop-blur-xl border border-white/20 shadow-xl">
+            <Card className="bg-transparent backdrop-blur-xl border border-slate-200/70 dark:border-white/20 shadow-xl">
               <CardHeader>
                 <div className="flex items-center gap-3 mb-4">
                   <GraduationCap className="w-8 h-8 text-violet-400" />
-                  <CardTitle className="text-3xl text-white">
+                  <CardTitle className="text-3xl text-gray-900 dark:text-white">
                     Assessment & Certification
                   </CardTitle>
                 </div>
-                <CardDescription className="text-base text-slate-200">
+                <CardDescription className="text-base text-gray-700 dark:text-slate-200">
                   Track your progress and earn your certificate through our
                   comprehensive evaluation system
                 </CardDescription>
@@ -969,12 +969,12 @@ export default function Home() {
                     <motion.div
                       key={index}
                       whileHover={{ scale: 1.05 }}
-                      className="text-center p-6 bg-white/5 backdrop-blur-md rounded-lg border border-white/10"
+                      className="text-center p-6 bg-transparent backdrop-blur-md rounded-lg border border-slate-200/70 dark:border-white/10"
                     >
-                      <div className="text-4xl font-bold text-violet-400 mb-2">
+                      <div className="text-4xl font-bold text-violet-700 dark:text-violet-400 mb-2">
                         {item.num}
                       </div>
-                      <div className="text-sm text-slate-200 font-medium">
+                      <div className="text-sm text-gray-700 dark:text-slate-200 font-medium">
                         {item.label}
                       </div>
                     </motion.div>
@@ -1012,7 +1012,7 @@ export default function Home() {
             viewport={{ once: true }}
             className="max-w-5xl mx-auto"
           >
-            <Card className="bg-white/5 backdrop-blur-xl border border-white/20 overflow-hidden relative shadow-2xl">
+            <Card className="bg-transparent backdrop-blur-xl border border-slate-200/70 dark:border-white/20 overflow-hidden relative shadow-2xl">
               <motion.div
                 animate={{
                   scale: [1, 1.2, 1],
@@ -1023,18 +1023,18 @@ export default function Home() {
               />
               <CardHeader className="relative z-10 pb-8">
                 <motion.div whileHover={{ scale: 1.05 }}>
-                  <Badge className="w-fit mb-4 bg-violet-500 text-white border-none px-4 py-2">
+                  <Badge className="w-fit mb-4 bg-violet-100/90 dark:bg-violet-500/20 text-violet-700 dark:text-violet-200 border border-violet-300 dark:border-violet-400/50 px-4 py-2 backdrop-blur-sm shadow-sm">
                     <Gift className="w-4 h-4 mr-2 inline" />
                     Exclusive Bonus - Worth ₹15,000
                   </Badge>
                 </motion.div>
-                <CardTitle className="text-4xl mb-4 text-white">
+                <CardTitle className="text-4xl mb-4 text-gray-900 dark:text-white">
                   DueDraft Premium - 3 Months Free
                 </CardTitle>
-                <CardDescription className="text-lg text-slate-200">
+                <CardDescription className="text-lg text-gray-700 dark:text-slate-200">
                   Get full access to our premium AI platform with advanced
                   features and unlimited resources
-                  <span className="block mt-2 text-sm text-slate-300">
+                  <span className="block mt-2 text-sm text-gray-600 dark:text-slate-300">
                     *Terms & Conditions Apply
                   </span>
                 </CardDescription>
@@ -1051,10 +1051,10 @@ export default function Home() {
                         viewport={{ once: true }}
                         transition={{ delay: index * 0.1 }}
                         whileHover={{ x: 5 }}
-                        className="flex items-start gap-4 p-4 rounded-lg bg-white/5 backdrop-blur-md hover:bg-white/10 transition-colors border border-white/10"
+                        className="flex items-start gap-4 p-4 rounded-lg bg-transparent backdrop-blur-md hover:border-violet-400/50 transition-colors border border-slate-200/70 dark:border-white/10"
                       >
-                        <Icon className="w-6 h-6 text-violet-400 mt-1 shrink-0" />
-                        <span className="text-slate-200">{benefit.text}</span>
+                        <Icon className="w-6 h-6 text-violet-700 dark:text-violet-400 mt-1 shrink-0" />
+                        <span className="text-gray-700 dark:text-slate-200">{benefit.text}</span>
                       </motion.div>
                     );
                   })}
@@ -1085,14 +1085,14 @@ export default function Home() {
             viewport={{ once: true }}
             className="text-center mb-20"
           >
-            <Badge className="mb-4 bg-violet-500/20 border-violet-400/50 text-violet-200">
+            <Badge className="mb-4 bg-violet-100/90 dark:bg-violet-500/20 border border-violet-300 dark:border-violet-400/50 text-violet-700 dark:text-violet-200 backdrop-blur-sm shadow-sm">
               <Users className="w-4 h-4 mr-2" />
               Expert-Led Learning
             </Badge>
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gray-900 dark:text-white">
               Learn From The Top 1% in AI
             </h2>
-            <p className="text-xl text-slate-200 max-w-2xl mx-auto">
+            <p className="text-xl text-gray-700 dark:text-slate-200 max-w-2xl mx-auto">
               {`Industry veterans and AI experts who've been where you want to go`}
             </p>
           </motion.div>
@@ -1107,7 +1107,7 @@ export default function Home() {
                 transition={{ delay: index * 0.1 }}
                 whileHover={{ y: -10 }}
               >
-                <Card className="h-full bg-white/5 backdrop-blur-xl border border-white/20 hover:border-violet-400/50 transition-all text-center group shadow-lg overflow-hidden pt-0">
+                <Card className="h-full bg-transparent backdrop-blur-xl border border-slate-200/70 dark:border-white/20 hover:border-violet-400/50 transition-all text-center group shadow-lg overflow-hidden pt-0">
                   {/* Placeholder Image */}
                   <div className="relative h-48 bg-linear-to-br from-violet-500/20 to-violet-700/20 overflow-hidden">
                     <div
@@ -1122,15 +1122,15 @@ export default function Home() {
                     </div> */}
                   </div>
                   <CardHeader className="pb-4">
-                    <CardTitle className="text-2xl mb-2 text-white">
+                    <CardTitle className="text-2xl mb-2 text-gray-900 dark:text-white">
                       {speaker.name}
                     </CardTitle>
-                    <CardDescription className="text-violet-300 font-semibold text-base">
+                    <CardDescription className="text-violet-700 dark:text-violet-300 font-semibold text-base">
                       {speaker.role}
                     </CardDescription>
                   </CardHeader>
                   <CardContent className="space-y-4">
-                    <p className="text-slate-200 leading-relaxed text-sm">
+                    <p className="text-gray-700 dark:text-slate-200 leading-relaxed text-sm">
                       {speaker.bio}
                     </p>
                     <div className="flex flex-wrap gap-2 justify-center pt-2">
@@ -1138,7 +1138,7 @@ export default function Home() {
                         <Badge
                           key={skillIndex}
                           variant="outline"
-                          className="border-violet-400/50 text-violet-200 bg-violet-500/20"
+                          className="border-violet-300 dark:border-violet-400/50 text-violet-700 dark:text-violet-200 bg-violet-100/80 dark:bg-violet-500/20"
                         >
                           {skill}
                         </Badge>
@@ -1172,14 +1172,14 @@ export default function Home() {
             viewport={{ once: true }}
             className="text-center mb-20"
           >
-            <Badge className="mb-4 bg-violet-500/20 border-violet-400/50 text-violet-200">
+            <Badge className="mb-4 bg-violet-100/90 dark:bg-violet-500/20 border border-violet-300 dark:border-violet-400/50 text-violet-700 dark:text-violet-200 backdrop-blur-sm shadow-sm">
               <MessageCircle className="w-4 h-4 mr-2" />
               Hear it From Them
             </Badge>
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gray-900 dark:text-white">
               Success Stories from Legal Professionals
             </h2>
-            <p className="text-xl text-slate-200 max-w-2xl mx-auto">
+            <p className="text-xl text-gray-700 dark:text-slate-200 max-w-2xl mx-auto">
               Real results from lawyers who transformed their practice with AI
             </p>
           </motion.div>
@@ -1205,7 +1205,7 @@ export default function Home() {
               exit={{ opacity: 0, x: -100 }}
               className="flex-1"
             >
-              <Card className="bg-white/5 backdrop-blur-xl border border-white/20 shadow-xl">
+              <Card className="bg-transparent backdrop-blur-xl border border-slate-200/70 dark:border-white/20 shadow-xl">
                 <CardContent className="p-12">
                   <div className="flex gap-1 mb-6">
                     {[...Array(testimonials[activeTestimonial].rating)].map(
@@ -1222,7 +1222,7 @@ export default function Home() {
                     )}
                   </div>
 
-                  <p className="text-xl text-white mb-6 leading-relaxed italic">
+                  <p className="text-xl text-gray-900 dark:text-white mb-6 leading-relaxed italic">
                     {`"${testimonials[activeTestimonial].content}"`}
                   </p>
                   <div className="flex items-center gap-4 mb-8">
@@ -1230,10 +1230,10 @@ export default function Home() {
                       {testimonials[activeTestimonial].avatar}
                     </div>
                     <div className="text-left">
-                      <div className="font-semibold text-lg text-white">
+                      <div className="font-semibold text-lg text-gray-900 dark:text-white">
                         {testimonials[activeTestimonial].name}
                       </div>
-                      <div className="text-violet-300">
+                      <div className="text-violet-700 dark:text-violet-300">
                         {testimonials[activeTestimonial].role}
                       </div>
                     </div>
@@ -1292,13 +1292,13 @@ export default function Home() {
               viewport={{ once: true }}
               whileHover={{ scale: 1.02 }}
             >
-              <Card className="h-full bg-white/5 backdrop-blur-xl border border-white/20 shadow-lg hover:border-violet-400/50 transition-all">
+              <Card className="h-full bg-transparent backdrop-blur-xl border border-slate-200/70 dark:border-white/20 shadow-lg hover:border-violet-400/50 transition-all">
                 <CardHeader>
-                  <Briefcase className="w-12 h-12 text-violet-400 mb-4" />
-                  <CardTitle className="text-3xl mb-3 text-white">
+                  <Briefcase className="w-12 h-12 text-violet-700 dark:text-violet-400 mb-4" />
+                  <CardTitle className="text-3xl mb-3 text-gray-900 dark:text-white">
                     Elite Career Pathway
                   </CardTitle>
-                  <CardDescription className="text-base text-slate-200 leading-relaxed">
+                  <CardDescription className="text-base text-gray-700 dark:text-slate-200 leading-relaxed">
                     Top performers gain access to exclusive opportunities with
                     leading law firms and legal tech companies
                   </CardDescription>
@@ -1306,24 +1306,24 @@ export default function Home() {
                 <CardContent className="space-y-6">
                   <motion.div
                     whileHover={{ scale: 1.05 }}
-                    className="p-6 bg-white/5 backdrop-blur-md rounded-xl border border-white/20"
+                    className="p-6 bg-transparent backdrop-blur-md rounded-xl border border-slate-200/70 dark:border-white/20"
                   >
                     <div className="flex items-baseline gap-2 mb-2">
-                      <span className="text-5xl font-bold text-violet-400">
+                      <span className="text-5xl font-bold text-violet-700 dark:text-violet-400">
                         1%
                       </span>
-                      <span className="text-slate-200">Selection Rate</span>
+                      <span className="text-gray-700 dark:text-white font-semibold">Selection Rate</span>
                     </div>
-                    <p className="text-sm text-slate-300">
+                    <p className="text-sm text-gray-600 dark:text-slate-200">
                       Only the most dedicated and skilled participants qualify
                       for placement opportunities
                     </p>
                   </motion.div>
                   <div className="space-y-3">
-                    <h4 className="font-semibold text-white">
+                    <h4 className="font-semibold text-gray-900 dark:text-white">
                       Selection Criteria:
                     </h4>
-                    <ul className="space-y-2 text-slate-200">
+                    <ul className="space-y-2 text-gray-700 dark:text-slate-200">
                       {[
                         'Outstanding assessment performance (top 10%)',
                         'Active participation and engagement',
@@ -1354,36 +1354,36 @@ export default function Home() {
               viewport={{ once: true }}
               whileHover={{ scale: 1.02 }}
             >
-              <Card className="h-full bg-white/5 backdrop-blur-xl border border-white/20 shadow-lg hover:border-violet-400/50 transition-all">
+              <Card className="h-full bg-transparent backdrop-blur-xl border border-slate-200/70 dark:border-white/20 shadow-lg hover:border-violet-400/50 transition-all">
                 <CardHeader>
-                  <Shield className="w-12 h-12 text-violet-400 mb-4" />
-                  <CardTitle className="text-3xl mb-3 text-white">
+                  <Shield className="w-12 h-12 text-violet-700 dark:text-violet-400 mb-4" />
+                  <CardTitle className="text-3xl mb-3 text-gray-900 dark:text-white">
                     Risk-Free Guarantee
                   </CardTitle>
-                  <CardDescription className="text-base text-slate-200 leading-relaxed">
+                  <CardDescription className="text-base text-gray-700 dark:text-slate-200 leading-relaxed">
                     {`We're so confident in our workshop that we offer a complete money-back promise`}
                   </CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-6">
                   <motion.div
                     whileHover={{ scale: 1.05 }}
-                    className="p-6 bg-white/5 backdrop-blur-md rounded-xl border border-white/20"
+                    className="p-6 bg-transparent backdrop-blur-md rounded-xl border border-slate-200/70 dark:border-white/20"
                   >
-                    <div className="text-4xl font-bold text-violet-400 mb-2">
+                    <div className="text-4xl font-bold text-violet-700 dark:text-violet-400 mb-2">
                       100%
                     </div>
-                    <p className="text-white font-semibold mb-1">
+                    <p className="text-gray-900 dark:text-white font-semibold mb-1">
                       Money Back Guarantee
                     </p>
-                    <p className="text-sm text-slate-200">
+                    <p className="text-sm text-gray-700 dark:text-slate-200">
                       Not satisfied? Get a full refund within 24 hours of Day 1
                     </p>
                   </motion.div>
                   <div className="space-y-3">
-                    <h4 className="font-semibold text-white">
+                    <h4 className="font-semibold text-gray-900 dark:text-white">
                       Terms & Conditions:
                     </h4>
-                    <ul className="space-y-2 text-sm text-slate-200">
+                    <ul className="space-y-2 text-sm text-gray-700 dark:text-slate-200">
                       {[
                         'Refund request must be submitted within 24 hours of workshop commencement',
                         'Premium subscription access will be revoked upon refund processing',
@@ -1421,8 +1421,8 @@ export default function Home() {
               backgroundImage: `url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1920&q=80')`,
             }}
           />
-          {/* Dark overlay with gradient */}
-          <div className="absolute inset-0 bg-linear-to-b from-violet-500/40 via-violet-500/40 to-background" />
+          {/* Dark/light overlay with softer bottom in light mode */}
+          <div className="absolute inset-0 bg-linear-to-b from-violet-500/25 via-violet-500/20 to-transparent dark:from-violet-500/40 dark:via-violet-500/40 dark:to-background" />
           {/* Animated overlay */}
           <motion.div
             animate={{
@@ -1549,7 +1549,7 @@ export default function Home() {
             viewport={{ once: true }}
             className="text-center"
           >
-            <div className="inline-flex items-center gap-8 bg-white/5 backdrop-blur-xl border border-white/20 rounded-2xl p-8">
+            <div className="inline-flex flex-wrap items-center gap-4 md:gap-8 bg-white/5 backdrop-blur-xl border border-white/20 rounded-2xl p-4 sm:p-6 md:p-8">
               <div className="flex -space-x-4">
                 {[
                   'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100',
@@ -1605,7 +1605,7 @@ export default function Home() {
             repeat: Infinity,
             ease: 'easeInOut',
           }}
-          className="absolute bottom-20 left-10 w-32 h-32 bg-violet-500/20 rounded-full blur-2xl"
+          className="absolute bottom-20 left-10 w-32 h-32 bg-violet-500/10 dark:bg-violet-500/20 rounded-full blur-2xl"
         />
         <motion.div
           animate={{
@@ -1618,7 +1618,7 @@ export default function Home() {
             ease: 'easeInOut',
             delay: 1,
           }}
-          className="absolute top-20 right-10 w-40 h-40 bg-violet-500/20 rounded-full blur-2xl"
+          className="absolute top-20 right-10 w-40 h-40 bg-violet-500/10 dark:bg-violet-500/20 rounded-full blur-2xl"
         />
       </section>
 
@@ -1642,10 +1642,10 @@ export default function Home() {
             viewport={{ once: true }}
             className="text-center mb-20"
           >
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-black dark:text-white">
               Frequently Asked Questions
             </h2>
-            <p className="text-xl text-slate-200 max-w-2xl mx-auto">
+            <p className="text-xl text-black dark:text-slate-200 max-w-2xl mx-auto">
               Everything you need to know before you enroll
             </p>
           </motion.div>
@@ -1667,12 +1667,12 @@ export default function Home() {
                 >
                   <AccordionItem
                     value={`item-${index}`}
-                    className="backdrop-blur-xl bg-white/5 border border-white/20 rounded-lg px-6 hover:bg-white/10 transition-colors mb-4 shadow-md"
+                    className="backdrop-blur-xl bg-white/5 border border-white/20 rounded-lg px-6 hover:bg-white/10 transition-all mb-4 shadow-md data-[state=open]:bg-linear-to-r data-[state=open]:from-violet-100/60 data-[state=open]:to-violet-50/60 dark:data-[state=open]:from-white/10 dark:data-[state=open]:to-white/5 data-[state=open]:border-violet-300 dark:data-[state=open]:border-violet-400/50 data-[state=open]:shadow-violet-200/50"
                   >
-                    <AccordionTrigger className="text-left text-lg font-semibold py-6 hover:no-underline text-white">
+                    <AccordionTrigger className="text-left text-lg font-semibold py-6 hover:no-underline text-black dark:text-white data-[state=open]:text-violet-800 dark:data-[state=open]:text-violet-300 transition-colors">
                       {faq.question}
                     </AccordionTrigger>
-                    <AccordionContent className="text-slate-200 pb-6 leading-relaxed">
+                    <AccordionContent className="text-black dark:text-slate-200 pb-6 leading-relaxed">
                       {faq.answer}
                     </AccordionContent>
                   </AccordionItem>
@@ -1703,25 +1703,25 @@ export default function Home() {
             viewport={{ once: true }}
             className="relative max-w-5xl mx-auto"
           >
-            <Card className="bg-white/5 backdrop-blur-xl border border-white/20 overflow-hidden shadow-2xl">
+            <Card className="bg-transparent backdrop-blur-xl border border-slate-200/70 dark:border-white/20 overflow-hidden shadow-2xl">
               <div className="absolute inset-0 bg-linear-to-r from-violet-600/10 to-violet-400/10" />
               <CardContent className="relative z-10 py-20 text-center">
                 <motion.h2
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  className="text-4xl md:text-5xl font-bold mb-6 text-white"
+                  className="text-4xl md:text-5xl font-bold mb-6 text-gray-900 dark:text-white"
                 >
                   This Weekend, While Others Rest,
                   <br />
-                  <span className="text-violet-300">You Transform</span>
+                  <span className="text-violet-700 dark:text-violet-300">You Transform</span>
                 </motion.h2>
                 <motion.p
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: 0.2 }}
-                  className="text-xl text-slate-200 mb-10 max-w-2xl mx-auto"
+                  className="text-xl text-gray-700 dark:text-slate-200 mb-10 max-w-2xl mx-auto"
                 >
                   Join thousands of legal professionals who are already
                   leveraging AI to accelerate their careers and earnings
@@ -1735,7 +1735,7 @@ export default function Home() {
                   transition={{ delay: 0.3 }}
                   className="mb-10"
                 >
-                  <p className="text-sm text-slate-400 mb-3 uppercase tracking-wider">
+                  <p className="text-sm text-gray-700 dark:text-slate-400 mb-3 uppercase tracking-wider">
                     Next Mastermind Starts In
                   </p>
                   <div className="flex justify-center gap-4">
@@ -1746,12 +1746,12 @@ export default function Home() {
                     ].map((time, index) => (
                       <div
                         key={index}
-                        className="bg-white/10 backdrop-blur-md border border-white/20 rounded-lg p-4 min-w-20"
+                        className="bg-transparent backdrop-blur-md border border-slate-200/70 dark:bg-white/10 dark:border-white/20 rounded-lg p-4 min-w-20"
                       >
-                        <div className="text-3xl font-bold text-violet-300">
+                        <div className="text-3xl font-bold text-violet-700 dark:text-violet-300">
                           {time.value}
                         </div>
-                        <div className="text-xs text-slate-400">
+                        <div className="text-xs text-gray-700 dark:text-slate-400">
                           {time.label}
                         </div>
                       </div>
@@ -1786,7 +1786,7 @@ export default function Home() {
                   whileInView={{ opacity: 1 }}
                   viewport={{ once: true }}
                   transition={{ delay: 0.5 }}
-                  className="flex flex-col sm:flex-row items-center justify-center gap-6 text-sm text-slate-200"
+                  className="flex flex-col sm:flex-row items-center justify-center gap-6 text-sm text-gray-700 dark:text-slate-200"
                 >
                   {[
                     { icon: Shield, text: 'Secure Payment Gateway' },
@@ -1796,7 +1796,7 @@ export default function Home() {
                     const Icon = item.icon;
                     return (
                       <div key={index} className="flex items-center gap-2">
-                        <Icon className="w-4 h-4 text-violet-400" />
+                        <Icon className="w-4 h-4 text-violet-700 dark:text-violet-400" />
                         <span>{item.text}</span>
                       </div>
                     );
@@ -1809,7 +1809,7 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="border-t border-white/10 py-12 bg-black/50 backdrop-blur-sm">
+      <footer className="border-t border-white/10 py-12 bg-black text-white">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
