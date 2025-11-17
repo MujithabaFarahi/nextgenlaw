@@ -876,60 +876,6 @@ function App() {
         </div>
       </section>
 
-      <section id="pricing" className="py-32 bg-linear-to-b from-violet-50 to-white dark:from-gray-900 dark:to-gray-950">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-20">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-violet-100 dark:bg-violet-500/20 border border-violet-200 dark:border-violet-500/30 text-violet-700 dark:text-violet-300 mb-6">
-              <BarChart3 className="w-4 h-4" />
-              <span className="text-sm font-medium">Flexible Pricing</span>
-            </div>
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">
-              Choose Your <span className="text-violet-600 dark:text-violet-400">Learning Path</span>
-            </h2>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            {pricingPlans.map((plan, index) => (
-              <div
-                key={index}
-                className={`bg-white dark:bg-gray-900 border-2 rounded-2xl p-8 hover:shadow-xl transition-all ${
-                  plan.popular
-                    ? 'border-violet-600 dark:border-violet-400 relative'
-                    : 'border-gray-200 dark:border-gray-800'
-                }`}
-              >
-                {plan.popular && (
-                  <span className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 bg-violet-600 text-white text-sm font-medium rounded-full">
-                    Most Popular
-                  </span>
-                )}
-                <h3 className="text-2xl font-bold mb-2">{plan.name}</h3>
-                <div className="mb-6">
-                  <span className="text-4xl font-bold">{plan.price}</span>
-                  <span className="text-gray-500 dark:text-gray-400">/one-time</span>
-                </div>
-                <ul className="space-y-3 mb-8">
-                  {plan.features.map((feature, i) => (
-                    <li key={i} className="flex items-start gap-3">
-                      <CheckCircle2 className="w-5 h-5 text-violet-600 shrink-0 mt-0.5" />
-                      <span className="text-gray-600 dark:text-gray-400">{feature}</span>
-                    </li>
-                  ))}
-                </ul>
-                <button
-                  className={`w-full px-6 py-3 rounded-lg font-medium transition-all ${
-                    plan.popular
-                      ? 'bg-violet-600 hover:bg-violet-700 text-white'
-                      : 'border-2 border-violet-600 text-violet-600 hover:bg-violet-50 dark:hover:bg-violet-500/10'
-                  }`}
-                >
-                  Get Started
-                </button>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       <section className="py-32 bg-white dark:bg-gray-950">
         <div className="container mx-auto px-4">
