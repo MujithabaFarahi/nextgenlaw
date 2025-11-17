@@ -281,11 +281,11 @@ function App() {
             </a>
 
             <div className="hidden md:flex items-center gap-8">
-              <a href="#upcoming-events" className="text-gray-600 dark:text-gray-300 hover:text-violet-600 dark:hover:text-violet-400 transition-colors">
-                Upcoming Events
-              </a>
               <a href="#about" className="text-gray-600 dark:text-gray-300 hover:text-violet-600 dark:hover:text-violet-400 transition-colors">
                 About
+              </a>
+              <a href="#upcoming-events" className="text-gray-600 dark:text-gray-300 hover:text-violet-600 dark:hover:text-violet-400 transition-colors">
+                Upcoming Events
               </a>
               <a href="#testimonials" className="text-gray-600 dark:text-gray-300 hover:text-violet-600 dark:hover:text-violet-400 transition-colors">
                 Success Stories
@@ -316,11 +316,11 @@ function App() {
         {mobileMenuOpen && (
           <div className="md:hidden bg-white/95 dark:bg-gray-950/95 backdrop-blur-xl border-t border-gray-200 dark:border-gray-800">
             <div className="container mx-auto px-4 py-6 space-y-4">
-              <a href="#upcoming-events" className="block text-gray-600 dark:text-gray-300 hover:text-violet-600">
-                Upcoming Events
-              </a>
               <a href="#about" className="block text-gray-600 dark:text-gray-300 hover:text-violet-600">
                 About
+              </a>
+              <a href="#upcoming-events" className="block text-gray-600 dark:text-gray-300 hover:text-violet-600">
+                Upcoming Events
               </a>
               <a href="#testimonials" className="block text-gray-600 dark:text-gray-300 hover:text-violet-600">
                 Success Stories
@@ -857,7 +857,7 @@ function App() {
         </div>
       </section>
 
-      <section id="testimonials" className="py-32 bg-white dark:bg-gray-950">
+      <section id="testimonials" className="py-32 bg-linear-to-b from-violet-50 to-white dark:from-gray-900 dark:to-gray-950">
         <div className="container mx-auto px-4">
           <div className="text-center mb-20">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-violet-100 dark:bg-violet-500/20 border border-violet-200 dark:border-violet-500/30 text-violet-700 dark:text-violet-300 mb-6">
@@ -905,7 +905,7 @@ function App() {
         </div>
       </section>
 
-      <section className="py-32 bg-linear-to-b from-violet-50 to-white dark:from-gray-900 dark:to-gray-950">
+      <section className="py-32 bg-white dark:bg-gray-950">
         <div className="container mx-auto px-4">
           <div className="text-center mb-20">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-violet-100 dark:bg-violet-500/20 border border-violet-200 dark:border-violet-500/30 text-violet-700 dark:text-violet-300 mb-6">
@@ -946,7 +946,7 @@ function App() {
         </div>
       </section>
 
-      <section className="py-32 bg-white dark:bg-gray-950">
+      <section className="py-32 bg-linear-to-b from-violet-50 to-white dark:from-gray-900 dark:to-gray-950">
         <div className="container mx-auto px-4">
           <div className="text-center mb-20">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-violet-100 dark:bg-violet-500/20 border border-violet-200 dark:border-violet-500/30 text-violet-700 dark:text-violet-300 mb-6">
@@ -978,7 +978,7 @@ function App() {
         </div>
       </section>
 
-      <section className="py-32 bg-linear-to-b from-violet-50 to-white dark:from-gray-900 dark:to-gray-950">
+      <section className="py-32 bg-white dark:bg-gray-950">
         <div className="container mx-auto px-4">
           <div className="text-center mb-20">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-violet-100 dark:bg-violet-500/20 border border-violet-200 dark:border-violet-500/30 text-violet-700 dark:text-violet-300 mb-6">
@@ -1027,71 +1027,143 @@ function App() {
         </div>
       </section>
 
-      <section className="py-32 bg-white dark:bg-gray-950">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-20">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-violet-100 dark:bg-violet-500/20 border border-violet-200 dark:border-violet-500/30 text-violet-700 dark:text-violet-300 mb-6">
-              <FileText className="w-4 h-4" />
-              <span className="text-sm font-medium">Free Resources</span>
-            </div>
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">
-              Start Learning <span className="text-violet-600 dark:text-violet-400">Today</span>
-            </h2>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
-            {[
-              { icon: FileText, title: 'Legal AI Basics PDF', desc: 'Free comprehensive guide' },
-              { icon: Code, title: 'Prompt Library', desc: '50+ ready-to-use prompts' },
-              { icon: BookOpen, title: 'Blog Articles', desc: 'Weekly insights & tips' },
-              { icon: Play, title: 'Sample Lesson', desc: 'Try before you buy' },
-            ].map((resource, index) => {
-              const Icon = resource.icon;
-              return (
-                <div
-                  key={index}
-                  className="bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-xl p-6 hover:border-violet-400/50 hover:shadow-lg transition-all cursor-pointer group"
-                >
-                  <div className="w-12 h-12 rounded-lg bg-linear-to-br from-violet-600 to-violet-800 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                    <Icon className="w-6 h-6 text-white" />
-                  </div>
-                  <h3 className="font-bold mb-2">{resource.title}</h3>
-                  <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">{resource.desc}</p>
-                  <button className="text-violet-600 dark:text-violet-400 text-sm font-medium flex items-center gap-2">
-                    Download Free <ArrowRight className="w-4 h-4" />
-                  </button>
-                </div>
-              );
-            })}
-          </div>
+      <section className="py-32 bg-linear-to-b from-violet-50 to-white dark:from-gray-900 dark:to-gray-950 relative overflow-hidden">
+        {/* Background decorative elements */}
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-20 right-20 w-96 h-96 bg-violet-200/30 dark:bg-violet-500/10 rounded-full blur-3xl" />
+          <div className="absolute bottom-20 left-20 w-96 h-96 bg-violet-200/20 dark:bg-violet-500/5 rounded-full blur-3xl" />
         </div>
-      </section>
 
-
-      <section className="py-32 bg-white dark:bg-gray-950">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto">
-            <div className="bg-linear-to-r from-violet-600 to-violet-800 rounded-2xl p-12 text-center text-white relative overflow-hidden">
-              <div className="absolute inset-0 opacity-10">
-                <div className="absolute top-10 left-10 w-40 h-40 bg-white rounded-full blur-3xl" />
-                <div className="absolute bottom-10 right-10 w-40 h-40 bg-white rounded-full blur-3xl" />
+        <div className="container mx-auto px-4 relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="max-w-5xl mx-auto"
+          >
+            <div className="bg-linear-to-r from-violet-600 via-violet-700 to-violet-800 rounded-3xl p-8 md:p-12 text-center text-white relative overflow-hidden shadow-2xl shadow-violet-500/20">
+              {/* Animated background effects */}
+              <div className="absolute inset-0 opacity-20">
+                <motion.div
+                  animate={{
+                    scale: [1, 1.2, 1],
+                    opacity: [0.3, 0.5, 0.3],
+                  }}
+                  transition={{
+                    duration: 8,
+                    repeat: Infinity,
+                    ease: 'easeInOut',
+                  }}
+                  className="absolute top-10 left-10 w-64 h-64 bg-white rounded-full blur-3xl"
+                />
+                <motion.div
+                  animate={{
+                    scale: [1.2, 1, 1.2],
+                    opacity: [0.5, 0.3, 0.5],
+                  }}
+                  transition={{
+                    duration: 8,
+                    repeat: Infinity,
+                    ease: 'easeInOut',
+                    delay: 0.5,
+                  }}
+                  className="absolute bottom-10 right-10 w-64 h-64 bg-white rounded-full blur-3xl"
+                />
               </div>
+
               <div className="relative z-10">
-                <h2 className="text-4xl md:text-5xl font-bold mb-6">
+                {/* Badge */}
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/20 backdrop-blur-md border border-white/30 mb-6"
+                >
+                  <Sparkles className="w-4 h-4" />
+                  <span className="text-sm font-semibold">Limited Time Offer</span>
+                </motion.div>
+
+                {/* Main Heading */}
+                <motion.h2
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.2 }}
+                  className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4"
+                >
                   Start Your Legal AI Journey Today
-                </h2>
-                <p className="text-xl mb-10 text-violet-100">
+                </motion.h2>
+
+                {/* Subtitle */}
+                <motion.p
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.3 }}
+                  className="text-lg md:text-xl mb-8 text-violet-100 max-w-2xl mx-auto"
+                >
                   Empower your legal career with the skills of tomorrow
-                </p>
-                <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <button className="text-lg px-12 py-4 bg-white text-violet-600 hover:bg-gray-100 rounded-lg font-medium transition-all hover:scale-105">
+                </motion.p>
+
+                {/* Countdown Section */}
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.4 }}
+                  className="mb-10"
+                >
+                  <div className="inline-flex flex-col items-center gap-3 bg-white/10 backdrop-blur-md rounded-2xl px-6 md:px-8 py-6 border border-white/20">
+                    <div className="flex items-center gap-2 text-sm md:text-base text-violet-100 mb-2">
+                      <Calendar className="w-4 h-4" />
+                      <span className="font-semibold">DueDraft Starting In</span>
+                    </div>
+                    <div className="flex items-center gap-3 md:gap-4">
+                      <div className="flex flex-col items-center">
+                        <div className="text-3xl md:text-4xl font-bold font-mono bg-white/20 backdrop-blur-md rounded-lg px-4 py-3 min-w-[70px] border border-white/30">
+                          3
+                        </div>
+                        <span className="text-xs md:text-sm text-violet-200 mt-2 uppercase tracking-wider">Days</span>
+                      </div>
+                      <span className="text-2xl md:text-3xl font-bold text-violet-200">:</span>
+                      <div className="flex flex-col items-center">
+                        <div className="text-3xl md:text-4xl font-bold font-mono bg-white/20 backdrop-blur-md rounded-lg px-4 py-3 min-w-[70px] border border-white/30">
+                          21
+                        </div>
+                        <span className="text-xs md:text-sm text-violet-200 mt-2 uppercase tracking-wider">Hours</span>
+                      </div>
+                      <span className="text-2xl md:text-3xl font-bold text-violet-200">:</span>
+                      <div className="flex flex-col items-center">
+                        <div className="text-3xl md:text-4xl font-bold font-mono bg-white/20 backdrop-blur-md rounded-lg px-4 py-3 min-w-[70px] border border-white/30">
+                          04
+                        </div>
+                        <span className="text-xs md:text-sm text-violet-200 mt-2 uppercase tracking-wider">Mins</span>
+                      </div>
+                    </div>
+                  </div>
+                </motion.div>
+
+                {/* CTA Button */}
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.5 }}
+                  className="flex flex-col sm:flex-row gap-4 justify-center items-center"
+                >
+                  <motion.button
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="text-lg px-8 md:px-12 py-4 bg-white text-violet-600 hover:bg-gray-50 rounded-lg font-semibold transition-all shadow-lg hover:shadow-xl flex items-center gap-2"
+                  >
                     Enroll Now
-                    <ArrowRight className="w-5 h-5 ml-2 inline" />
-                  </button>
-                </div>
+                    <ArrowRight className="w-5 h-5" />
+                  </motion.button>
+                </motion.div>
               </div>
             </div>
-          </div>
+          </motion.div>
         </div>
       </section>
 
