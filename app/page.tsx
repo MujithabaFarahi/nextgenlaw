@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react';
+import Link from 'next/link';
 import {
   Sparkles,
   Award,
@@ -37,6 +38,7 @@ import {
   Sun,
   BookOpenText,
   Medal,
+  Calendar,
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 
@@ -436,20 +438,178 @@ function App() {
           </div>
         </div>
       </section>
-      <section className="py-32 bg-white dark:bg-gray-950">
+      {/* Upcoming Events Section */}
+      <section className="py-32 bg-linear-to-b from-violet-50 to-white dark:from-gray-900 dark:to-gray-950">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-20">
+          <div className="text-center mb-16">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-violet-100 dark:bg-violet-500/20 border border-violet-200 dark:border-violet-500/30 text-violet-700 dark:text-violet-300 mb-6">
+              <Calendar className="w-4 h-4" />
+              <span className="text-sm font-medium">Coming Soon</span>
+            </div>
+            <h2 className="text-4xl md:text-5xl font-bold mb-6">
+              Upcoming <span className="text-violet-600 dark:text-violet-400">Events</span>
+            </h2>
+            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+              Don't miss our next groundbreaking legal-tech event
+            </p>
+          </div>
+
+          <div className="max-w-5xl mx-auto">
+            <Link href="/due">
+              <motion.div
+                whileHover={{ scale: 1.02, y: -5 }}
+                className="relative group rounded-3xl overflow-hidden border-2 border-violet-300 dark:border-violet-600 bg-linear-to-br from-violet-600/10 to-violet-800/10 dark:from-violet-900/30 dark:to-violet-700/20 h-[500px] md:h-[600px] hover:shadow-2xl hover:shadow-violet-500/20 transition-all cursor-pointer"
+              >
+                {/* Background Image */}
+                <div className="absolute inset-0">
+                  <img 
+                    src="/4.png" 
+                    alt="DueDraft.ai Event" 
+                    className="absolute inset-0 w-full h-full object-cover opacity-70 dark:opacity-60 group-hover:opacity-80 dark:group-hover:opacity-70 transition-all duration-500" 
+                    onError={(e) => {
+                      e.currentTarget.style.display = 'none';
+                    }}
+                  />
+                  {/* Gradient Overlay - Reduced opacity */}
+                  <div className="absolute inset-0 bg-linear-to-br from-violet-900/55 via-violet-700/50 to-violet-600/45 dark:from-violet-950/65 dark:via-violet-900/60 dark:to-violet-800/55" />
+                  {/* Animated gradient overlay - Reduced opacity */}
+                  <motion.div
+                    animate={{
+                      background: [
+                        'radial-gradient(circle at 20% 50%, rgba(139, 92, 246, 0.15) 0%, transparent 50%)',
+                        'radial-gradient(circle at 80% 50%, rgba(139, 92, 246, 0.15) 0%, transparent 50%)',
+                        'radial-gradient(circle at 20% 50%, rgba(139, 92, 246, 0.15) 0%, transparent 50%)',
+                      ],
+                    }}
+                    transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
+                    className="absolute inset-0"
+                  />
+                </div>
+
+                {/* Content */}
+                <div className="relative z-10 h-full p-8 md:p-12 flex flex-col justify-between text-white">
+                  {/* Top Badge */}
+                  <div className="flex items-center justify-between mb-4">
+                    <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/20 dark:bg-white/10 backdrop-blur-md border border-white/30">
+                      <Sparkles className="w-4 h-4" />
+                      <span className="text-sm font-semibold">Featured Event</span>
+                    </div>
+                    <motion.div
+                      whileHover={{ scale: 1.1, rotate: 5 }}
+                      className="w-12 h-12 rounded-full bg-white/20 dark:bg-white/10 backdrop-blur-md border border-white/30 flex items-center justify-center"
+                    >
+                      <ArrowRight className="w-6 h-6" />
+                    </motion.div>
+                  </div>
+
+                  {/* Main Content */}
+                  <div className="flex-1 flex flex-col justify-center">
+                    <motion.div
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.6 }}
+                    >
+                      <h3 className="text-3xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+                        DueDraft.ai
+                        <br />
+                        <span className="text-violet-200 dark:text-violet-300">Masterclass</span>
+                      </h3>
+                      <p className="text-lg md:text-xl text-white/90 dark:text-white/80 mb-8 max-w-2xl leading-relaxed">
+                        Transform your legal practice with AI-powered contract automation. Join thousands of legal professionals mastering the future of legal tech.
+                      </p>
+                      
+                      {/* Features */}
+                      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+                        <div className="flex items-center gap-3 bg-white/10 dark:bg-white/5 backdrop-blur-md rounded-lg px-4 py-3 border border-white/20">
+                          <Clock className="w-5 h-5 text-violet-200" />
+                          <div>
+                            <div className="text-sm text-white/70">Duration</div>
+                            <div className="font-semibold">2 Days Intensive</div>
+                          </div>
+                        </div>
+                        <div className="flex items-center gap-3 bg-white/10 dark:bg-white/5 backdrop-blur-md rounded-lg px-4 py-3 border border-white/20">
+                          <Users className="w-5 h-5 text-violet-200" />
+                          <div>
+                            <div className="text-sm text-white/70">Format</div>
+                            <div className="font-semibold">Live Online</div>
+                          </div>
+                        </div>
+                        <div className="flex items-center gap-3 bg-white/10 dark:bg-white/5 backdrop-blur-md rounded-lg px-4 py-3 border border-white/20">
+                          <Star className="w-5 h-5 text-yellow-400 fill-yellow-400" />
+                          <div>
+                            <div className="text-sm text-white/70">Rating</div>
+                            <div className="font-semibold">4.9/5</div>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* CTA Button */}
+                      <motion.div
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                        className="inline-flex items-center gap-2 px-8 py-4 bg-white text-violet-600 dark:text-violet-700 rounded-lg font-semibold text-lg shadow-lg hover:shadow-xl transition-all w-fit"
+                      >
+                        Learn More
+                        <ArrowRight className="w-5 h-5" />
+                      </motion.div>
+                    </motion.div>
+                  </div>
+
+                  {/* Bottom Stats */}
+                  <div className="flex items-center gap-6 text-sm text-white/80 pt-4 border-t border-white/20">
+                    <div className="flex items-center gap-2">
+                      <Calendar className="w-4 h-4" />
+                      <span>Starting Soon</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <Users className="w-4 h-4" />
+                      <span>Limited Seats Available</span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Shine effect on hover */}
+                <motion.div
+                  className="absolute inset-0 bg-linear-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"
+                  style={{ width: '200%' }}
+                />
+              </motion.div>
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Past Events Section */}
+      <section className="py-32 relative bg-white dark:bg-gray-950 overflow-hidden">
+        {/* Background decorative elements */}
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-20 right-20 w-96 h-96 bg-violet-100/30 dark:bg-violet-500/5 rounded-full blur-3xl" />
+          <div className="absolute bottom-20 left-20 w-96 h-96 bg-violet-100/20 dark:bg-violet-500/5 rounded-full blur-3xl" />
+        </div>
+
+        <div className="container mx-auto px-4 relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-20"
+          >
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-violet-100 dark:bg-violet-500/20 border border-violet-200 dark:border-violet-500/30 text-violet-700 dark:text-violet-300 mb-6 shadow-sm"
+            >
               <Medal className="w-4 h-4" />
               <span className="text-sm font-medium">Achievements</span>
-            </div>
+            </motion.div>
             <h2 className="text-4xl md:text-5xl font-bold mb-6">
               Past <span className="text-violet-600 dark:text-violet-400">Events</span>
             </h2>
             <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
               Highlights from the legal-tech events and training we've successfully delivered worldwide
             </p>
-          </div>
+          </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
             {[
@@ -460,6 +620,7 @@ function App() {
                 rating: '4.9',
                 participants: '240+',
                 desc: 'Practical tools to streamline everyday legal work with AI.',
+                badge: 'Most Popular',
               },
               {
                 title: 'Mastering Legal Tech: From Manual Tasks to Smart Automation',
@@ -468,6 +629,7 @@ function App() {
                 rating: '4.5',
                 participants: '300+',
                 desc: 'Turn manual tasks into smart automation across legal workflows.',
+                badge: 'Trending',
               },
               {
                 title: 'How Lawyers Can Leverage AI for Research, Drafting & Compliance',
@@ -476,29 +638,128 @@ function App() {
                 rating: '4.9',
                 participants: '1500+',
                 desc: 'Leverage AI for faster research, stronger drafting, and compliance.',
+                badge: 'Best Rated',
               },
             ].map((item, index) => (
-              <div
+              <motion.div
                 key={index}
-                className="relative group rounded-2xl overflow-hidden border border-gray-200 dark:border-gray-800 bg-black/60 dark:bg-gray-900 h-[420px] hover:shadow-2xl transition-all"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.15, duration: 0.5 }}
+                whileHover={{ y: -8, scale: 1.02 }}
+                className="relative group rounded-3xl overflow-hidden border border-gray-200/50 dark:border-gray-800/50 bg-white dark:bg-gray-900 h-[480px] hover:shadow-2xl hover:shadow-violet-500/10 dark:hover:shadow-violet-500/20 transition-all duration-500"
               >
-                <img src={item.img} alt={item.title} className="absolute inset-0 w-full h-full object-cover opacity-80 grayscale group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-500" />
-                <div className="absolute inset-0">
-                  <div
-                    className="h-full w-full bg-linear-to-tr from-violet-900/80 via-violet-600/40 to-transparent"
-                    style={{ clipPath: 'polygon(0 0, 70% 0, 45% 100%, 0 100%)' }}
+                {/* Image Container */}
+                <div className="absolute inset-0 overflow-hidden">
+                  <img 
+                    src={item.img} 
+                    alt={item.title} 
+                    className="absolute inset-0 w-full h-full object-cover opacity-90 dark:opacity-80 grayscale group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-700 scale-100 group-hover:scale-110" 
+                    onError={(e) => {
+                      e.currentTarget.style.display = 'none';
+                    }}
+                  />
+                  
+                  {/* Enhanced Gradient Overlay - Reduced opacity */}
+                  <div className="absolute inset-0 bg-linear-to-br from-violet-900/50 via-violet-700/45 to-violet-600/40 dark:from-violet-950/60 dark:via-violet-900/55 dark:to-violet-800/50" />
+                  
+                  {/* Animated gradient accent - Reduced opacity */}
+                  <motion.div
+                    animate={{
+                      background: [
+                        'radial-gradient(circle at 0% 0%, rgba(139, 92, 246, 0.2) 0%, transparent 50%)',
+                        'radial-gradient(circle at 100% 100%, rgba(139, 92, 246, 0.2) 0%, transparent 50%)',
+                        'radial-gradient(circle at 0% 0%, rgba(139, 92, 246, 0.2) 0%, transparent 50%)',
+                      ],
+                    }}
+                    transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
+                    className="absolute inset-0"
                   />
                 </div>
-                <div className="relative z-10 h-full p-6 flex flex-col justify-end text-white">
-                  <h3 className="text-lg md:text-xl font-bold">{item.title}</h3>
-                  <p className="text-sm text-white/80 mt-1">{item.desc}</p>
-                  <div className="mt-4 flex items-center gap-5 text-xs">
-                    <div className="flex items-center gap-2"><Clock className="w-4 h-4" /><span>{item.time}</span></div>
-                    <div className="flex items-center gap-2"><Star className="w-4 h-4 text-yellow-400 fill-yellow-400" /><span>{item.rating}</span></div>
-                    <div className="flex items-center gap-2"><Users className="w-4 h-4" /><span>{item.participants}</span></div>
+
+                {/* Content */}
+                <div className="relative z-10 h-full p-6 md:p-8 flex flex-col justify-between text-white">
+                  {/* Top Section - Badge */}
+                  <div className="flex items-start justify-between">
+                    <motion.div
+                      whileHover={{ scale: 1.1 }}
+                      className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/20 dark:bg-white/10 backdrop-blur-md border border-white/30 text-xs font-semibold shadow-lg"
+                    >
+                      <Sparkles className="w-3 h-3" />
+                      {item.badge}
+                    </motion.div>
+                    <motion.div
+                      animate={{ rotate: [0, 10, -10, 0] }}
+                      transition={{ duration: 2, repeat: Infinity, repeatDelay: 3 }}
+                      className="w-10 h-10 rounded-full bg-white/10 dark:bg-white/5 backdrop-blur-md border border-white/20 flex items-center justify-center"
+                    >
+                      <Award className="w-5 h-5" />
+                    </motion.div>
+                  </div>
+
+                  {/* Middle Section - Title & Description */}
+                  <div className="flex-1 flex flex-col justify-center mt-4">
+                    <motion.h3
+                      initial={{ opacity: 0, x: -20 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: 0.2 }}
+                      className="text-xl md:text-2xl font-bold mb-3 leading-tight group-hover:text-violet-100 transition-colors"
+                    >
+                      {item.title}
+                    </motion.h3>
+                    <motion.p
+                      initial={{ opacity: 0, x: -20 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: 0.3 }}
+                      className="text-sm md:text-base text-white/90 dark:text-white/80 leading-relaxed mb-6"
+                    >
+                      {item.desc}
+                    </motion.p>
+                  </div>
+
+                  {/* Bottom Section - Stats */}
+                  <div className="space-y-4 pt-4 border-t border-white/20">
+                    <div className="grid grid-cols-3 gap-3">
+                      <motion.div
+                        whileHover={{ scale: 1.1, y: -2 }}
+                        className="flex flex-col items-center gap-1.5 bg-white/10 dark:bg-white/5 backdrop-blur-md rounded-lg px-3 py-2.5 border border-white/20"
+                      >
+                        <Clock className="w-4 h-4 text-violet-200" />
+                        <span className="text-xs font-semibold">{item.time}</span>
+                        <span className="text-[10px] text-white/60">Duration</span>
+                      </motion.div>
+                      <motion.div
+                        whileHover={{ scale: 1.1, y: -2 }}
+                        className="flex flex-col items-center gap-1.5 bg-white/10 dark:bg-white/5 backdrop-blur-md rounded-lg px-3 py-2.5 border border-white/20"
+                      >
+                        <Star className="w-4 h-4 text-yellow-400 fill-yellow-400" />
+                        <span className="text-xs font-semibold">{item.rating}</span>
+                        <span className="text-[10px] text-white/60">Rating</span>
+                      </motion.div>
+                      <motion.div
+                        whileHover={{ scale: 1.1, y: -2 }}
+                        className="flex flex-col items-center gap-1.5 bg-white/10 dark:bg-white/5 backdrop-blur-md rounded-lg px-3 py-2.5 border border-white/20"
+                      >
+                        <Users className="w-4 h-4 text-violet-200" />
+                        <span className="text-xs font-semibold">{item.participants}</span>
+                        <span className="text-[10px] text-white/60">Attended</span>
+                      </motion.div>
+                    </div>
                   </div>
                 </div>
-              </div>
+
+                {/* Shine effect on hover */}
+                <motion.div
+                  className="absolute inset-0 bg-linear-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 pointer-events-none"
+                  style={{ width: '200%' }}
+                />
+
+                {/* Corner accent */}
+                <div className="absolute top-0 right-0 w-32 h-32 bg-violet-500/10 rounded-full blur-2xl group-hover:bg-violet-500/20 transition-colors" />
+              </motion.div>
             ))}
           </div>
         </div>
