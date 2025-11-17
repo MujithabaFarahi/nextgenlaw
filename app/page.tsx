@@ -36,7 +36,9 @@ import {
   Moon,
   Sun,
   BookOpenText,
+  Medal,
 } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 function App() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -108,7 +110,6 @@ function App() {
     { title: 'Legal Researchers', benefit: 'Automate research and uncover insights 10x faster' },
     { title: 'In-House Counsel', benefit: 'Streamline compliance and contract management' },
     { title: 'Legal Ops Teams', benefit: 'Build efficient workflows and reduce costs' },
-    { title: 'Paralegals', benefit: 'Amplify your impact with AI-powered tools' },
   ];
 
   const careerPaths = [
@@ -141,6 +142,76 @@ function App() {
       avatar: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=100',
       rating: 5,
     },
+    {
+      name: 'Arjun Mehta',
+      role: 'Litigation Associate, Delhi',
+      content: 'Used AI drafting checklists to cut review cycles by 60% and reduce errors.',
+      avatar: 'https://images.unsplash.com/photo-1547425260-76bcadfb7a60?w=100',
+      rating: 5,
+    },
+    {
+      name: 'Neha Kapoor',
+      role: 'In-House Counsel, Bengaluru',
+      content: 'Automated NDAs and vendor contracts—turnaround dropped from days to hours.',
+      avatar: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=100',
+      rating: 5,
+    },
+    {
+      name: 'Vikram Singh',
+      role: 'Compliance Manager, Pune',
+      content: 'Built an AI policy tracker; audit prep time fell from 2 weeks to 3 days.',
+      avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100',
+      rating: 5,
+    },
+    {
+      name: 'Sara Iqbal',
+      role: 'Law Student, Hyderabad',
+      content: 'Showcased an AI research workflow from the course and landed an internship.',
+      avatar: 'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=100',
+      rating: 5,
+    },
+    {
+      name: 'Rohan Gupta',
+      role: 'Senior Counsel, Chennai',
+      content: 'Integrated AI into pleadings—faster case strategy and better outcomes.',
+      avatar: 'https://images.unsplash.com/photo-1599566150163-29194dcaad36?w=100',
+      rating: 5,
+    },
+    {
+      name: 'Meera Nair',
+      role: 'Legal Researcher, Kochi',
+      content: 'Summarization tools saved 15 hours per week on case digests.',
+      avatar: 'https://images.unsplash.com/photo-1527980965255-d3b416303d12?w=100',
+      rating: 5,
+    },
+    {
+      name: 'Karan Verma',
+      role: 'Boutique Firm Owner, Jaipur',
+      content: 'Scaled without hiring—now handle 2x matters with the same team.',
+      avatar: 'https://i.pravatar.cc/100?img=12',
+      rating: 5,
+    },
+    {
+      name: 'Aisha Khan',
+      role: 'Family Lawyer, Lucknow',
+      content: 'Client communication templates improved satisfaction and retention.',
+      avatar: 'https://i.pravatar.cc/100?img=49',
+      rating: 5,
+    },
+    {
+      name: 'Dev Patel',
+      role: 'IP Attorney, Ahmedabad',
+      content: 'Drafted patent responses with AI; reduced office action turnaround by 50%.',
+      avatar: 'https://i.pravatar.cc/100?img=5',
+      rating: 5,
+    },
+    {
+      name: 'Tanya Bose',
+      role: 'Corporate Counsel, Kolkata',
+      content: 'Implemented AI playbooks—cross‑functional teams adopted them quickly.',
+      avatar: 'https://images.unsplash.com/photo-1548142813-c804b9048e42?w=100',
+      rating: 5,
+    },
   ];
 
   const caseStudies = [
@@ -164,47 +235,6 @@ function App() {
       before: 'Manual tracking of regulatory changes',
       after: 'Automated compliance monitoring saving 15 hours/week',
       image: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400',
-    },
-  ];
-
-  const pricingPlans = [
-    {
-      name: 'Basic',
-      price: '$0',
-      features: [
-        'Access to 3 core courses',
-        'Self-paced learning',
-        'Community forum access',
-        'Course completion certificate',
-        '6 months access',
-      ],
-    },
-    {
-      name: 'Pro',
-      price: '$0',
-      popular: true,
-      features: [
-        'All Basic features',
-        'Access to all courses',
-        'Live instructor sessions',
-        'Priority support',
-        '1-on-1 mentorship (2 sessions)',
-        'Lifetime access',
-        'Job board access',
-      ],
-    },
-    {
-      name: 'Certification Track',
-      price: '$0',
-      features: [
-        'All Pro features',
-        'Industry-recognized certification',
-        'Capstone project review',
-        'LinkedIn credential badge',
-        '1-on-1 mentorship (6 sessions)',
-        'Career placement support',
-        'Exclusive networking events',
-      ],
     },
   ];
 
@@ -383,21 +413,21 @@ function App() {
               <span className="text-sm font-medium">About the Platform</span>
             </div>
             <h2 className="text-4xl md:text-5xl font-bold mb-6">
-              What We Do & <span className="text-violet-600 dark:text-violet-400">Why It Matters</span>
+            Why This <span className="text-violet-600 dark:text-violet-400">Community</span> Exists
             </h2>
             <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-              Legal AI is transforming the practice of law. NextGenLaws equips you with the skills to leverage AI tools for drafting, research, compliance, and workflow automation—helping you work smarter, not harder.
+              Legal AI is reshaping the future of law yet only 02% of legal professionals use it today. NextGenLaws exists to bridge that gap by helping you understand, adopt, and master legal tech and AI for your daily workflow. From drafting to research to automation, we empower you to stay ahead, not behind.
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
             {[
-              { icon: Brain, title: 'AI-Powered Learning', desc: 'Cutting-edge AI tools designed for legal professionals' },
-              { icon: Users, title: 'Expert Instructors', desc: 'Learn from top legal tech innovators and attorneys' },
-              { icon: Clock, title: 'Flexible Learning', desc: 'Live sessions, recordings, and self-paced options' },
-              { icon: Award, title: 'Industry Certification', desc: 'Earn recognized credentials that boost your profile' },
-              { icon: Rocket, title: 'Career Growth', desc: 'Access exclusive job opportunities and advancement' },
-              { icon: MessageCircle, title: 'Community Support', desc: '24/7 access to global legal professionals' },
+              { icon: Brain, title: 'AI-Driven Legal Training', desc: 'Learn how to use real-world AI tools built for modern legal practice' },
+              { icon: Users, title: 'Guided by Legal Tech Experts', desc: 'Insights from practitioners who actively use AI in global legal workflows' },
+              { icon: Clock, title: 'Learn Your Way', desc: 'Live workshops, replays, and flexible self-paced modules designed for busy legal professionals' },
+              { icon: Award, title: 'Globally Recognized Certification', desc: 'Earn credentials that signal your AI-readiness to employers and clients' },
+              { icon: Rocket, title: 'Career Acceleration', desc: 'Unlock opportunities in legal ops, legal tech, and AI-powered practice' },
+              { icon: MessageCircle, title: 'Global Legal Tech Community', desc: 'Connect with peers, mentors, and innovators adopting AI across 100+ countries.' },
             ].map((feature, index) => {
               const Icon = feature.icon;
               return (
@@ -413,115 +443,67 @@ function App() {
           </div>
         </div>
       </section>
-
-      <section className="py-32 bg-linear-to-b from-violet-50 to-white dark:from-gray-900 dark:to-gray-950">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-20">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-violet-100 dark:bg-violet-500/20 border border-violet-200 dark:border-violet-500/30 text-violet-700 dark:text-violet-300 mb-6">
-              <GraduationCap className="w-4 h-4" />
-              <span className="text-sm font-medium">Professional Certification</span>
-            </div>
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">
-              NextGenLaws <span className="text-violet-600 dark:text-violet-400">Certification Track</span>
-            </h2>
-            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-              Earn an industry-recognized micro-credential that proves your AI legal expertise
-            </p>
-          </div>
-
-          <div className="max-w-4xl mx-auto bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-2xl p-8 md:p-12 shadow-xl">
-            <div className="grid md:grid-cols-2 gap-8 mb-8">
-              <div>
-                <h3 className="text-2xl font-bold mb-4">What You'll Earn</h3>
-                <ul className="space-y-3">
-                  <li className="flex items-start gap-3">
-                    <CheckCircle2 className="w-5 h-5 text-violet-600 mt-0.5 shrink-0" />
-                    <span className="text-gray-600 dark:text-gray-300">Industry-recognized digital credential</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <CheckCircle2 className="w-5 h-5 text-violet-600 mt-0.5 shrink-0" />
-                    <span className="text-gray-600 dark:text-gray-300">LinkedIn certification badge</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <CheckCircle2 className="w-5 h-5 text-violet-600 mt-0.5 shrink-0" />
-                    <span className="text-gray-600 dark:text-gray-300">Portfolio of AI legal workflows</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <CheckCircle2 className="w-5 h-5 text-violet-600 mt-0.5 shrink-0" />
-                    <span className="text-gray-600 dark:text-gray-300">Career placement support</span>
-                  </li>
-                </ul>
-              </div>
-              <div>
-                <h3 className="text-2xl font-bold mb-4">Program Details</h3>
-                <ul className="space-y-3">
-                  <li className="flex items-start gap-3">
-                    <Clock className="w-5 h-5 text-violet-600 mt-0.5 shrink-0" />
-                    <span className="text-gray-600 dark:text-gray-300">48 hours of intensive training</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <BookOpen className="w-5 h-5 text-violet-600 mt-0.5 shrink-0" />
-                    <span className="text-gray-600 dark:text-gray-300">7 comprehensive modules</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <Target className="w-5 h-5 text-violet-600 mt-0.5 shrink-0" />
-                    <span className="text-gray-600 dark:text-gray-300">Hands-on capstone project</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <Users className="w-5 h-5 text-violet-600 mt-0.5 shrink-0" />
-                    <span className="text-gray-600 dark:text-gray-300">1-on-1 mentorship included</span>
-                  </li>
-                </ul>
-              </div>
-            </div>
-            <div className="border-t border-gray-200 dark:border-gray-800 pt-8">
-              <h3 className="text-xl font-bold mb-4">Career Paths Unlocked</h3>
-              <div className="flex flex-wrap gap-2">
-                {['AI-Empowered Lawyer', 'Legal Innovation Specialist', 'Legal Ops Associate', 'Contract Automation Expert', 'Policy Analyst'].map((path, i) => (
-                  <span key={i} className="px-4 py-2 bg-violet-100 dark:bg-violet-500/20 text-violet-700 dark:text-violet-300 rounded-full text-sm font-medium">
-                    {path}
-                  </span>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
       <section className="py-32 bg-white dark:bg-gray-950">
         <div className="container mx-auto px-4">
           <div className="text-center mb-20">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-violet-100 dark:bg-violet-500/20 border border-violet-200 dark:border-violet-500/30 text-violet-700 dark:text-violet-300 mb-6">
-              <BookOpen className="w-4 h-4" />
-              <span className="text-sm font-medium">Full Curriculum</span>
+              <Medal className="w-4 h-4" />
+              <span className="text-sm font-medium">Achievements</span>
             </div>
             <h2 className="text-4xl md:text-5xl font-bold mb-6">
-              Course <span className="text-violet-600 dark:text-violet-400">Modules</span>
+              Past <span className="text-violet-600 dark:text-violet-400">Events</span>
             </h2>
             <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-              Comprehensive curriculum designed to take you from beginner to expert
+              Highlights from the legal-tech events and training we've successfully delivered worldwide
             </p>
           </div>
 
-          <div className="max-w-4xl mx-auto space-y-4">
-            {modules.map((module, index) => (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            {[
+              {
+                title: 'AI for Everyday Legal Work: Practical Tools for Lawyers',
+                img: '/1.png',
+                time: '10 hours',
+                rating: '4.9',
+                participants: '240+',
+                desc: 'Practical tools to streamline everyday legal work with AI.',
+              },
+              {
+                title: 'Mastering Legal Tech: From Manual Tasks to Smart Automation',
+                img: '/2.png',
+                time: '06 hours',
+                rating: '4.5',
+                participants: '300+',
+                desc: 'Turn manual tasks into smart automation across legal workflows.',
+              },
+              {
+                title: 'How Lawyers Can Leverage AI for Research, Drafting & Compliance',
+                img: '/3.png',
+                time: '4.5 hours',
+                rating: '4.9',
+                participants: '1500+',
+                desc: 'Leverage AI for faster research, stronger drafting, and compliance.',
+              },
+            ].map((item, index) => (
               <div
                 key={index}
-                className="bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-xl p-6 hover:border-violet-400/50 hover:shadow-lg transition-all group cursor-pointer"
+                className="relative group rounded-2xl overflow-hidden border border-gray-200 dark:border-gray-800 bg-black/60 dark:bg-gray-900 h-[420px] hover:shadow-2xl transition-all"
               >
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-4">
-                    <div className="w-12 h-12 rounded-lg bg-linear-to-br from-violet-600 to-violet-800 flex items-center justify-center text-white font-bold">
-                      {module.number}
-                    </div>
-                    <div>
-                      <h3 className="text-lg font-bold group-hover:text-violet-600 dark:group-hover:text-violet-400 transition-colors">
-                        {module.title}
-                      </h3>
-                      <p className="text-sm text-gray-500 dark:text-gray-400">{module.duration}</p>
-                    </div>
+                <img src={item.img} alt={item.title} className="absolute inset-0 w-full h-full object-cover opacity-80 grayscale group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-500" />
+                <div className="absolute inset-0">
+                  <div
+                    className="h-full w-full bg-linear-to-tr from-violet-900/80 via-violet-600/40 to-transparent"
+                    style={{ clipPath: 'polygon(0 0, 70% 0, 45% 100%, 0 100%)' }}
+                  />
+                </div>
+                <div className="relative z-10 h-full p-6 flex flex-col justify-end text-white">
+                  <h3 className="text-lg md:text-xl font-bold">{item.title}</h3>
+                  <p className="text-sm text-white/80 mt-1">{item.desc}</p>
+                  <div className="mt-4 flex items-center gap-5 text-xs">
+                    <div className="flex items-center gap-2"><Clock className="w-4 h-4" /><span>{item.time}</span></div>
+                    <div className="flex items-center gap-2"><Star className="w-4 h-4 text-yellow-400 fill-yellow-400" /><span>{item.rating}</span></div>
+                    <div className="flex items-center gap-2"><Users className="w-4 h-4" /><span>{item.participants}</span></div>
                   </div>
-                  <ArrowRight className="w-5 h-5 text-gray-400 group-hover:text-violet-600 dark:group-hover:text-violet-400 transition-colors" />
                 </div>
               </div>
             ))}
@@ -562,28 +544,31 @@ function App() {
               <Target className="w-4 h-4" />
               <span className="text-sm font-medium">How It Works</span>
             </div>
-            <h3 className="text-3xl md:text-4xl font-bold">A Simple 3-Step System</h3>
+            <h3 className="text-3xl md:text-4xl font-bold">How It Works</h3>
+            <p className="text-lg text-gray-600 dark:text-gray-300 mt-2">
+              Join a masterclass, complete the class material, and get a job or secure an internship.
+            </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
             {[
               {
-                icon: Search,
+                icon: GraduationCap,
                 number: '01',
-                title: 'Choose Your Learning Path',
-                desc: 'Browse curated pathways: AI Law, Legal Tech, Data Privacy, Compliance, Contract Automation, Digital Forensics. Personalized guidance matches your goals and experience.',
+                title: 'Join a Masterclass',
+                desc: 'Sign up and join a live or hybrid masterclass to kickstart your journey.',
+              },
+              {
+                icon: BookOpen,
+                number: '02',
+                title: 'Complete the Material',
+                desc: 'Finish the lessons, projects, and assessments to build real skills.',
               },
               {
                 icon: Briefcase,
-                number: '02',
-                title: 'Learn Through Hands-On Case Studies',
-                desc: 'Solve real-world scenarios with interactive, project-based courses. Use AI assistants, mock legal documents, and workflow builders to practice.',
-              },
-              {
-                icon: Award,
                 number: '03',
-                title: 'Earn Your Certification & Build Workflows',
-                desc: 'Gain industry-recognized certificates and a portfolio of automation workflows. Show proven competency and unlock career outcomes.',
+                title: 'Get a Job or Internship',
+                desc: 'Leverage your skills to get a job, become an intern, or secure an internship.',
               },
             ].map((item, index) => {
               const Icon = item.icon;
@@ -606,73 +591,6 @@ function App() {
         </div>
       </section>
 
-      <section id="courses" className="py-32 bg-linear-to-b from-violet-50 to-white dark:from-gray-900 dark:to-gray-950">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-20">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-violet-100 dark:bg-violet-500/20 border border-violet-200 dark:border-violet-500/30 text-violet-700 dark:text-violet-300 mb-6">
-              <Rocket className="w-4 h-4" />
-              <span className="text-sm font-medium">Our Programs</span>
-            </div>
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">
-              <span className="text-violet-600 dark:text-violet-400">Transform</span> Your Practice
-            </h2>
-            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-              Intensive programs designed specifically for legal professionals
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
-            {courses.map((course, index) => (
-              <div
-                key={index}
-                className="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-xl overflow-hidden hover:shadow-xl transition-all group"
-              >
-                <div className="relative h-56 overflow-hidden">
-                  <img src={course.image} alt={course.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
-                  {course.badge && (
-                    <span className="absolute top-4 right-4 px-3 py-1 bg-violet-600 text-white text-sm font-medium rounded-full">
-                      {course.badge}
-                    </span>
-                  )}
-                </div>
-
-                <div className="p-6">
-                  <h3 className="text-xl font-bold mb-2">{course.title}</h3>
-                  <p className="text-gray-600 dark:text-gray-400 mb-4">{course.description}</p>
-
-                  <div className="flex items-center justify-between text-sm mb-3">
-                    <div className="flex items-center gap-2">
-                      <Clock className="w-4 h-4 text-violet-600" />
-                      <span className="text-gray-600 dark:text-gray-400">{course.duration}</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <Video className="w-4 h-4 text-violet-600" />
-                      <span className="text-gray-600 dark:text-gray-400">{course.mode}</span>
-                    </div>
-                  </div>
-
-                  <div className="flex items-center justify-between text-sm mb-4">
-                    <div className="flex items-center gap-2">
-                      <Users className="w-4 h-4 text-violet-600" />
-                      <span className="text-gray-600 dark:text-gray-400">{course.students} enrolled</span>
-                    </div>
-                    <div className="flex items-center gap-1">
-                      <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
-                      <span className="text-gray-600 dark:text-gray-400">{course.rating}</span>
-                    </div>
-                  </div>
-
-                  <button className="w-full px-6 py-2.5 bg-violet-600 hover:bg-violet-700 text-white rounded-lg transition-all font-medium">
-                    View Course
-                    <ArrowRight className="w-4 h-4 ml-2 inline" />
-                  </button>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       <section id="testimonials" className="py-32 bg-white dark:bg-gray-950">
         <div className="container mx-auto px-4">
           <div className="text-center mb-20">
@@ -688,29 +606,35 @@ function App() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto mb-16">
-            {testimonials.map((testimonial, index) => (
-              <div
-                key={index}
-                className="bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-xl p-8 hover:border-violet-400/50 hover:shadow-lg transition-all"
-              >
-                <div className="flex gap-1 mb-4">
-                  {[...Array(testimonial.rating)].map((_, i) => (
-                    <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
-                  ))}
-                </div>
-                <p className="text-gray-600 dark:text-gray-400 mb-6 leading-relaxed italic">
-                  "{testimonial.content}"
-                </p>
-                <div className="flex items-center gap-4">
-                  <img src={testimonial.avatar} alt={testimonial.name} className="w-12 h-12 rounded-full object-cover" />
-                  <div>
-                    <div className="font-semibold">{testimonial.name}</div>
-                    <div className="text-sm text-gray-500 dark:text-gray-400">{testimonial.role}</div>
+          <div className="relative overflow-hidden w-screen mx-[calc(50%-50vw)] mb-16">
+            <motion.div
+              className="flex gap-4 md:gap-6"
+              animate={{ x: ['-50%', '0%'] }}
+              transition={{ duration: 40, ease: 'linear', repeat: Infinity }}
+            >
+              {[...testimonials, ...testimonials].map((testimonial, index) => (
+                <div
+                  key={index}
+                  className="bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-2xl p-6 hover:border-violet-400/50 hover:shadow-lg transition-all min-w-[420px] max-w-[420px] flex-none"
+                >
+                  <div className="flex gap-1 mb-3">
+                    {[...Array(testimonial.rating)].map((_, i) => (
+                      <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+                    ))}
+                  </div>
+                  <p className="text-gray-700 dark:text-gray-300 mb-5 leading-relaxed">
+                    "{testimonial.content}"
+                  </p>
+                  <div className="flex items-center gap-4">
+                    <img src={testimonial.avatar} onError={(e)=>{e.currentTarget.src='https://i.pravatar.cc/100';}} loading="lazy" alt={testimonial.name} className="w-10 h-10 rounded-full object-cover" />
+                    <div>
+                      <div className="font-semibold">{testimonial.name}</div>
+                      <div className="text-sm text-gray-500 dark:text-gray-400">{testimonial.role}</div>
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </motion.div>
           </div>
         </div>
       </section>
