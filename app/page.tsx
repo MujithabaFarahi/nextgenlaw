@@ -143,13 +143,6 @@ function App() {
       rating: 5,
     },
     {
-      name: 'Arjun Mehta',
-      role: 'Litigation Associate, Delhi',
-      content: 'Used AI drafting checklists to cut review cycles by 60% and reduce errors.',
-      avatar: 'https://images.unsplash.com/photo-1547425260-76bcadfb7a60?w=100',
-      rating: 5,
-    },
-    {
       name: 'Neha Kapoor',
       role: 'In-House Counsel, Bengaluru',
       content: 'Automated NDAs and vendor contracts—turnaround dropped from days to hours.',
@@ -185,27 +178,6 @@ function App() {
       rating: 5,
     },
     {
-      name: 'Karan Verma',
-      role: 'Boutique Firm Owner, Jaipur',
-      content: 'Scaled without hiring—now handle 2x matters with the same team.',
-      avatar: 'https://i.pravatar.cc/100?img=12',
-      rating: 5,
-    },
-    {
-      name: 'Aisha Khan',
-      role: 'Family Lawyer, Lucknow',
-      content: 'Client communication templates improved satisfaction and retention.',
-      avatar: 'https://i.pravatar.cc/100?img=49',
-      rating: 5,
-    },
-    {
-      name: 'Dev Patel',
-      role: 'IP Attorney, Ahmedabad',
-      content: 'Drafted patent responses with AI; reduced office action turnaround by 50%.',
-      avatar: 'https://i.pravatar.cc/100?img=5',
-      rating: 5,
-    },
-    {
       name: 'Tanya Bose',
       role: 'Corporate Counsel, Kolkata',
       content: 'Implemented AI playbooks—cross‑functional teams adopted them quickly.',
@@ -235,6 +207,27 @@ function App() {
       before: 'Manual tracking of regulatory changes',
       after: 'Automated compliance monitoring saving 15 hours/week',
       image: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400',
+    },
+    {
+      name: 'Ritika Malhotra',
+      role: 'Associate Counsel',
+      before: 'Manual clause comparison across versions',
+      after: 'Automated redline analysis cut review time by 60%',
+      image: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=400',
+    },
+    {
+      name: 'Abhay Joshi',
+      role: 'Litigation Associate',
+      before: 'Hours spent drafting routine petitions',
+      after: 'Reusable AI templates deliver filings in minutes',
+      image: 'https://images.unsplash.com/photo-1527980965255-d3b416303d12?w=400',
+    },
+    {
+      name: 'Nadia Rahman',
+      role: 'Compliance Analyst',
+      before: 'Tracking regulatory updates manually',
+      after: 'AI alerts streamline monitoring and reporting',
+      image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400',
     },
   ];
 
@@ -653,11 +646,11 @@ function App() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
             {caseStudies.map((study, index) => (
-              <div key={index} className="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-xl overflow-hidden hover:shadow-xl transition-all">
-                <img src={study.image} alt={study.name} className="w-full h-48 object-cover" />
+              <div key={index} className="group bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-xl overflow-hidden hover:shadow-xl transition-all">
+                <img src={study.image} alt={study.name} className="w-full h-48 object-cover grayscale group-hover:grayscale-0 transition-all duration-300" />
                 <div className="p-6">
                   <div className="flex items-center gap-3 mb-4">
-                    <img src={study.image} alt={study.name} className="w-12 h-12 rounded-full object-cover" />
+                    <img src={study.image} alt={study.name} className="w-12 h-12 rounded-full object-cover grayscale group-hover:grayscale-0 transition-all duration-300" />
                     <div>
                       <h3 className="font-bold">{study.name}</h3>
                       <p className="text-sm text-gray-500 dark:text-gray-400">{study.role}</p>
