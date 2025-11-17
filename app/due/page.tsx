@@ -349,12 +349,12 @@ export default function Home() {
   return (
     <div className="min-h-screen overflow-x-hidden">
       {/* Hero Section with Enhanced Grain */}
-      <div className="fixed inset-0 pointer-events-none z-0 top-4 right-4">
+      <div className="fixed z-50 top-4 left-4">
         <ThemeToggle />
       </div>
       <section
         ref={heroRef}
-        className="relative min-h-screen bg-linear-to-b from-background via-violet-500/10 to-violet-500/20 flex items-center justify-center overflow-hidden py-16"
+        className="relative min-h-screen bg-linear-to-b from-background via-violet-100/50 to-violet-200/50 dark:via-violet-500/10 dark:to-violet-500/20 flex items-center justify-center overflow-hidden py-16"
       >
         <div className="absolute inset-0">
           <div
@@ -412,7 +412,7 @@ export default function Home() {
             className="max-w-5xl mx-auto text-center"
           >
             <motion.div variants={fadeInUp}>
-              <Badge className="mb-6 text-sm px-6 py-2 dark:bg-violet-500/20 border-violet-400/50 dark:text-violet-100 backdrop-blur-sm">
+              <Badge className="mb-6 text-sm px-6 py-2 bg-violet-100 dark:bg-violet-500/20 border-violet-300 dark:border-violet-400/50 text-violet-700 dark:text-violet-100 backdrop-blur-sm">
                 <Sparkles className="w-4 h-4 mr-2 inline" />
                 Limited Seats - Batch Starting Soon
               </Badge>
@@ -424,7 +424,9 @@ export default function Home() {
             >
               Earn More, Work Less
               <br />
-              <span className="text-violet-300">Master AI for Law</span>
+              <span className="text-violet-600 dark:text-violet-300">
+                Master AI for Law
+              </span>
             </motion.h1>
 
             <motion.p
@@ -611,7 +613,7 @@ export default function Home() {
       </section>
 
       {/* AI Quote Section - Glassmorphism */}
-      <section className="py-20 relative bg-linear-to-b from-background via-violet-500/10 to-violet-500/20">
+      <section className="py-20 relative bg-linear-to-b from-background via-violet-100/50 to-violet-200/50 dark:via-violet-500/10 dark:to-violet-500/20">
         <div className="absolute inset-0">
           {/* Grain texture */}
           <div
@@ -734,7 +736,7 @@ export default function Home() {
       </section>
 
       {/* What's Included - Glassmorphism */}
-      <section className="py-32 relative bg-linear-to-b from-background via-violet-500/10 to-violet-500/20">
+      <section className="py-32 relative bg-linear-to-b from-background via-violet-100/50 to-violet-200/50 dark:via-violet-500/10 dark:to-violet-500/20">
         <div className="absolute inset-0">
           {/* Grain texture */}
           <div
@@ -858,7 +860,7 @@ export default function Home() {
       </section>
 
       {/* Learning Path - Glassmorphism */}
-      <section className="py-32 relative bg-linear-to-b from-background via-violet-500/10 to-violet-500/20">
+      <section className="py-32 relative bg-linear-to-b from-background via-violet-100/50 to-violet-200/50 dark:via-violet-500/10 dark:to-violet-500/20">
         <div className="absolute inset-0">
           {/* Grain texture */}
           <div
@@ -1064,7 +1066,7 @@ export default function Home() {
       </section>
 
       {/* Speakers - Glassmorphism */}
-      <section className="relative py-32 bg-linear-to-b from-background via-violet-500/10 to-violet-500/20">
+      <section className="relative py-32 bg-linear-to-b from-background via-violet-100/50 to-violet-200/50 dark:via-violet-500/10 dark:to-violet-500/20">
         <div className="absolute inset-0">
           {/* Grain texture */}
           <div
@@ -1621,7 +1623,7 @@ export default function Home() {
       </section>
 
       {/* FAQ Section - Glassmorphism */}
-      <section className="py-32 relative bg-linear-to-b from-background via-violet-500/10 to-violet-500/20">
+      <section className="py-32 relative bg-linear-to-b from-background via-violet-100/50 to-violet-200/50 dark:via-violet-500/10 dark:to-violet-500/20">
         <div className="absolute inset-0">
           {/* Grain texture */}
           <div

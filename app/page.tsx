@@ -366,7 +366,7 @@ export default function NextGenLawsLanding() {
               className="text-xl md:text-2xl text-gray-600 dark:text-slate-300 mb-12 max-w-3xl mx-auto leading-relaxed"
             >
               Join 25,000+ legal professionals who&apos;ve transformed their
-              practice with AI. Stop watching from the sidelines—become the
+              practice with AI. Stop watching from the sidelines-become the
               lawyer everyone turns to.
             </motion.p>
 
