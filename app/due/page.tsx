@@ -447,7 +447,7 @@ export default function Home() {
             {/* Workshop Details Grid */}
             <motion.div
               variants={fadeInUp}
-              className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12 max-w-4xl mx-auto"
+              className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 mb-12 max-w-4xl mx-auto"
             >
               {workshopDetails.map((detail, index) => {
                 const Icon = detail.icon;
@@ -522,7 +522,7 @@ export default function Home() {
             {/* Stats with Icons */}
             <motion.div
               variants={fadeInUp}
-              className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-5xl mx-auto"
+              className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 max-w-5xl mx-auto"
             >
               {statsData.map((stat, index) => {
                 const Icon = stat.icon;
@@ -834,7 +834,7 @@ export default function Home() {
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 max-w-6xl mx-auto">
             {aiTools.map((tool, index) => (
               <motion.div
                 key={index}
@@ -1549,7 +1549,7 @@ export default function Home() {
             viewport={{ once: true }}
             className="text-center"
           >
-            <div className="inline-flex items-center gap-8 bg-white/5 backdrop-blur-xl border border-white/20 rounded-2xl p-8">
+            <div className="inline-flex flex-wrap items-center gap-4 md:gap-8 bg-white/5 backdrop-blur-xl border border-white/20 rounded-2xl p-4 sm:p-6 md:p-8">
               <div className="flex -space-x-4">
                 {[
                   'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100',
