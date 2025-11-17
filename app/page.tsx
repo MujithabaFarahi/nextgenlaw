@@ -757,6 +757,72 @@ export default function NextGenLawsLanding() {
         </div>
       </section>
 
+      <section className="py-24 bg-white/80 dark:bg-black/50 backdrop-blur-sm">
+        <div className="container mx-auto px-4">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-14"
+          >
+            <Badge className="mb-4 bg-violet-100 dark:bg-violet-500/20 border-violet-400/50 text-violet-700 dark:text-violet-200">
+              <Target className="w-4 h-4 mr-2" />
+              How It Works
+            </Badge>
+            <h3 className="text-3xl md:text-4xl font-bold">A Simple <span style={{ color: '#8536f8' }}>3-Step</span> System</h3>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            {[
+              {
+                icon: BookOpen,
+                title: 'Step 1 — Choose Your Learning Path',
+                desc:
+                  'Browse curated pathways: AI Law, Legal Tech, Data Privacy, Compliance, Contract Automation, Digital Forensics. Personalized guidance matches your goals and experience.',
+              },
+              {
+                icon: Briefcase,
+                title: 'Step 2 — Learn Through Hands-On Case Studies',
+                desc:
+                  'Solve real-world scenarios with interactive, project-based courses. Use AI assistants, mock legal documents, and workflow builders to practice.',
+              },
+              {
+                icon: Award,
+                title:
+                  'Step 3 — Earn Your Certification & Build AI Legal Workflows',
+                desc:
+                  'Gain industry-recognized certificates and a portfolio of automation workflows and legal templates. Show proven competency and unlock career outcomes.',
+              },
+            ].map((item, index) => {
+              const Icon = item.icon;
+              return (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  whileHover={{ y: -8 }}
+                >
+                  <Card className="h-full bg-white/80 dark:bg-white/5 backdrop-blur-xl border border-gray-200 dark:border-white/20 hover:border-violet-400/50 transition-all shadow-lg">
+                    <CardHeader>
+                      <div className="w-12 h-12 rounded-lg bg-linear-to-br from-violet-500 to-violet-700 flex items-center justify-center mb-4">
+                        <Icon className="w-6 h-6 text-white" />
+                      </div>
+                      <CardTitle className="text-lg">{item.title}</CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <CardDescription className="text-gray-600 dark:text-slate-300">
+                        {item.desc}
+                      </CardDescription>
+                    </CardContent>
+                  </Card>
+                </motion.div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
       {/* Testimonials Section */}
       <section id="testimonials" className="py-32 relative">
         <div className="container mx-auto px-4">
