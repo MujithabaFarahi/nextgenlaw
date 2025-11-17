@@ -55,11 +55,29 @@ function App() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Initialize dark mode - ensure light mode is default
+  useEffect(() => {
+    // Remove dark class on initial load to ensure light mode
+    document.documentElement.classList.remove('dark');
+    
+    // Check for saved preference, but default to light mode
+    const savedMode = localStorage.getItem('darkMode');
+    if (savedMode === 'true') {
+      setDarkMode(true);
+      document.documentElement.classList.add('dark');
+    } else {
+      setDarkMode(false);
+      document.documentElement.classList.remove('dark');
+    }
+  }, []);
+
   useEffect(() => {
     if (darkMode) {
       document.documentElement.classList.add('dark');
+      localStorage.setItem('darkMode', 'true');
     } else {
       document.documentElement.classList.remove('dark');
+      localStorage.setItem('darkMode', 'false');
     }
   }, [darkMode]);
 
@@ -263,17 +281,14 @@ function App() {
             </a>
 
             <div className="hidden md:flex items-center gap-8">
-              <a href="#courses" className="text-gray-600 dark:text-gray-300 hover:text-violet-600 dark:hover:text-violet-400 transition-colors">
-                Courses
+              <a href="#upcoming-events" className="text-gray-600 dark:text-gray-300 hover:text-violet-600 dark:hover:text-violet-400 transition-colors">
+                Upcoming Events
               </a>
               <a href="#about" className="text-gray-600 dark:text-gray-300 hover:text-violet-600 dark:hover:text-violet-400 transition-colors">
                 About
               </a>
               <a href="#testimonials" className="text-gray-600 dark:text-gray-300 hover:text-violet-600 dark:hover:text-violet-400 transition-colors">
                 Success Stories
-              </a>
-              <a href="#pricing" className="text-gray-600 dark:text-gray-300 hover:text-violet-600 dark:hover:text-violet-400 transition-colors">
-                Pricing
               </a>
             </div>
 
@@ -301,17 +316,14 @@ function App() {
         {mobileMenuOpen && (
           <div className="md:hidden bg-white/95 dark:bg-gray-950/95 backdrop-blur-xl border-t border-gray-200 dark:border-gray-800">
             <div className="container mx-auto px-4 py-6 space-y-4">
-              <a href="#courses" className="block text-gray-600 dark:text-gray-300 hover:text-violet-600">
-                Courses
+              <a href="#upcoming-events" className="block text-gray-600 dark:text-gray-300 hover:text-violet-600">
+                Upcoming Events
               </a>
               <a href="#about" className="block text-gray-600 dark:text-gray-300 hover:text-violet-600">
                 About
               </a>
               <a href="#testimonials" className="block text-gray-600 dark:text-gray-300 hover:text-violet-600">
                 Success Stories
-              </a>
-              <a href="#pricing" className="block text-gray-600 dark:text-gray-300 hover:text-violet-600">
-                Pricing
               </a>
               <button className="w-full px-6 py-2.5 bg-violet-600 hover:bg-violet-700 text-white rounded-lg">
                 Enroll Now
@@ -439,7 +451,7 @@ function App() {
         </div>
       </section>
       {/* Upcoming Events Section */}
-      <section className="py-32 bg-linear-to-b from-violet-50 to-white dark:from-gray-900 dark:to-gray-950">
+      <section id="upcoming-events" className="py-32 bg-linear-to-b from-violet-50 to-white dark:from-gray-900 dark:to-gray-950">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-violet-100 dark:bg-violet-500/20 border border-violet-200 dark:border-violet-500/30 text-violet-700 dark:text-violet-300 mb-6">
