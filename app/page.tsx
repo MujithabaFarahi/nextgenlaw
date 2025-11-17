@@ -35,6 +35,7 @@ import {
   Building2,
   Moon,
   Sun,
+  BookOpenText,
 } from 'lucide-react';
 
 function App() {
@@ -309,30 +310,30 @@ function App() {
             </div>
 
             <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6 leading-tight">
-              Become an AI-Empowered
+              Empowering the World Through
               <br />
-              <span className="text-violet-600 dark:text-violet-400">Legal Professional</span>
+              <span className="text-violet-600 dark:text-violet-400">Legal Tech Workshops</span>
             </h1>
 
             <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-12 max-w-3xl mx-auto leading-relaxed">
-              Master practical AI tools to draft faster, research smarter, and grow your legal career — with real-world training designed by industry experts.
-            </p>
+              Delivering world-class legal tech education to 25,000+ learners across 100+ countries</p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16">
               <button className="text-lg px-10 py-4 bg-violet-600 hover:bg-violet-700 text-white rounded-lg shadow-lg hover:scale-105 transition-all font-medium">
-                Explore Courses
+                Join DueDraft Masterclass
                 <ArrowRight className="w-5 h-5 ml-2 inline" />
               </button>
-              <button className="text-lg px-10 py-4 border-2 border-violet-400 hover:bg-violet-50 dark:hover:bg-violet-500/10 rounded-lg hover:scale-105 transition-all font-medium">
-                <Download className="w-5 h-5 mr-2 inline" />
-                Download Brochure
-              </button>
+              <div className="hidden sm:block h-13 w-px bg-gray-300 dark:bg-white/20 mx-2" />
+              <div className="flex flex-col items-start sm:items-start">
+                <span className="text-xs uppercase tracking-wider text-gray-600 dark:text-gray-400">Next Mastermind Starts In</span>
+                <span className="font-mono text-lg md:text-xl font-semibold mt-1 text-violet-700 dark:text-violet-300">3 DAYS : 21 HOURS : 04</span>
+              </div>
             </div>
 
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-5xl mx-auto">
               {[
-                { number: '25,000+', label: 'Learners Worldwide', icon: Users },
-                { number: '160+', label: 'Countries Reached', icon: Globe },
+                { number: '07+', label: 'Workshops Conducted', icon: BookOpenText },
+                { number: '25000+', label: 'Students Impacted', icon: Users },
                 { number: '4.9/5', label: 'Average Rating', icon: Star },
                 { number: '95%', label: 'Career Advancement', icon: TrendingUp },
               ].map((stat, index) => {
@@ -896,10 +897,6 @@ function App() {
                   <button className="text-lg px-12 py-4 bg-white text-violet-600 hover:bg-gray-100 rounded-lg font-medium transition-all hover:scale-105">
                     Enroll Now
                     <ArrowRight className="w-5 h-5 ml-2 inline" />
-                  </button>
-                  <button className="text-lg px-12 py-4 border-2 border-white text-white hover:bg-white/10 rounded-lg font-medium transition-all">
-                    <Download className="w-5 h-5 mr-2 inline" />
-                    Download Full Curriculum
                   </button>
                 </div>
               </div>
