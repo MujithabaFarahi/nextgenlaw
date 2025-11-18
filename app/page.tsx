@@ -43,6 +43,7 @@ import {
 import { motion } from 'framer-motion';
 import { AnimatedTestimonials } from '@/components/ui/animated-testimonials';
 import { AboutPlatform } from '@/components/sections/about-platform';
+import { UpcomingEvents } from '@/components/sections/upcoming-events';
 
 function App() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -523,150 +524,10 @@ function App() {
       </section>
 
       <AboutPlatform />
-      {/* Upcoming Events Section */}
-      <section id="upcoming-events" className="py-32 bg-linear-to-b from-violet-50 to-white dark:from-gray-900 dark:to-gray-950">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-violet-100 dark:bg-violet-500/20 border border-violet-200 dark:border-violet-500/30 text-violet-700 dark:text-violet-300 mb-6">
-              <Calendar className="w-4 h-4" />
-              <span className="text-sm font-medium">Coming Soon</span>
-            </div>
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">
-              Upcoming <span className="text-violet-600 dark:text-violet-400">Events</span>
-            </h2>
-            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-              Don't miss our next groundbreaking legal-tech event
-            </p>
-          </div>
-
-          <div className="max-w-5xl mx-auto">
-            <Link href="/due">
-              <motion.div
-                whileHover={{ scale: 1.02, y: -5 }}
-                className="relative group rounded-3xl overflow-hidden border-2 border-violet-300 dark:border-violet-600 bg-linear-to-br from-violet-600/10 to-violet-800/10 dark:from-violet-900/30 dark:to-violet-700/20 h-[500px] md:h-[600px] hover:shadow-2xl hover:shadow-violet-500/20 transition-all cursor-pointer"
-              >
-                {/* Background Image */}
-                <div className="absolute inset-0">
-                  <img 
-                    src="/4.png" 
-                    alt="DueDraft.ai Event" 
-                    className="absolute inset-0 w-full h-full object-cover opacity-70 dark:opacity-60 group-hover:opacity-80 dark:group-hover:opacity-70 transition-all duration-500" 
-                    onError={(e) => {
-                      e.currentTarget.style.display = 'none';
-                    }}
-                  />
-                  {/* Gradient Overlay - Reduced opacity */}
-                  <div className="absolute inset-0 bg-linear-to-br from-violet-900/55 via-violet-700/50 to-violet-600/45 dark:from-violet-950/65 dark:via-violet-900/60 dark:to-violet-800/55" />
-                  {/* Animated gradient overlay - Reduced opacity */}
-                  <motion.div
-                    animate={{
-                      background: [
-                        'radial-gradient(circle at 20% 50%, rgba(139, 92, 246, 0.15) 0%, transparent 50%)',
-                        'radial-gradient(circle at 80% 50%, rgba(139, 92, 246, 0.15) 0%, transparent 50%)',
-                        'radial-gradient(circle at 20% 50%, rgba(139, 92, 246, 0.15) 0%, transparent 50%)',
-                      ],
-                    }}
-                    transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
-                    className="absolute inset-0"
-                  />
-                </div>
-
-                {/* Content */}
-                <div className="relative z-10 h-full p-8 md:p-12 flex flex-col justify-between text-white">
-                  {/* Top Badge */}
-                  <div className="flex items-center justify-between mb-4">
-                    <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/20 dark:bg-white/10 backdrop-blur-md border border-white/30">
-                      <Sparkles className="w-4 h-4" />
-                      <span className="text-sm font-semibold">Featured Event</span>
-                    </div>
-                    <motion.div
-                      whileHover={{ scale: 1.1, rotate: 5 }}
-                      className="w-12 h-12 rounded-full bg-white/20 dark:bg-white/10 backdrop-blur-md border border-white/30 flex items-center justify-center"
-                    >
-                      <ArrowRight className="w-6 h-6" />
-                    </motion.div>
-                  </div>
-
-                  {/* Main Content */}
-                  <div className="flex-1 flex flex-col justify-center">
-                    <motion.div
-                      initial={{ opacity: 0, y: 20 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.6 }}
-                    >
-                      <h3 className="text-3xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-                        DueDraft.ai
-                        <br />
-                        <span className="text-violet-200 dark:text-violet-300">Masterclass</span>
-                      </h3>
-                      <p className="text-lg md:text-xl text-white/90 dark:text-white/80 mb-8 max-w-2xl leading-relaxed">
-                        Transform your legal practice with AI-powered contract automation. Join thousands of legal professionals mastering the future of legal tech.
-                      </p>
-                      
-                      {/* Features */}
-                      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
-                        <div className="flex items-center gap-3 bg-white/10 dark:bg-white/5 backdrop-blur-md rounded-lg px-4 py-3 border border-white/20">
-                          <Clock className="w-5 h-5 text-violet-200" />
-                          <div>
-                            <div className="text-sm text-white/70">Duration</div>
-                            <div className="font-semibold">2 Days Intensive</div>
-                          </div>
-                        </div>
-                        <div className="flex items-center gap-3 bg-white/10 dark:bg-white/5 backdrop-blur-md rounded-lg px-4 py-3 border border-white/20">
-                          <Users className="w-5 h-5 text-violet-200" />
-                          <div>
-                            <div className="text-sm text-white/70">Format</div>
-                            <div className="font-semibold">Live Online</div>
-                          </div>
-                        </div>
-                        <div className="flex items-center gap-3 bg-white/10 dark:bg-white/5 backdrop-blur-md rounded-lg px-4 py-3 border border-white/20">
-                          <Star className="w-5 h-5 text-yellow-400 fill-yellow-400" />
-                          <div>
-                            <div className="text-sm text-white/70">Rating</div>
-                            <div className="font-semibold">4.9/5</div>
-                          </div>
-                        </div>
-                      </div>
-
-                      {/* CTA Button */}
-                      <motion.div
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
-                        className="inline-flex items-center gap-2 px-8 py-4 bg-white text-violet-600 dark:text-violet-700 rounded-lg font-semibold text-lg shadow-lg hover:shadow-xl transition-all w-fit"
-                      >
-                        Learn More
-                        <ArrowRight className="w-5 h-5" />
-                      </motion.div>
-                    </motion.div>
-                  </div>
-
-                  {/* Bottom Stats */}
-                  <div className="flex items-center gap-6 text-sm text-white/80 pt-4 border-t border-white/20">
-                    <div className="flex items-center gap-2">
-                      <Calendar className="w-4 h-4" />
-                      <span>Starting Soon</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <Users className="w-4 h-4" />
-                      <span>Limited Seats Available</span>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Shine effect on hover */}
-                <motion.div
-                  className="absolute inset-0 bg-linear-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"
-                  style={{ width: '200%' }}
-                />
-              </motion.div>
-            </Link>
-          </div>
-        </div>
-      </section>
+      <UpcomingEvents />
 
       {/* Past Events Section */}
-      <section className="py-32 relative bg-white dark:bg-gray-950 overflow-hidden">
+      <section className="py-20 relative bg-white dark:bg-gray-950 overflow-hidden">
         {/* Background decorative elements */}
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-20 right-20 w-96 h-96 bg-violet-100/30 dark:bg-violet-500/5 rounded-full blur-3xl" />
@@ -679,7 +540,7 @@ function App() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="text-center mb-20"
+            className="text-center mb-12"
           >
             <motion.div
               whileHover={{ scale: 1.05 }}
@@ -850,9 +711,9 @@ function App() {
         </div>
       </section>
 
-      <section className="py-32 bg-linear-to-b from-violet-50 to-white dark:from-gray-900 dark:to-gray-950">
+      <section className="py-20 bg-linear-to-b from-violet-50 to-white dark:from-gray-900 dark:to-gray-950">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-20">
+          <div className="text-center mb-12">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-violet-100 dark:bg-violet-500/20 border border-violet-200 dark:border-violet-500/30 text-violet-700 dark:text-violet-300 mb-6">
               <Users className="w-4 h-4" />
               <span className="text-sm font-medium">Who This Is For</span>
@@ -876,9 +737,9 @@ function App() {
         </div>
       </section>
 
-      <section className="py-24 bg-white dark:bg-gray-950">
+      <section className="py-20 bg-white dark:bg-gray-950">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-14">
+          <div className="text-center mb-12">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-violet-100 dark:bg-violet-500/20 border border-violet-200 dark:border-violet-500/30 text-violet-700 dark:text-violet-300 mb-6">
               <Target className="w-4 h-4" />
               <span className="text-sm font-medium">How It Works</span>
@@ -930,9 +791,9 @@ function App() {
         </div>
       </section>
 
-      <section id="testimonials" className="py-32 bg-linear-to-b from-violet-50 to-white dark:from-gray-900 dark:to-gray-950">
+      <section id="testimonials" className="py-20 bg-linear-to-b from-violet-50 to-white dark:from-gray-900 dark:to-gray-950">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-20">
+          <div className="text-center mb-12">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-violet-100 dark:bg-violet-500/20 border border-violet-200 dark:border-violet-500/30 text-violet-700 dark:text-violet-300 mb-6">
               <Star className="w-4 h-4" />
               <span className="text-sm font-medium">Real People, Real Results</span>
@@ -978,9 +839,9 @@ function App() {
         </div>
       </section>
 
-      <section className="py-32 bg-white dark:bg-gray-950">
+      <section className="py-20 bg-white dark:bg-gray-950">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-20">
+          <div className="text-center mb-12">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-violet-100 dark:bg-violet-500/20 border border-violet-200 dark:border-violet-500/30 text-violet-700 dark:text-violet-300 mb-6">
               <TrendingUp className="w-4 h-4" />
               <span className="text-sm font-medium">Before & After</span>
@@ -997,9 +858,9 @@ function App() {
         </div>
       </section>
 
-      <section className="py-32 bg-linear-to-b from-violet-50 to-white dark:from-gray-900 dark:to-gray-950">
+      <section className="py-20 bg-linear-to-b from-violet-50 to-white dark:from-gray-900 dark:to-gray-950">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-20">
+          <div className="text-center mb-12">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-violet-100 dark:bg-violet-500/20 border border-violet-200 dark:border-violet-500/30 text-violet-700 dark:text-violet-300 mb-6">
               <Briefcase className="w-4 h-4" />
               <span className="text-sm font-medium">Career Outcomes</span>
@@ -1029,9 +890,9 @@ function App() {
         </div>
       </section>
 
-      <section className="py-32 bg-white dark:bg-gray-950">
+      <section className="py-20 bg-white dark:bg-gray-950">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-20">
+          <div className="text-center mb-12">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-violet-100 dark:bg-violet-500/20 border border-violet-200 dark:border-violet-500/30 text-violet-700 dark:text-violet-300 mb-6">
               <Globe className="w-4 h-4" />
               <span className="text-sm font-medium">Global Community</span>
@@ -1078,7 +939,7 @@ function App() {
         </div>
       </section>
 
-      <section className="py-32 bg-linear-to-b from-violet-50 to-white dark:from-gray-900 dark:to-gray-950 relative overflow-hidden">
+      <section className="py-20 bg-linear-to-b from-violet-50 to-white dark:from-gray-900 dark:to-gray-950 relative overflow-hidden">
         {/* Background decorative elements */}
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-20 right-20 w-96 h-96 bg-violet-200/30 dark:bg-violet-500/10 rounded-full blur-3xl" />

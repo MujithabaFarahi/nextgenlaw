@@ -56,10 +56,10 @@ const features = [
 
 export function AboutPlatform() {
   return (
-    <section id="about" className="py-32 bg-white dark:bg-gray-950">
+    <section id="about" className="pt-20 pb-10 bg-white dark:bg-gray-950">
       <div className="container mx-auto px-4">
         {/* Header with badge and description */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-12">
           <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-violet-50 dark:bg-violet-500/10 border border-violet-100 dark:border-violet-500/20 text-violet-600 dark:text-violet-400 mb-8">
             <Target className="w-4 h-4" />
             <span className="text-sm font-semibold">About the Platform</span>
