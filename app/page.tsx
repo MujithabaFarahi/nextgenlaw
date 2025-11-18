@@ -41,6 +41,7 @@ import {
   Calendar,
 } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { AnimatedTestimonials } from '@/components/ui/animated-testimonials';
 
 function App() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -250,6 +251,13 @@ function App() {
       image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400',
     },
   ];
+
+  const transformationTestimonials = caseStudies.map((study) => ({
+    name: study.name,
+    designation: study.role,
+    quote: `Before: ${study.before}. After: ${study.after}.`,
+    src: study.image,
+  }));
 
   return (
     <div className="min-h-screen bg-white dark:bg-gray-950 text-gray-900 dark:text-white transition-colors duration-300">
@@ -916,33 +924,11 @@ function App() {
               Real <span className="text-violet-600 dark:text-violet-400">Transformations</span>
             </h2>
           </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            {caseStudies.map((study, index) => (
-              <div key={index} className="group bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-xl overflow-hidden hover:shadow-xl transition-all">
-                <img src={study.image} alt={study.name} className="w-full h-48 object-cover grayscale group-hover:grayscale-0 transition-all duration-300" />
-                <div className="p-6">
-                  <div className="flex items-center gap-3 mb-4">
-                    <img src={study.image} alt={study.name} className="w-12 h-12 rounded-full object-cover grayscale group-hover:grayscale-0 transition-all duration-300" />
-                    <div>
-                      <h3 className="font-bold">{study.name}</h3>
-                      <p className="text-sm text-gray-500 dark:text-gray-400">{study.role}</p>
-                    </div>
-                  </div>
-                  <div className="space-y-3">
-                    <div className="flex items-start gap-2">
-                      <X className="w-5 h-5 text-red-500 shrink-0 mt-0.5" />
-                      <p className="text-sm text-gray-600 dark:text-gray-400">{study.before}</p>
-                    </div>
-                    <div className="flex items-start gap-2">
-                      <CheckCircle2 className="w-5 h-5 text-green-500 shrink-0 mt-0.5" />
-                      <p className="text-sm font-medium text-gray-900 dark:text-white">{study.after}</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
+          <AnimatedTestimonials
+            testimonials={transformationTestimonials}
+            autoplay
+            className="pt-0"
+          />
         </div>
       </section>
 
