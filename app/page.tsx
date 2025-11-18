@@ -44,6 +44,7 @@ import { motion } from 'framer-motion';
 import { AnimatedTestimonials } from '@/components/ui/animated-testimonials';
 import { AboutPlatform } from '@/components/sections/about-platform';
 import { UpcomingEvents } from '@/components/sections/upcoming-events';
+import { WhoThisIsFor } from '@/components/sections/who-this-is-for';
 
 function App() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -133,14 +134,6 @@ function App() {
     { number: '07', title: 'Real Projects & Hands-on Labs', duration: '12 hours' },
   ];
 
-  const personas = [
-    { title: 'Law Students', benefit: 'Get ahead with cutting-edge AI skills before graduation' },
-    { title: 'Associates', benefit: 'Work smarter and advance faster in your firm' },
-    { title: 'Senior Attorneys', benefit: 'Lead digital transformation and stay competitive' },
-    { title: 'Legal Researchers', benefit: 'Automate research and uncover insights 10x faster' },
-    { title: 'In-House Counsel', benefit: 'Streamline compliance and contract management' },
-    { title: 'Legal Ops Teams', benefit: 'Build efficient workflows and reduce costs' },
-  ];
 
   const careerPaths = [
     { icon: Zap, title: 'AI-Empowered Lawyer', desc: 'Practice law with advanced AI capabilities' },
@@ -711,31 +704,7 @@ function App() {
         </div>
       </section>
 
-      <section className="py-20 bg-linear-to-b from-violet-50 to-white dark:from-gray-900 dark:to-gray-950">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-violet-100 dark:bg-violet-500/20 border border-violet-200 dark:border-violet-500/30 text-violet-700 dark:text-violet-300 mb-6">
-              <Users className="w-4 h-4" />
-              <span className="text-sm font-medium">Who This Is For</span>
-            </div>
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">
-              Perfect for <span className="text-violet-600 dark:text-violet-400">Every Legal Professional</span>
-            </h2>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
-            {personas.map((persona, index) => (
-              <div
-                key={index}
-                className="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-xl p-6 hover:border-violet-400/50 hover:shadow-lg transition-all"
-              >
-                <h3 className="text-xl font-bold mb-2">{persona.title}</h3>
-                <p className="text-gray-600 dark:text-gray-400">{persona.benefit}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <WhoThisIsFor />
 
       <section className="py-20 bg-white dark:bg-gray-950">
         <div className="container mx-auto px-4">
