@@ -25,6 +25,7 @@ interface RadialOrbitalTimelineProps {
 export default function RadialOrbitalTimeline({
   timelineData,
 }: RadialOrbitalTimelineProps) {
+  const [mounted, setMounted] = useState(false);
   const [expandedItems, setExpandedItems] = useState<Record<number, boolean>>(
     {}
   );
@@ -40,6 +41,11 @@ export default function RadialOrbitalTimeline({
   const containerRef = useRef<HTMLDivElement>(null);
   const orbitRef = useRef<HTMLDivElement>(null);
   const nodeRefs = useRef<Record<number, HTMLDivElement | null>>({});
+
+  // Ensure component only renders dynamic content after mounting
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const handleContainerClick = (e: React.MouseEvent<HTMLDivElement>) => {
     if (e.target === containerRef.current || e.target === orbitRef.current) {
@@ -84,6 +90,8 @@ export default function RadialOrbitalTimeline({
   };
 
   useEffect(() => {
+    if (!mounted) return;
+    
     let rotationTimer: NodeJS.Timeout;
 
     if (autoRotate && viewMode === "orbital") {
@@ -100,7 +108,7 @@ export default function RadialOrbitalTimeline({
         clearInterval(rotationTimer);
       }
     };
-  }, [autoRotate, viewMode]);
+  }, [mounted, autoRotate, viewMode]);
 
   const centerViewOnNode = (nodeId: number) => {
     if (viewMode !== "orbital" || !nodeRefs.current[nodeId]) return;
@@ -179,7 +187,7 @@ export default function RadialOrbitalTimeline({
 
           <div className="absolute w-96 h-96 rounded-full border border-gray-200 dark:border-gray-800"></div>
 
-          {timelineData.map((item, index) => {
+          {mounted && timelineData.map((item, index) => {
             const position = calculateNodePosition(index, timelineData.length);
             const isExpanded = expandedItems[item.id];
             const isRelated = isRelatedToActive(item.id);

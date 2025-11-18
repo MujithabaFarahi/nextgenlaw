@@ -5,6 +5,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
 import { useEffect, useMemo, useState } from "react";
 import { cn } from "@/lib/utils";
+import { ArrowRight, TrendingUp } from "lucide-react";
 
 type Testimonial = {
   quote: string;
@@ -35,6 +36,22 @@ export const AnimatedTestimonials = ({
   };
 
   const isActive = (index: number) => index === active;
+
+  // Helper function to parse and style the quote
+  const parseQuote = (quote: string) => {
+    const parts = quote.split(/(\bBefore:\s*|\bAfter:\s*)/);
+    return parts.map((part, idx) => {
+      if (part === "Before: " || part === "Before:") {
+        return { type: "before-label", text: "Before" };
+      } else if (part === "After: " || part === "After:") {
+        return { type: "after-label", text: "After" };
+      } else if (part.trim()) {
+        const isAfterSection = parts.slice(0, idx).some((p) => p.includes("After"));
+        return { type: isAfterSection ? "after-text" : "before-text", text: part.trim() };
+      }
+      return null;
+    }).filter(Boolean);
+  };
 
   const rotationMap = useMemo(
     () =>
@@ -121,31 +138,86 @@ export const AnimatedTestimonials = ({
             <p className="text-sm text-muted-foreground">
               {testimonials[active].designation}
             </p>
-            <motion.p className="text-lg text-muted-foreground mt-8">
-              {testimonials[active].quote.split(" ").map((word, index) => (
-                <motion.span
-                  key={`${word}-${index}`}
-                  initial={{
-                    filter: "blur(10px)",
-                    opacity: 0,
-                    y: 5,
-                  }}
-                  animate={{
-                    filter: "blur(0px)",
-                    opacity: 1,
-                    y: 0,
-                  }}
-                  transition={{
-                    duration: 0.2,
-                    ease: "easeInOut",
-                    delay: 0.02 * index,
-                  }}
-                  className="inline-block"
-                >
-                  {word}&nbsp;
-                </motion.span>
-              ))}
-            </motion.p>
+            <div className="mt-8 space-y-6">
+              {parseQuote(testimonials[active].quote).map((segment: any, segIdx: number) => {
+                if (segment.type === "before-label") {
+                  return (
+                    <motion.div
+                      key={`segment-${segIdx}`}
+                      initial={{ y: 20, opacity: 0 }}
+                      animate={{ y: 0, opacity: 1 }}
+                      transition={{ duration: 0.3, delay: 0.1 }}
+                      className="flex flex-col gap-2"
+                    >
+                      <div className="flex items-center gap-2 font-semibold text-gray-500 dark:text-gray-400">
+                        <span className="inline-flex w-6 h-6 rounded-full bg-gray-100 dark:bg-gray-800 items-center justify-center shrink-0">
+                          <span className="text-xs">✕</span>
+                        </span>
+                        <span className="text-sm uppercase tracking-wide">{segment.text}</span>
+                      </div>
+                    </motion.div>
+                  );
+                } else if (segment.type === "before-text") {
+                  const words = segment.text.split(" ");
+                  return (
+                    <motion.p
+                      key={`segment-${segIdx}`}
+                      className="text-lg text-gray-600 dark:text-gray-400 leading-relaxed"
+                    >
+                      {words.map((word: string, wordIdx: number) => (
+                        <motion.span
+                          key={`${word}-${wordIdx}`}
+                          initial={{ filter: "blur(10px)", opacity: 0, y: 5 }}
+                          animate={{ filter: "blur(0px)", opacity: 1, y: 0 }}
+                          transition={{ duration: 0.2, ease: "easeInOut", delay: 0.02 * wordIdx }}
+                          className="inline-block"
+                        >
+                          {word}&nbsp;
+                        </motion.span>
+                      ))}
+                    </motion.p>
+                  );
+                } else if (segment.type === "after-label") {
+                  return (
+                    <motion.div
+                      key={`segment-${segIdx}`}
+                      initial={{ y: 20, opacity: 0 }}
+                      animate={{ y: 0, opacity: 1 }}
+                      transition={{ duration: 0.3, delay: 0.4 }}
+                      className="flex flex-col gap-2"
+                    >
+                      <div className="flex items-center gap-2 font-semibold text-violet-600 dark:text-violet-400">
+                        <span className="inline-flex w-6 h-6 rounded-full bg-violet-100 dark:bg-violet-500/20 items-center justify-center shrink-0">
+                          <TrendingUp className="w-3.5 h-3.5" />
+                        </span>
+                        <span className="text-sm uppercase tracking-wide">{segment.text}</span>
+                      </div>
+                    </motion.div>
+                  );
+                } else if (segment.type === "after-text") {
+                  const words = segment.text.split(" ");
+                  return (
+                    <motion.p
+                      key={`segment-${segIdx}`}
+                      className="text-lg text-violet-700 dark:text-violet-300 font-medium leading-relaxed"
+                    >
+                      {words.map((word: string, wordIdx: number) => (
+                        <motion.span
+                          key={`${word}-${wordIdx}`}
+                          initial={{ filter: "blur(10px)", opacity: 0, y: 5 }}
+                          animate={{ filter: "blur(0px)", opacity: 1, y: 0 }}
+                          transition={{ duration: 0.2, ease: "easeInOut", delay: 0.02 * wordIdx + 0.4 }}
+                          className="inline-block"
+                        >
+                          {word}&nbsp;
+                        </motion.span>
+                      ))}
+                    </motion.p>
+                  );
+                }
+                return null;
+              })}
+            </div>
           </motion.div>
           <div className="flex gap-4 pt-12 md:pt-0">
             <button
