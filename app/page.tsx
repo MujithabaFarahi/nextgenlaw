@@ -42,6 +42,7 @@ import {
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { AnimatedTestimonials } from '@/components/ui/animated-testimonials';
+import { AboutPlatform } from '@/components/sections/about-platform';
 
 function App() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -521,44 +522,7 @@ function App() {
         </div>
       </section>
 
-      <section id="about" className="py-32 bg-white dark:bg-gray-950">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-20">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-violet-100 dark:bg-violet-500/20 border border-violet-200 dark:border-violet-500/30 text-violet-700 dark:text-violet-300 mb-6">
-              <Target className="w-4 h-4" />
-              <span className="text-sm font-medium">About the Platform</span>
-            </div>
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            Why This <span className="text-violet-600 dark:text-violet-400">Community</span> Exists
-            </h2>
-            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-              Legal AI is reshaping the future of law yet only 02% of legal professionals use it today. NextGenLaws exists to bridge that gap by helping you understand, adopt, and master legal tech and AI for your daily workflow. From drafting to research to automation, we empower you to stay ahead, not behind.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
-            {[
-              { icon: Brain, title: 'AI-Driven Legal Training', desc: 'Learn how to use real-world AI tools built for modern legal practice' },
-              { icon: Users, title: 'Guided by Legal Tech Experts', desc: 'Insights from practitioners who actively use AI in global legal workflows' },
-              { icon: Clock, title: 'Learn Your Way', desc: 'Live workshops, replays, and flexible self-paced modules designed for busy legal professionals' },
-              { icon: Award, title: 'Globally Recognized Certification', desc: 'Earn credentials that signal your AI-readiness to employers and clients' },
-              { icon: Rocket, title: 'Career Acceleration', desc: 'Unlock opportunities in legal ops, legal tech, and AI-powered practice' },
-              { icon: MessageCircle, title: 'Global Legal Tech Community', desc: 'Connect with peers, mentors, and innovators adopting AI across 100+ countries.' },
-            ].map((feature, index) => {
-              const Icon = feature.icon;
-              return (
-                <div key={index} className="bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-xl p-8 hover:border-violet-400/50 hover:shadow-lg transition-all">
-                  <div className="w-14 h-14 rounded-xl bg-linear-to-br from-violet-600 to-violet-800 flex items-center justify-center mb-5">
-                    <Icon className="w-7 h-7 text-white" />
-                  </div>
-                  <h3 className="text-xl font-bold mb-3">{feature.title}</h3>
-                  <p className="text-gray-600 dark:text-gray-400">{feature.desc}</p>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
+      <AboutPlatform />
       {/* Upcoming Events Section */}
       <section id="upcoming-events" className="py-32 bg-linear-to-b from-violet-50 to-white dark:from-gray-900 dark:to-gray-950">
         <div className="container mx-auto px-4">
