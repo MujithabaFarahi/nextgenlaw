@@ -47,11 +47,18 @@ function App() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [darkMode, setDarkMode] = useState(false);
+  const [isInHero, setIsInHero] = useState(true);
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
+      const heroHeight = window.innerWidth >= 768 ? 1200 : 750; // md:h-[1200px] : h-[750px]
+      const scrollPosition = window.scrollY;
+      
+      setScrolled(scrollPosition > 20);
+      setIsInHero(scrollPosition < heroHeight - 100); // 100px buffer before end of hero
     };
+    
+    handleScroll(); // Check on mount
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -283,19 +290,35 @@ function App() {
               <div className="w-10 h-10 rounded-xl bg-linear-to-br from-violet-600 to-violet-800 flex items-center justify-center group-hover:scale-110 transition-transform">
                 <Scale className="w-6 h-6 text-white" />
               </div>
-              <span className="text-2xl font-bold">
-                NextGen<span className="text-violet-600 dark:text-violet-400">Laws</span>
+              <span className={`text-2xl font-bold transition-colors ${
+                isInHero ? 'text-white' : 'text-gray-900 dark:text-white'
+              }`}>
+                NextGen<span className={`transition-colors ${
+                  isInHero ? 'text-violet-300' : 'text-violet-600 dark:text-violet-400'
+                }`}>Laws</span>
               </span>
             </a>
 
             <div className="hidden md:flex items-center gap-8">
-              <a href="#about" className="text-gray-600 dark:text-gray-300 hover:text-violet-600 dark:hover:text-violet-400 transition-colors">
+              <a href="#about" className={`transition-colors ${
+                isInHero 
+                  ? 'text-white/90 hover:text-violet-300' 
+                  : 'text-gray-600 dark:text-gray-300 hover:text-violet-600 dark:hover:text-violet-400'
+              }`}>
                 About
               </a>
-              <a href="#upcoming-events" className="text-gray-600 dark:text-gray-300 hover:text-violet-600 dark:hover:text-violet-400 transition-colors">
+              <a href="#upcoming-events" className={`transition-colors ${
+                isInHero 
+                  ? 'text-white/90 hover:text-violet-300' 
+                  : 'text-gray-600 dark:text-gray-300 hover:text-violet-600 dark:hover:text-violet-400'
+              }`}>
                 Upcoming Events
               </a>
-              <a href="#testimonials" className="text-gray-600 dark:text-gray-300 hover:text-violet-600 dark:hover:text-violet-400 transition-colors">
+              <a href="#testimonials" className={`transition-colors ${
+                isInHero 
+                  ? 'text-white/90 hover:text-violet-300' 
+                  : 'text-gray-600 dark:text-gray-300 hover:text-violet-600 dark:hover:text-violet-400'
+              }`}>
                 Success Stories
               </a>
             </div>
@@ -303,7 +326,11 @@ function App() {
             <div className="flex items-center gap-4">
               <button
                 onClick={() => setDarkMode(!darkMode)}
-                className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+                className={`p-2 rounded-lg transition-colors ${
+                  isInHero 
+                    ? 'text-white hover:bg-white/20' 
+                    : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800'
+                }`}
               >
                 {darkMode ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
               </button>
@@ -312,7 +339,11 @@ function App() {
                 <ArrowRight className="w-4 h-4" />
               </button>
               <button
-                className="md:hidden p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800"
+                className={`md:hidden p-2 rounded-lg transition-colors ${
+                  isInHero 
+                    ? 'text-white hover:bg-white/20' 
+                    : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800'
+                }`}
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               >
                 {mobileMenuOpen ? <X /> : <Menu />}
@@ -322,15 +353,31 @@ function App() {
         </div>
 
         {mobileMenuOpen && (
-          <div className="md:hidden bg-white/95 dark:bg-gray-950/95 backdrop-blur-xl border-t border-gray-200 dark:border-gray-800">
+          <div className={`md:hidden backdrop-blur-xl border-t transition-colors ${
+            isInHero
+              ? 'bg-black/80 border-white/20'
+              : 'bg-white/95 dark:bg-gray-950/95 border-gray-200 dark:border-gray-800'
+          }`}>
             <div className="container mx-auto px-4 py-6 space-y-4">
-              <a href="#about" className="block text-gray-600 dark:text-gray-300 hover:text-violet-600">
+              <a href="#about" className={`block transition-colors ${
+                isInHero 
+                  ? 'text-white/90 hover:text-violet-300' 
+                  : 'text-gray-600 dark:text-gray-300 hover:text-violet-600'
+              }`}>
                 About
               </a>
-              <a href="#upcoming-events" className="block text-gray-600 dark:text-gray-300 hover:text-violet-600">
+              <a href="#upcoming-events" className={`block transition-colors ${
+                isInHero 
+                  ? 'text-white/90 hover:text-violet-300' 
+                  : 'text-gray-600 dark:text-gray-300 hover:text-violet-600'
+              }`}>
                 Upcoming Events
               </a>
-              <a href="#testimonials" className="block text-gray-600 dark:text-gray-300 hover:text-violet-600">
+              <a href="#testimonials" className={`block transition-colors ${
+                isInHero 
+                  ? 'text-white/90 hover:text-violet-300' 
+                  : 'text-gray-600 dark:text-gray-300 hover:text-violet-600'
+              }`}>
                 Success Stories
               </a>
               <button className="w-full px-6 py-2.5 bg-violet-600 hover:bg-violet-700 text-white rounded-lg">
@@ -341,67 +388,121 @@ function App() {
         )}
       </nav>
 
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20 bg-linear-to-b from-violet-50 to-white dark:from-gray-950 dark:to-gray-900">
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute top-20 left-20 w-96 h-96 bg-violet-200/30 dark:bg-violet-500/10 rounded-full blur-3xl animate-pulse" />
-          <div className="absolute bottom-20 right-20 w-96 h-96 bg-violet-300/20 dark:bg-violet-600/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
+      <section className="relative h-[750px] md:h-[1200px] flex items-center justify-center overflow-hidden">
+        {/* Background Image with Overlay */}
+        <div className="absolute inset-0">
+          <img
+            src="/group.jpg"
+            alt="Legal Tech Team"
+            className="w-full h-full object-cover object-center"
+            style={{ objectPosition: 'center 35%' }}
+          />
+          {/* Dark overlay for text readability */}
+          <div className="absolute inset-0 bg-black/60 dark:bg-black/75" />
+          {/* Gradient overlay for depth */}
+          <div className="absolute inset-0 bg-linear-to-b from-black/40 via-transparent to-black/60" />
         </div>
 
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="max-w-5xl mx-auto text-center">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-violet-100 dark:bg-violet-500/20 border border-violet-200 dark:border-violet-500/30 text-violet-700 dark:text-violet-300 mb-8">
+        {/* Content */}
+        <div className="container mx-auto px-4 relative z-10 py-16">
+          <div className="max-w-4xl mx-auto text-center">
+            {/* Trust Badge */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/20 backdrop-blur-md border border-white/30 text-white mb-6"
+            >
               <Sparkles className="w-4 h-4" />
-              <span className="text-sm font-medium">Trusted by 25,000+ Legal Professionals Globally</span>
-            </div>
+              <span className="text-xs font-medium">Trusted by 25,000+ Legal Professionals Globally</span>
+            </motion.div>
 
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6 leading-tight">
+            {/* Main Headline */}
+            <motion.h1
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.3 }}
+              className="text-3xl md:text-5xl lg:text-6xl font-bold mb-4 leading-tight text-white"
+            >
               Empowering the World Through
               <br />
-              <span className="text-violet-600 dark:text-violet-400">Legal Tech Workshops</span>
-            </h1>
+              <span className="bg-linear-to-r from-violet-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
+                Legal Tech Workshops
+              </span>
+            </motion.h1>
 
-            <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-12 max-w-3xl mx-auto leading-relaxed">
-              Delivering world-class legal tech education to 25,000+ learners across 100+ countries</p>
+            {/* Subtitle */}
+            <motion.p
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+              className="text-base md:text-lg text-white/90 mb-6 max-w-2xl mx-auto leading-relaxed"
+            >
+              Delivering world-class legal tech education to learners across 100+ countries
+            </motion.p>
 
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16">
-              <button className="text-lg px-10 py-4 bg-violet-600 hover:bg-violet-700 text-white rounded-lg shadow-lg hover:scale-105 transition-all font-medium">
+            {/* CTA Section */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.5 }}
+              className="flex flex-col lg:flex-row gap-4 items-center justify-center mb-8"
+            >
+              <motion.button
+                whileHover={{ scale: 1.05, boxShadow: '0 20px 40px rgba(139, 92, 246, 0.3)' }}
+                whileTap={{ scale: 0.95 }}
+                className="px-6 py-3 bg-linear-to-r from-violet-600 to-purple-600 hover:from-violet-700 hover:to-purple-700 text-white rounded-lg font-semibold text-base shadow-xl transition-all flex items-center gap-2 group"
+              >
                 Join DueDraft Masterclass
-                <ArrowRight className="w-5 h-5 ml-2 inline" />
-              </button>
-              <div className="hidden sm:block h-13 w-px bg-gray-300 dark:bg-white/20 mx-2" />
-              <div className="flex flex-col items-start sm:items-start">
-                <span className="text-xs uppercase tracking-wider text-gray-600 dark:text-gray-400">Next Mastermind Starts In</span>
-                <span className="font-mono text-lg md:text-xl font-semibold mt-1 text-violet-700 dark:text-violet-300">3 DAYS : 21 HOURS : 04</span>
-              </div>
-            </div>
+                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              </motion.button>
 
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-5xl mx-auto">
+              {/* Countdown Timer */}
+              <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-lg px-4 py-2">
+                <span className="text-xs uppercase tracking-wider text-white/70 block mb-0.5">
+                  Next Masterclass Starts In
+                </span>
+                <span className="font-mono text-base font-bold text-white">
+                  3 DAYS : 21 HRS : 04 MIN
+                </span>
+              </div>
+            </motion.div>
+
+            {/* Statistics Grid */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.6 }}
+              className="grid grid-cols-2 lg:grid-cols-4 gap-3 max-w-3xl mx-auto"
+            >
               {[
-                { number: '07+', label: 'Workshops Conducted', icon: BookOpenText },
-                { number: '25000+', label: 'Students Impacted', icon: Users },
-                { number: '4.9/5', label: 'Average Rating', icon: Star },
-                { number: '95%', label: 'Career Advancement', icon: TrendingUp },
+                { number: '07+', label: 'Workshops', icon: BookOpenText },
+                { number: '25K+', label: 'Students', icon: Users },
+                { number: '4.9/5', label: 'Rating', icon: Star },
+                { number: '95%', label: 'Success Rate', icon: TrendingUp },
               ].map((stat, index) => {
                 const Icon = stat.icon;
                 return (
-                  <div
+                  <motion.div
                     key={index}
-                    className="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-xl p-6 hover:border-violet-400/50 hover:shadow-lg transition-all"
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.5, delay: 0.7 + index * 0.1 }}
+                    whileHover={{ scale: 1.05, y: -3 }}
+                    className="bg-white/10 backdrop-blur-md border border-white/20 rounded-lg p-3 text-center hover:bg-white/15 transition-all"
                   >
-                    <Icon className="w-8 h-8 text-violet-600 dark:text-violet-400 mx-auto mb-3" />
-                    <div className="text-3xl md:text-4xl font-bold text-violet-600 dark:text-violet-400 mb-1">
+                    <Icon className="w-5 h-5 text-violet-400 mx-auto mb-1" />
+                    <div className="text-xl md:text-2xl font-bold text-white mb-0.5">
                       {stat.number}
                     </div>
-                    <div className="text-xs text-gray-600 dark:text-gray-400 font-medium">{stat.label}</div>
-                  </div>
+                    <div className="text-xs text-white/70 font-medium uppercase tracking-wider">
+                      {stat.label}
+                    </div>
+                  </motion.div>
                 );
               })}
-            </div>
+            </motion.div>
           </div>
-        </div>
-
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
-          <ChevronDown className="w-6 h-6 text-gray-400" />
         </div>
       </section>
 
