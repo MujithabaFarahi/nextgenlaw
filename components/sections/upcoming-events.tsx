@@ -108,10 +108,12 @@ export function UpcomingEvents() {
                         </div>
                       </div>
 
-                      <button className="w-full py-4 bg-violet-600 hover:bg-violet-500 text-white font-bold uppercase tracking-widest transition-all shadow-lg shadow-violet-600/20 hover:shadow-violet-600/40 flex items-center justify-center gap-2 group-hover:-translate-y-0.5">
-                        Reserve Your Seat
-                        <ArrowRight className="w-4 h-4" />
-                      </button>
+                      <Link href="/due" className="w-full">
+                        <button className="w-full py-4 bg-violet-600 hover:bg-violet-500 text-white font-bold uppercase tracking-widest transition-all shadow-lg shadow-violet-600/20 hover:shadow-violet-600/40 flex items-center justify-center gap-2 group-hover:-translate-y-0.5">
+                          Reserve Your Seat
+                          <ArrowRight className="w-4 h-4" />
+                        </button>
+                      </Link>
                    </div>
                 </div>
               </div>

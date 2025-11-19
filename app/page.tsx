@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react';
+import Link from 'next/link';
 import {
   ArrowRight,
   Star,
@@ -15,6 +16,7 @@ import {
   Moon,
   Sun,
   Play,
+  Sparkles,
 } from 'lucide-react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { Typewriter } from '@/components/ui/typewriter';
@@ -210,9 +212,9 @@ function App() {
               transition={{ duration: 0.8 }}
               className="mb-6 sm:mb-8"
             >
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white/90 mb-6">
-                <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-                <span className="text-xs font-bold uppercase tracking-widest">Next Masterclass: Dec 5, 2025</span>
+              <div className="inline-flex items-center gap-2 px-4 sm:px-5 py-2 sm:py-2.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white/90 mb-6">
+                <Sparkles className="w-3 h-3 sm:w-4 sm:h-4" />
+                <span className="text-xs sm:text-sm font-semibold">Trusted by 25,000+ Legal Professionals Globally</span>
               </div>
               
               <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black text-white leading-[0.9] tracking-tight uppercase mb-6 sm:mb-8 drop-shadow-2xl">
@@ -239,22 +241,27 @@ function App() {
                 />
               </div>
 
-              <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6">
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="w-full sm:w-auto px-10 py-5 bg-violet-600 hover:bg-violet-700 text-white rounded-full font-bold text-lg uppercase tracking-widest shadow-2xl shadow-violet-600/40 transition-all"
-                >
-                  Enroll Now
-                </motion.button>
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="w-full sm:w-auto px-10 py-5 bg-white hover:bg-gray-100 text-black rounded-full font-bold text-lg uppercase tracking-widest shadow-xl transition-all flex items-center justify-center gap-2"
-                >
-                  <Play className="w-5 h-5 fill-black" />
-                  Watch Demo
-                </motion.button>
+              <div className="flex flex-col lg:flex-row items-center justify-center gap-4 lg:gap-6">
+                <Link href="/due">
+                  <motion.div
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="w-full sm:w-auto px-8 sm:px-10 py-4 sm:py-5 bg-violet-600 hover:bg-violet-700 text-white rounded-xl font-bold text-base sm:text-lg tracking-wide transition-all shadow-2xl shadow-violet-600/40 flex items-center justify-center gap-2 cursor-pointer"
+                  >
+                    Join DueDraft Masterclass
+                    <ArrowRight className="w-5 h-5" />
+                  </motion.div>
+                </Link>
+                
+                {/* Countdown Timer */}
+                <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-xl px-4 sm:px-6 py-3 sm:py-4 w-full sm:w-auto">
+                  <span className="text-[10px] sm:text-xs uppercase tracking-wider text-white/70 block mb-1 text-center">
+                    Next Masterclass Starts In
+                  </span>
+                  <span className="font-mono text-sm sm:text-base md:text-lg font-bold text-violet-400 block text-center">
+                    3 DAYS : 21 HOURS : 04
+                  </span>
+                </div>
               </div>
             </motion.div>
           </div>
