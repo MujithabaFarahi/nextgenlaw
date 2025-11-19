@@ -28,6 +28,7 @@ import {
   Calendar,
 } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { Typewriter } from '@/components/ui/typewriter';
 import { AboutPlatform } from '@/components/sections/about-platform';
 import { UpcomingEvents } from '@/components/sections/upcoming-events';
 import { WhoThisIsFor } from '@/components/sections/who-this-is-for';
@@ -359,8 +360,24 @@ function App() {
               Empowering the World Through
               <br className="hidden sm:block" />
               <span className="sm:inline"> </span>
-              <span className="bg-linear-to-r from-violet-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
-                Legal Tech Workshops
+              <span className="bg-linear-to-r from-violet-400 via-purple-400 to-pink-400 bg-clip-text text-transparent inline-block">
+                Legal Tech{" "}
+                <Typewriter
+                  text={[
+                    "Workshops",
+                    "Training",
+                    "Masterclasses",
+                    "Education",
+                    "Programs"
+                  ]}
+                  speed={80}
+                  waitTime={2000}
+                  deleteSpeed={50}
+                  loop={true}
+                  showCursor={true}
+                  cursorChar="_"
+                  className="bg-linear-to-r from-violet-400 via-purple-400 to-pink-400 bg-clip-text text-transparent"
+                />
               </span>
             </motion.h1>
 
