@@ -2,6 +2,7 @@
 
 import RadialOrbitalTimeline from "@/components/ui/radial-orbital-timeline";
 import { Globe, MessageSquare, Calendar, Users, Briefcase, BookOpen, Award } from "lucide-react";
+import { motion } from "framer-motion";
 
 const communityBenefits = [
   {
@@ -74,16 +75,23 @@ const communityBenefits = [
 
 export function GlobalCommunity() {
   return (
-    <section className="py-12 sm:py-16 md:py-20 bg-white dark:bg-gray-950">
+    <section id="community" className="py-20 sm:py-28 bg-white dark:bg-gray-950">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-8 sm:mb-10 md:mb-12">
-          <div className="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-violet-100 dark:bg-violet-500/20 border border-violet-200 dark:border-violet-500/30 text-violet-700 dark:text-violet-300 mb-4 sm:mb-6">
-            <Globe className="w-3 h-3 sm:w-4 sm:h-4" />
-            <span className="text-xs sm:text-sm font-medium">Global Community</span>
-          </div>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6 px-2">
-            Join Our <span className="text-violet-600 dark:text-violet-400">Worldwide Network</span>
-          </h2>
+        <div className="text-center mb-16 md:mb-24">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+          >
+            <div className="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 md:px-5 py-1.5 sm:py-2 md:py-2.5 rounded-full bg-violet-50 dark:bg-violet-500/10 border border-violet-100 dark:border-violet-500/20 text-violet-600 dark:text-violet-400 mb-6">
+              <Globe className="w-3 h-3 sm:w-4 sm:h-4" />
+              <span className="text-xs sm:text-sm font-semibold">Global Community</span>
+            </div>
+            <h2 className="text-5xl md:text-7xl font-black text-gray-900 dark:text-white uppercase tracking-tighter leading-[0.9] mb-8">
+              Join Our <br />
+              <span className="text-violet-600">Network</span>
+            </h2>
+          </motion.div>
         </div>
 
         {/* Stats and Orbital Timeline Side by Side */}
@@ -125,4 +133,3 @@ export function GlobalCommunity() {
     </section>
   );
 }
-
