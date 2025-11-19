@@ -36,20 +36,20 @@ export function UpcomingEvents() {
   const currentEvent = events[currentIndex];
 
   return (
-    <section id="upcoming-events" className="pt-10 pb-20 bg-gray-50 dark:bg-gray-900">
+    <section id="upcoming-events" className="pt-8 sm:pt-10 pb-12 sm:pb-16 md:pb-20 bg-gray-50 dark:bg-gray-900">
       <div className="container mx-auto px-4 md:px-6 max-w-7xl">
         {/* Header */}
-        <div className="text-center mb-12">
+        <div className="text-center mb-8 sm:mb-10 md:mb-12">
           {/* Coming Soon Badge */}
           <motion.div
             initial={{ opacity: 0, y: -20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-violet-50 dark:bg-violet-500/10 border border-violet-100 dark:border-violet-500/20 text-violet-600 dark:text-violet-400 mb-8"
+            className="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 md:px-5 py-1.5 sm:py-2 md:py-2.5 rounded-full bg-violet-50 dark:bg-violet-500/10 border border-violet-100 dark:border-violet-500/20 text-violet-600 dark:text-violet-400 mb-4 sm:mb-6 md:mb-8"
           >
-            <Calendar className="w-4 h-4" />
-            <span className="text-sm font-semibold">Coming Soon</span>
+            <Calendar className="w-3 h-3 sm:w-4 sm:h-4" />
+            <span className="text-xs sm:text-sm font-semibold">Coming Soon</span>
           </motion.div>
 
           {/* Main Heading */}
@@ -58,7 +58,7 @@ export function UpcomingEvents() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-5 md:mb-6 px-2"
           >
             <span className="text-gray-900 dark:text-white">Upcoming </span>
             <span className="bg-linear-to-r from-violet-600 via-purple-500 to-violet-600 bg-clip-text text-transparent">
@@ -72,7 +72,7 @@ export function UpcomingEvents() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto"
+            className="text-base sm:text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto px-4"
           >
             Don't miss our next groundbreaking legal-tech event
           </motion.p>
@@ -97,8 +97,8 @@ export function UpcomingEvents() {
 
         {/* Event Card */}
         <div className="relative">
-          {/* Navigation Buttons */}
-          <div className="absolute right-0 -top-20 flex items-center gap-2 z-20">
+          {/* Navigation Buttons - Hidden on mobile, shown on md and up */}
+          <div className="hidden md:flex absolute right-0 -top-20 items-center gap-2 z-20">
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
@@ -125,7 +125,7 @@ export function UpcomingEvents() {
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -100 }}
               transition={{ duration: 0.5 }}
-              className={`relative rounded-3xl overflow-hidden cursor-pointer group bg-linear-to-br ${currentEvent.gradientFrom} h-[500px] md:h-[550px]`}
+              className={`relative rounded-2xl sm:rounded-3xl overflow-hidden cursor-pointer group bg-linear-to-br ${currentEvent.gradientFrom} h-[480px] sm:h-[500px] md:h-[550px]`}
             >
               {/* Background Image */}
               <div className="absolute inset-0">
@@ -142,27 +142,27 @@ export function UpcomingEvents() {
               </div>
 
               {/* Content */}
-              <div className="relative z-10 h-full p-8 md:p-12 flex flex-col justify-between text-white">
+              <div className="relative z-10 h-full p-5 sm:p-6 md:p-8 lg:p-12 flex flex-col justify-between text-white">
                 {/* Top Badge */}
                 <div className="flex items-start justify-between">
                   <motion.div
                     initial={{ opacity: 0, y: -20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.2 }}
-                    className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/20 backdrop-blur-md text-xs font-semibold uppercase tracking-wider"
+                    className="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-white/20 backdrop-blur-md text-[10px] sm:text-xs font-semibold uppercase tracking-wider"
                   >
-                    <div className="w-1.5 h-1.5 rounded-full bg-white" />
+                    <div className="w-1 h-1 sm:w-1.5 sm:h-1.5 rounded-full bg-white" />
                     {currentEvent.badge}
                   </motion.div>
                 </div>
 
                 {/* Main Content */}
-                <div className="flex-1 flex flex-col justify-center max-w-3xl">
+                <div className="flex-1 flex flex-col justify-center max-w-3xl my-4 sm:my-0">
                   <motion.h3
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.3 }}
-                    className="text-4xl md:text-6xl lg:text-7xl font-bold leading-tight mb-6"
+                    className="text-xl sm:text-2xl md:text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight mb-3 sm:mb-4 md:mb-5 lg:mb-6"
                   >
                     {currentEvent.title}
                   </motion.h3>
@@ -170,7 +170,7 @@ export function UpcomingEvents() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.4 }}
-                    className="text-lg md:text-xl text-white/90 leading-relaxed max-w-2xl mb-8"
+                    className="text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl text-white/90 leading-relaxed max-w-2xl mb-4 sm:mb-5 md:mb-6 lg:mb-8"
                   >
                     {currentEvent.description}
                   </motion.p>
@@ -184,7 +184,7 @@ export function UpcomingEvents() {
                     <motion.button
                       whileHover={{ scale: 1.05, boxShadow: "0 10px 40px rgba(255,255,255,0.3)" }}
                       whileTap={{ scale: 0.95 }}
-                      className="px-8 py-3 bg-white text-violet-600 rounded-lg font-semibold hover:bg-gray-50 transition-colors shadow-lg"
+                      className="px-5 sm:px-6 md:px-7 lg:px-8 py-2 sm:py-2.5 md:py-3 bg-white text-violet-600 rounded-lg text-xs sm:text-sm md:text-base font-semibold hover:bg-gray-50 transition-colors shadow-lg"
                     >
                       Learn More
                     </motion.button>
@@ -196,32 +196,32 @@ export function UpcomingEvents() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.6 }}
-                  className="flex flex-wrap items-center gap-8 text-sm"
+                  className="flex flex-wrap items-center gap-3 sm:gap-4 md:gap-6 lg:gap-8 text-xs sm:text-sm pb-16 sm:pb-0"
                 >
                   <div>
-                    <div className="text-xs uppercase tracking-wider text-white/70 mb-1">
+                    <div className="text-[10px] sm:text-xs uppercase tracking-wider text-white/70 mb-0.5 sm:mb-1">
                       DATE
                     </div>
-                    <div className="font-semibold">{currentEvent.date}</div>
+                    <div className="font-semibold text-xs sm:text-sm">{currentEvent.date}</div>
                   </div>
                   <div>
-                    <div className="text-xs uppercase tracking-wider text-white/70 mb-1">
+                    <div className="text-[10px] sm:text-xs uppercase tracking-wider text-white/70 mb-0.5 sm:mb-1">
                       PLACE
                     </div>
-                    <div className="font-semibold">{currentEvent.place}</div>
+                    <div className="font-semibold text-xs sm:text-sm">{currentEvent.place}</div>
                   </div>
                   <div>
-                    <div className="text-xs uppercase tracking-wider text-white/70 mb-1">
+                    <div className="text-[10px] sm:text-xs uppercase tracking-wider text-white/70 mb-0.5 sm:mb-1">
                       TIMEZONE
                     </div>
-                    <div className="font-semibold">{currentEvent.timezone}</div>
+                    <div className="font-semibold text-xs sm:text-sm">{currentEvent.timezone}</div>
                   </div>
                 </motion.div>
 
-                {/* Logo/Branding - Bottom Right */}
-                <div className="absolute bottom-8 right-8 bg-black/80 backdrop-blur-sm px-6 py-3 rounded-lg">
-                  <div className="text-2xl font-bold">DueDraft</div>
-                  <div className="text-xs text-white/70 uppercase tracking-wider">
+                {/* Logo/Branding - Bottom Right - Hidden on very small mobile */}
+                <div className="absolute bottom-3 right-3 sm:bottom-6 sm:right-6 md:bottom-8 md:right-8 bg-black/80 backdrop-blur-sm px-3 sm:px-5 md:px-6 py-1.5 sm:py-2.5 md:py-3 rounded-lg">
+                  <div className="text-base sm:text-lg md:text-xl lg:text-2xl font-bold">DueDraft</div>
+                  <div className="text-[8px] sm:text-[10px] md:text-xs text-white/70 uppercase tracking-wider">
                     Masterclass
                   </div>
                 </div>

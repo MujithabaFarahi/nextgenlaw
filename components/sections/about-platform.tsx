@@ -56,20 +56,20 @@ const features = [
 
 export function AboutPlatform() {
   return (
-    <section id="about" className="pt-20 pb-10 bg-white dark:bg-gray-950">
+    <section id="about" className="pt-12 sm:pt-16 md:pt-20 pb-8 sm:pb-10 bg-white dark:bg-gray-950">
       <div className="container mx-auto px-4">
         {/* Header with badge and description */}
-        <div className="text-center mb-12">
-          <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-violet-50 dark:bg-violet-500/10 border border-violet-100 dark:border-violet-500/20 text-violet-600 dark:text-violet-400 mb-8">
-            <Target className="w-4 h-4" />
-            <span className="text-sm font-semibold">About the Platform</span>
+        <div className="text-center mb-8 sm:mb-10 md:mb-12">
+          <div className="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 md:px-5 py-1.5 sm:py-2 md:py-2.5 rounded-full bg-violet-50 dark:bg-violet-500/10 border border-violet-100 dark:border-violet-500/20 text-violet-600 dark:text-violet-400 mb-4 sm:mb-6 md:mb-8">
+            <Target className="w-3 h-3 sm:w-4 sm:h-4" />
+            <span className="text-xs sm:text-sm font-semibold">About the Platform</span>
           </div>
           
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gray-900 dark:text-white">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-5 md:mb-6 text-gray-900 dark:text-white px-2">
             Why This <span className="text-violet-600 dark:text-violet-400">Community</span> Exists
           </h2>
           
-          <p className="text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-4xl mx-auto leading-relaxed">
+          <p className="text-base sm:text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-4xl mx-auto leading-relaxed px-4">
             Legal AI is reshaping the future of law yet only 02% of legal professionals use it today. NextGenLaws exists to bridge that gap by helping you understand, adopt, and master legal tech and AI for your daily workflow. From drafting to research to automation, we empower you to stay ahead, not behind.
           </p>
         </div>

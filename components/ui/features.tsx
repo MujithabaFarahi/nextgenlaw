@@ -67,13 +67,13 @@ export function Features({
   };
 
   return (
-    <div className="min-h-screen py-16 px-4">
+    <div className="min-h-screen py-8 sm:py-12 md:py-16 px-4">
       <div className="max-w-7xl mx-auto">
-        <div className="grid lg:grid-cols-2 lg:gap-16 gap-8 items-center">
+        <div className="grid lg:grid-cols-2 lg:gap-16 gap-6 sm:gap-8 items-center">
           {/* Left Side - Features with Progress Lines */}
           <div
             ref={containerRef}
-            className="lg:space-y-8 md:space-x-6 lg:space-x-0 overflow-x-auto overflow-hidden no-scrollbar lg:overflow-visible flex lg:flex lg:flex-col flex-row order-1 pb-4 scroll-smooth"
+            className="lg:space-y-6 md:space-y-8 md:space-x-6 lg:space-x-0 overflow-x-auto overflow-hidden no-scrollbar lg:overflow-visible flex lg:flex lg:flex-col flex-row order-1 pb-4 scroll-smooth space-y-4 sm:space-y-0"
           >
             {features.map((feature, index) => {
               const Icon = feature.icon;
@@ -90,7 +90,7 @@ export function Features({
                   {/* Feature Content */}
                   <div
                     className={`
-                    flex lg:flex-row flex-col items-start space-x-4 p-3 max-w-sm md:max-w-sm lg:max-w-2xl transition-all duration-300
+                    flex lg:flex-row flex-col items-start gap-3 sm:gap-4 p-3 max-w-sm md:max-w-sm lg:max-w-2xl transition-all duration-300
                     ${
                       isActive
                         ? "bg-white dark:bg-black/80 md:shadow-xl dark:drop-shadow-lg rounded-xl md:border dark:border-none border-gray-200"
@@ -101,7 +101,7 @@ export function Features({
                     {/* Icon */}
                     <div
                       className={`
-                      p-3 hidden md:block rounded-full transition-all duration-300
+                      p-2 sm:p-2.5 md:p-3 rounded-full transition-all duration-300 shrink-0
                       ${
                         isActive
                           ? `bg-violet-500 text-white`
@@ -109,13 +109,13 @@ export function Features({
                       }
                     `}
                     >
-                      <Icon size={24} />
+                      <Icon className="w-5 h-5 sm:w-6 sm:h-6" />
                     </div>
                     {/* Content */}
-                    <div className="flex-1">
+                    <div className="flex-1 min-w-0">
                       <h3
                         className={`
-                        text-lg md:mt-4 lg:mt-0 font-semibold mb-2 transition-colors duration-300
+                        text-base sm:text-lg font-semibold mb-1.5 sm:mb-2 transition-colors duration-300
                         ${
                           isActive
                             ? "text-gray-900 dark:text-white"
@@ -127,7 +127,7 @@ export function Features({
                       </h3>
                       <p
                         className={`
-                        transition-colors duration-300 text-sm
+                        transition-colors duration-300 text-xs sm:text-sm leading-relaxed
                         ${
                           isActive
                             ? "text-gray-600 dark:text-white/60"
@@ -137,7 +137,7 @@ export function Features({
                       >
                         {feature.description}
                       </p>
-                      <div className="mt-4 bg-white dark:bg-black/80 rounded-sm h-1 overflow-hidden">
+                      <div className="mt-3 sm:mt-4 bg-white dark:bg-black/80 rounded-sm h-1 overflow-hidden">
                         {isActive && (
                           <motion.div
                             className={`h-full ${progressGradientLight}`}
@@ -155,17 +155,17 @@ export function Features({
           </div>
 
           {/* Right Side - Image Display */}
-          <div className="relative order-1 max-w-lg mx-auto lg:order-2">
+          <div className="relative order-1 max-w-sm sm:max-w-md md:max-w-lg mx-auto lg:order-2 w-full">
             <motion.div
               key={currentFeature}
               initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -50 }}
               transition={{ duration: 0.5, ease: "easeOut" }}
-              className="relative"
+              className="relative w-full"
             >
               <Image
-                className="rounded-2xl border dark:border-none border-gray-50 shadow-lg dark:drop-shadow-lg"
+                className="rounded-xl sm:rounded-2xl border dark:border-none border-gray-50 shadow-lg dark:drop-shadow-lg w-full h-auto"
                 src={features[currentFeature].image}
                 alt={features[currentFeature].title}
                 width={600}

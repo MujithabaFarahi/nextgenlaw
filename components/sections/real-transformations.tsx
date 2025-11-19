@@ -57,14 +57,14 @@ const transformationTestimonials = caseStudies.map((study) => ({
 
 export function RealTransformations() {
   return (
-    <section className="py-20 bg-white dark:bg-gray-950">
+    <section className="py-12 sm:py-16 md:py-20 bg-white dark:bg-gray-950">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-12">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-violet-100 dark:bg-violet-500/20 border border-violet-200 dark:border-violet-500/30 text-violet-700 dark:text-violet-300 mb-6">
-            <TrendingUp className="w-4 h-4" />
-            <span className="text-sm font-medium">Before & After</span>
+        <div className="text-center mb-8 sm:mb-10 md:mb-12">
+          <div className="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-violet-100 dark:bg-violet-500/20 border border-violet-200 dark:border-violet-500/30 text-violet-700 dark:text-violet-300 mb-4 sm:mb-6">
+            <TrendingUp className="w-3 h-3 sm:w-4 sm:h-4" />
+            <span className="text-xs sm:text-sm font-medium">Before & After</span>
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6 px-2">
             Real <span className="text-violet-600 dark:text-violet-400">Transformations</span>
           </h2>
         </div>
