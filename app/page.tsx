@@ -456,20 +456,40 @@ function App() {
         </div>
       </section>
 
-      <section className="py-12 sm:py-16 border-y border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-900">
+      <motion.section 
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ duration: 0.8 }}
+        className="py-12 sm:py-16 border-y border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-900"
+      >
         <div className="container mx-auto px-4">
-          <p className="text-center text-xs sm:text-sm text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-6 sm:mb-8 px-2">
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center text-xs sm:text-sm text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-6 sm:mb-8 px-2"
+          >
             TRUSTED BY LEGAL PROFESSIONALS FROM LEADING ORGANIZATIONS
-          </p>
+          </motion.p>
           <div className="flex flex-wrap justify-center items-center gap-6 sm:gap-8 md:gap-12 lg:gap-16">
             {['Microsoft', 'Google', 'Meta', 'Amazon', 'Adobe', 'Uber'].map((partner, index) => (
-              <div key={index} className="text-base sm:text-lg md:text-xl lg:text-2xl font-bold text-gray-400 dark:text-gray-600 hover:text-violet-600 dark:hover:text-violet-400 transition-colors cursor-pointer">
+              <motion.div 
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                whileHover={{ scale: 1.1, y: -5 }}
+                className="text-base sm:text-lg md:text-xl lg:text-2xl font-bold text-gray-400 dark:text-gray-600 hover:text-violet-600 dark:hover:text-violet-400 transition-colors cursor-pointer"
+              >
                 {partner}
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
-      </section>
+      </motion.section>
 
       <AboutPlatform />
       <UpcomingEvents />
@@ -661,18 +681,36 @@ function App() {
 
       <WhoThisIsFor />
 
-      <section className="py-12 sm:py-16 md:py-20 bg-white dark:bg-gray-950">
+      <motion.section 
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ duration: 0.8 }}
+        className="py-12 sm:py-16 md:py-20 bg-white dark:bg-gray-950"
+      >
         <div className="container mx-auto px-4">
-          <div className="text-center mb-8 sm:mb-10 md:mb-12">
-            <div className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-violet-100 dark:bg-violet-500/20 border border-violet-200 dark:border-violet-500/30 text-violet-700 dark:text-violet-300 mb-4 sm:mb-6">
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-8 sm:mb-10 md:mb-12"
+          >
+            <motion.div 
+              initial={{ scale: 0.8, opacity: 0 }}
+              whileInView={{ scale: 1, opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+              className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-violet-100 dark:bg-violet-500/20 border border-violet-200 dark:border-violet-500/30 text-violet-700 dark:text-violet-300 mb-4 sm:mb-6"
+            >
               <Target className="w-3 h-3 sm:w-4 sm:h-4" />
               <span className="text-xs sm:text-sm font-medium">How It Works</span>
-            </div>
+            </motion.div>
             <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold px-2">How It Works</h3>
             <p className="text-base sm:text-lg text-gray-600 dark:text-gray-300 mt-2 px-4">
               Join a masterclass, complete the class material, and get a job or secure an internship.
             </p>
-          </div>
+          </motion.div>
 
           <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 gap-6 sm:gap-6 md:gap-8 max-w-6xl mx-auto">
             {[
@@ -697,38 +735,71 @@ function App() {
             ].map((item, index) => {
               const Icon = item.icon;
               return (
-                <div key={index} className="relative">
+                <motion.div 
+                  key={index}
+                  initial={{ opacity: 0, y: 50 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: index * 0.2 }}
+                  whileHover={{ y: -10, scale: 1.02 }}
+                  className="relative"
+                >
                   <div className="bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-xl p-6 sm:p-7 md:p-8 hover:border-violet-400/50 hover:shadow-lg transition-all h-full">
-                    <div className="absolute -top-3 -left-3 sm:-top-4 sm:-left-4 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-linear-to-br from-violet-600 to-violet-800 flex items-center justify-center text-white font-bold text-base sm:text-lg">
+                    <motion.div 
+                      initial={{ scale: 0 }}
+                      whileInView={{ scale: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.5, delay: index * 0.2 + 0.3 }}
+                      className="absolute -top-3 -left-3 sm:-top-4 sm:-left-4 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-linear-to-br from-violet-600 to-violet-800 flex items-center justify-center text-white font-bold text-base sm:text-lg"
+                    >
                       {item.number}
-                    </div>
+                    </motion.div>
                     <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-linear-to-br from-violet-600 to-violet-800 flex items-center justify-center mb-3 sm:mb-4">
                       <Icon className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
                     </div>
                     <h4 className="text-lg sm:text-xl font-bold mb-2 sm:mb-3">{item.title}</h4>
                     <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400">{item.desc}</p>
                   </div>
-                </div>
+                </motion.div>
               );
             })}
           </div>
         </div>
-      </section>
+      </motion.section>
 
-      <section id="testimonials" className="py-12 sm:py-16 md:py-20 bg-linear-to-b from-violet-50 to-white dark:from-gray-900 dark:to-gray-950">
+      <motion.section 
+        id="testimonials"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ duration: 0.8 }}
+        className="py-12 sm:py-16 md:py-20 bg-linear-to-b from-violet-50 to-white dark:from-gray-900 dark:to-gray-950"
+      >
         <div className="container mx-auto px-4">
-          <div className="text-center mb-8 sm:mb-10 md:mb-12">
-            <div className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-violet-100 dark:bg-violet-500/20 border border-violet-200 dark:border-violet-500/30 text-violet-700 dark:text-violet-300 mb-4 sm:mb-6">
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-8 sm:mb-10 md:mb-12"
+          >
+            <motion.div 
+              initial={{ scale: 0.8, opacity: 0 }}
+              whileInView={{ scale: 1, opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+              className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-violet-100 dark:bg-violet-500/20 border border-violet-200 dark:border-violet-500/30 text-violet-700 dark:text-violet-300 mb-4 sm:mb-6"
+            >
               <Star className="w-3 h-3 sm:w-4 sm:h-4" />
               <span className="text-xs sm:text-sm font-medium">Real People, Real Results</span>
-            </div>
+            </motion.div>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6 px-2">
               Success <span className="text-violet-600 dark:text-violet-400">Stories</span>
             </h2>
             <p className="text-base sm:text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto px-4">
               Hear from legal professionals who transformed their practice
             </p>
-          </div>
+          </motion.div>
 
           <div className="relative overflow-hidden w-screen mx-[calc(50%-50vw)] mb-12 sm:mb-16">
             <motion.div
@@ -761,41 +832,70 @@ function App() {
             </motion.div>
           </div>
         </div>
-      </section>
+      </motion.section>
 
       <RealTransformations />
 
-      <section className="py-12 sm:py-16 md:py-20 bg-linear-to-b from-violet-50 to-white dark:from-gray-900 dark:to-gray-950">
+      <motion.section 
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ duration: 0.8 }}
+        className="py-12 sm:py-16 md:py-20 bg-linear-to-b from-violet-50 to-white dark:from-gray-900 dark:to-gray-950"
+      >
         <div className="container mx-auto px-4">
-          <div className="text-center mb-8 sm:mb-10 md:mb-12">
-            <div className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-violet-100 dark:bg-violet-500/20 border border-violet-200 dark:border-violet-500/30 text-violet-700 dark:text-violet-300 mb-4 sm:mb-6">
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-8 sm:mb-10 md:mb-12"
+          >
+            <motion.div 
+              initial={{ scale: 0.8, opacity: 0 }}
+              whileInView={{ scale: 1, opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+              className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-violet-100 dark:bg-violet-500/20 border border-violet-200 dark:border-violet-500/30 text-violet-700 dark:text-violet-300 mb-4 sm:mb-6"
+            >
               <Briefcase className="w-3 h-3 sm:w-4 sm:h-4" />
               <span className="text-xs sm:text-sm font-medium">Career Outcomes</span>
-            </div>
+            </motion.div>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6 px-2">
               Your Future <span className="text-violet-600 dark:text-violet-400">Career Paths</span>
             </h2>
-          </div>
+          </motion.div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-5 md:gap-6 max-w-7xl mx-auto">
             {careerPaths.map((career, index) => {
               const Icon = career.icon;
               return (
-                <div
+                <motion.div
                   key={index}
+                  initial={{ opacity: 0, y: 50 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  whileHover={{ y: -10, scale: 1.05 }}
                   className="bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-xl p-5 sm:p-6 hover:border-violet-400/50 hover:shadow-lg transition-all text-center"
                 >
-                  <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-linear-to-br from-violet-600 to-violet-800 flex items-center justify-center mx-auto mb-3 sm:mb-4">
+                  <motion.div 
+                    initial={{ scale: 0 }}
+                    whileInView={{ scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: index * 0.1 + 0.2 }}
+                    className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-linear-to-br from-violet-600 to-violet-800 flex items-center justify-center mx-auto mb-3 sm:mb-4"
+                  >
                     <Icon className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
-                  </div>
+                  </motion.div>
                   <h3 className="text-sm sm:text-base font-bold mb-1.5 sm:mb-2">{career.title}</h3>
                   <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400">{career.desc}</p>
-                </div>
+                </motion.div>
               );
             })}
           </div>
         </div>
-      </section>
+      </motion.section>
 
       <GlobalCommunity />
 
