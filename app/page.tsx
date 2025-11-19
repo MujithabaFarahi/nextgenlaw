@@ -246,7 +246,7 @@ function App() {
                   <motion.div
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
-                    className="w-full sm:w-auto px-8 sm:px-10 py-4 sm:py-5 bg-violet-600 hover:bg-violet-700 text-white rounded-xl font-bold text-base sm:text-lg tracking-wide transition-all shadow-2xl shadow-violet-600/40 flex items-center justify-center gap-2 cursor-pointer"
+                    className="h-16 w-full sm:w-auto px-8 sm:px-10 bg-violet-600 hover:bg-violet-700 text-white rounded-xl font-bold text-base sm:text-lg tracking-wide transition-all shadow-2xl shadow-violet-600/40 flex items-center justify-center gap-2 cursor-pointer min-w-[280px]"
                   >
                     Join DueDraft Masterclass
                     <ArrowRight className="w-5 h-5" />
@@ -254,11 +254,11 @@ function App() {
                 </Link>
                 
                 {/* Countdown Timer */}
-                <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-xl px-4 sm:px-6 py-3 sm:py-4 w-full sm:w-auto">
-                  <span className="text-[10px] sm:text-xs uppercase tracking-wider text-white/70 block mb-1 text-center">
+                <div className="h-16 bg-white/10 backdrop-blur-md border border-white/20 rounded-xl px-6 w-full sm:w-auto flex flex-col justify-center items-center min-w-[280px]">
+                  <span className="text-[10px] sm:text-xs uppercase tracking-wider text-white/70 block mb-0.5 text-center">
                     Next Masterclass Starts In
                   </span>
-                  <span className="font-mono text-sm sm:text-base md:text-lg font-bold text-violet-400 block text-center">
+                  <span className="font-mono text-sm sm:text-base font-bold text-violet-400 block text-center">
                     3 DAYS : 21 HOURS : 04
                   </span>
                 </div>
