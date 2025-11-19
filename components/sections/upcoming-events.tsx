@@ -36,7 +36,7 @@ export function UpcomingEvents() {
   const currentEvent = events[currentIndex];
 
   return (
-    <section id="upcoming-events" className="pt-8 sm:pt-10 pb-12 sm:pb-16 md:pb-20 bg-gray-50 dark:bg-gray-900">
+    <section id="upcoming-events" className="pt-8 sm:pt-10 pb-12 sm:pb-16 md:pb-20 bg-linear-to-b from-violet-50 to-white dark:from-gray-900 dark:to-gray-950">
       <div className="container mx-auto px-4 md:px-6 max-w-7xl">
         {/* Header */}
         <div className="text-center mb-8 sm:mb-10 md:mb-12">

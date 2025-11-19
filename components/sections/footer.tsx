@@ -13,7 +13,7 @@ export function Footer() {
         whileInView={{ opacity: 1 }}
         viewport={{ once: true, margin: "-100px" }}
         transition={{ duration: 0.8 }}
-        className="py-12 sm:py-16 md:py-20 bg-white dark:bg-gray-950"
+        className="py-12 sm:py-16 md:py-20 bg-linear-to-b from-violet-50 to-white dark:from-gray-900 dark:to-gray-950"
       >
         <div className="container mx-auto px-4">
           <CallToAction />

@@ -81,49 +81,6 @@ function App() {
     }
   }, [darkMode]);
 
-  const courses = [
-    {
-      title: 'AI for Legal Professionals',
-      description: 'Master AI tools to transform your legal practice in just 2 days',
-      duration: '2 Days',
-      mode: 'Live Online',
-      students: '10,000+',
-      rating: '4.9',
-      image: 'https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=600',
-      badge: 'Most Popular',
-    },
-    {
-      title: 'DueDraft AI Masterclass',
-      description: 'Learn to use DueDraft.ai for contract automation and legal tech',
-      duration: '2 Days',
-      mode: 'Hybrid',
-      students: '5,000+',
-      rating: '4.8',
-      image: 'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=600',
-      badge: 'New',
-    },
-    {
-      title: 'Legal Tech Fundamentals',
-      description: 'Complete guide to modern legal technology and digital transformation',
-      duration: '6 Weeks',
-      mode: 'Self-Paced',
-      students: '15,000+',
-      rating: '4.9',
-      image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600',
-    },
-  ];
-
-  const modules = [
-    { number: '01', title: 'AI Basics for Lawyers', duration: '4 hours' },
-    { number: '02', title: 'Prompt Engineering for Law', duration: '6 hours' },
-    { number: '03', title: 'Contract Drafting Automation', duration: '8 hours' },
-    { number: '04', title: 'Legal Research with AI', duration: '6 hours' },
-    { number: '05', title: 'Legal Ethics & Safety', duration: '4 hours' },
-    { number: '06', title: 'Litigation & Compliance Workflows', duration: '8 hours' },
-    { number: '07', title: 'Real Projects & Hands-on Labs', duration: '12 hours' },
-  ];
-
-
   const careerPaths = [
     { icon: Zap, title: 'AI-Empowered Lawyer', desc: 'Practice law with advanced AI capabilities' },
     { icon: Lightbulb, title: 'Legal Innovation Specialist', desc: 'Drive tech adoption in law firms' },
