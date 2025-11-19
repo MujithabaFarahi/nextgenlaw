@@ -241,8 +241,8 @@ function App() {
                 />
               </div>
 
-              <div className="flex flex-col lg:flex-row items-center justify-center gap-4 lg:gap-6">
-                <Link href="/due">
+              <div className="flex flex-col lg:flex-row items-center justify-center gap-4 lg:gap-6 w-full max-w-md lg:max-w-none mx-auto">
+                <Link href="/due" className="w-full sm:w-auto">
                   <motion.div
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
