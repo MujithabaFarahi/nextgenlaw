@@ -2,20 +2,11 @@
 
 import { useState, useEffect } from 'react';
 import {
-  Sparkles,
-  Award,
-  Users,
-  TrendingUp,
-  BookOpen,
-  Clock,
-  Target,
   ArrowRight,
   Star,
   Scale,
   Menu,
   X,
-  Briefcase,
-  GraduationCap,
   Lightbulb,
   Shield,
   Zap,
@@ -23,10 +14,9 @@ import {
   Building2,
   Moon,
   Sun,
-  BookOpenText,
-  Medal,
+  Play,
 } from 'lucide-react';
-import { motion } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import { Typewriter } from '@/components/ui/typewriter';
 import { AboutPlatform } from '@/components/sections/about-platform';
 import { UpcomingEvents } from '@/components/sections/upcoming-events';
@@ -39,28 +29,23 @@ function App() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [darkMode, setDarkMode] = useState(false);
-  const [isInHero, setIsInHero] = useState(true);
+  const { scrollY } = useScroll();
+  const heroOpacity = useTransform(scrollY, [0, 600], [1, 0]);
+  const heroScale = useTransform(scrollY, [0, 600], [1, 1.1]);
 
   useEffect(() => {
     const handleScroll = () => {
-      const heroHeight = window.innerWidth >= 768 ? 1200 : 750; // md:h-[1200px] : h-[750px]
-      const scrollPosition = window.scrollY;
-      
-      setScrolled(scrollPosition > 20);
-      setIsInHero(scrollPosition < heroHeight - 100); // 100px buffer before end of hero
+      setScrolled(window.scrollY > 20);
     };
     
-    handleScroll(); // Check on mount
+    handleScroll();
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Initialize dark mode - ensure light mode is default
+  // Initialize dark mode
   useEffect(() => {
-    // Remove dark class on initial load to ensure light mode
     document.documentElement.classList.remove('dark');
-    
-    // Check for saved preference, but default to light mode
     const savedMode = localStorage.getItem('darkMode');
     if (savedMode === 'true') {
       setDarkMode(true);
@@ -93,543 +78,310 @@ function App() {
     {
       name: 'Priya Sharma',
       role: 'Corporate Lawyer, Mumbai',
-      content: 'NextGenLaws transformed how I work. The AI tools I learned have made me 3x more efficient and my clients love the faster turnaround.',
+      content: 'NextGenLaws transformed how I work. The AI tools I learned have made me 3x more efficient.',
       avatar: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=100',
       rating: 5,
     },
     {
       name: 'Rajesh Kumar',
       role: 'Partner, Legal Firm',
-      content: 'The DueDraft course was a game-changer. Our firm now handles twice the workload with the same team size.',
+      content: 'The DueDraft course was a game-changer. Our firm now handles twice the workload.',
       avatar: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?w=100',
       rating: 5,
     },
     {
       name: 'Anjali Desai',
       role: 'Solo Practitioner',
-      content: 'As a solo lawyer, AI seemed overwhelming. NextGenLaws made it accessible and practical. My revenue increased by 40%.',
+      content: 'As a solo lawyer, AI seemed overwhelming. NextGenLaws made it accessible and practical.',
       avatar: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=100',
-      rating: 5,
-    },
-    {
-      name: 'Neha Kapoor',
-      role: 'In-House Counsel, Bengaluru',
-      content: 'Automated NDAs and vendor contracts—turnaround dropped from days to hours.',
-      avatar: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=100',
-      rating: 5,
-    },
-    {
-      name: 'Vikram Singh',
-      role: 'Compliance Manager, Pune',
-      content: 'Built an AI policy tracker; audit prep time fell from 2 weeks to 3 days.',
-      avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100',
-      rating: 5,
-    },
-    {
-      name: 'Sara Iqbal',
-      role: 'Law Student, Hyderabad',
-      content: 'Showcased an AI research workflow from the course and landed an internship.',
-      avatar: 'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=100',
-      rating: 5,
-    },
-    {
-      name: 'Rohan Gupta',
-      role: 'Senior Counsel, Chennai',
-      content: 'Integrated AI into pleadings—faster case strategy and better outcomes.',
-      avatar: 'https://images.unsplash.com/photo-1599566150163-29194dcaad36?w=100',
-      rating: 5,
-    },
-    {
-      name: 'Meera Nair',
-      role: 'Legal Researcher, Kochi',
-      content: 'Summarization tools saved 15 hours per week on case digests.',
-      avatar: 'https://images.unsplash.com/photo-1527980965255-d3b416303d12?w=100',
-      rating: 5,
-    },
-    {
-      name: 'Tanya Bose',
-      role: 'Corporate Counsel, Kolkata',
-      content: 'Implemented AI playbooks—cross‑functional teams adopted them quickly.',
-      avatar: 'https://images.unsplash.com/photo-1548142813-c804b9048e42?w=100',
       rating: 5,
     },
   ];
 
-
   return (
-    <div className="min-h-screen bg-white dark:bg-gray-950 text-gray-900 dark:text-white transition-colors duration-300">
-      <div
-        className="fixed inset-0 pointer-events-none z-50 opacity-[0.02] dark:opacity-[0.03]"
-        style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='5' numOctaves='6' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
-          backgroundRepeat: 'repeat',
-          backgroundSize: '200px 200px',
-        }}
-      />
-
+    <div className="min-h-screen bg-white dark:bg-gray-950 text-gray-900 dark:text-white font-sans selection:bg-violet-200 dark:selection:bg-violet-900">
+      {/* Navigation - Premium Glass Effect */}
       <nav
-        className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
           scrolled
-            ? 'bg-white/90 dark:bg-gray-950/90 backdrop-blur-xl border-b border-gray-200 dark:border-gray-800 shadow-lg'
-            : 'bg-transparent'
+            ? 'bg-white/80 dark:bg-black/80 backdrop-blur-xl border-b border-gray-200/50 dark:border-gray-800/50 py-3'
+            : 'bg-transparent py-5'
         }`}
       >
-        <div className="container mx-auto px-4">
-          <div className="flex items-center justify-between h-20">
-            <a href="/" className="flex items-center gap-3 group">
-              <div className="w-10 h-10 rounded-xl bg-linear-to-br from-violet-600 to-violet-800 flex items-center justify-center group-hover:scale-110 transition-transform">
-                <Scale className="w-6 h-6 text-white" />
-              </div>
-              <span className={`text-2xl font-bold transition-colors ${
-                isInHero ? 'text-white' : 'text-gray-900 dark:text-white'
-              }`}>
-                NextGen<span className={`transition-colors ${
-                  isInHero ? 'text-violet-300' : 'text-violet-600 dark:text-violet-400'
-                }`}>Laws</span>
-              </span>
-            </a>
-
-            <div className="hidden md:flex items-center gap-8">
-              <a href="#about" className={`transition-colors ${
-                isInHero 
-                  ? 'text-white/90 hover:text-violet-300' 
-                  : 'text-gray-600 dark:text-gray-300 hover:text-violet-600 dark:hover:text-violet-400'
-              }`}>
-                About
-              </a>
-              <a href="#upcoming-events" className={`transition-colors ${
-                isInHero 
-                  ? 'text-white/90 hover:text-violet-300' 
-                  : 'text-gray-600 dark:text-gray-300 hover:text-violet-600 dark:hover:text-violet-400'
-              }`}>
-                Upcoming Events
-              </a>
-              <a href="#testimonials" className={`transition-colors ${
-                isInHero 
-                  ? 'text-white/90 hover:text-violet-300' 
-                  : 'text-gray-600 dark:text-gray-300 hover:text-violet-600 dark:hover:text-violet-400'
-              }`}>
-                Success Stories
+        <div className="container mx-auto px-4 sm:px-6">
+          <div className="flex items-center">
+            {/* Logo - Left */}
+            <div className="flex-1">
+              <a href="/" className="flex items-center gap-3 group relative z-50">
+                <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-black dark:bg-white flex items-center justify-center group-hover:scale-105 transition-transform shadow-lg">
+                  <Scale className="w-6 h-6 text-white dark:text-black" />
+                </div>
+                <span className={`text-2xl font-bold tracking-tight ${scrolled ? 'text-gray-900 dark:text-white' : 'text-white'}`}>
+                  NextGen<span className="font-light">Laws</span>
+                </span>
               </a>
             </div>
 
-            <div className="flex items-center gap-4">
+            {/* Navigation - Center */}
+            <div className="hidden lg:flex items-center justify-center gap-8 xl:gap-10 flex-1">
+              {[
+                { label: 'About', href: '#about' },
+                { label: 'Events', href: '#upcoming-events' },
+                { label: 'Community', href: '#community' }
+              ].map((item) => (
+                <a
+                  key={item.label}
+                  href={item.href}
+                  className={`text-sm font-medium uppercase tracking-widest hover:text-violet-400 transition-colors ${
+                    scrolled ? 'text-gray-600 dark:text-gray-300' : 'text-white/90'
+                  }`}
+                >
+                  {item.label}
+                </a>
+              ))}
+            </div>
+
+            {/* Controls - Right */}
+            <div className="flex items-center gap-4 justify-end flex-1">
               <button
                 onClick={() => setDarkMode(!darkMode)}
-                className={`p-2 rounded-lg transition-colors ${
-                  isInHero 
-                    ? 'text-white hover:bg-white/20' 
-                    : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800'
+                className={`p-2.5 rounded-full transition-colors ${
+                  scrolled 
+                    ? 'hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-700 dark:text-gray-300' 
+                    : 'hover:bg-white/10 text-white'
                 }`}
               >
                 {darkMode ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
               </button>
-              <button className="hidden md:flex items-center gap-2 px-6 py-2.5 bg-violet-600 hover:bg-violet-700 text-white rounded-lg transition-all hover:scale-105 font-medium">
-                Enroll Now
-                <ArrowRight className="w-4 h-4" />
-              </button>
+
               <button
-                className={`md:hidden p-2 rounded-lg transition-colors ${
-                  isInHero 
-                    ? 'text-white hover:bg-white/20' 
-                    : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800'
-                }`}
+                className={`lg:hidden p-2 rounded-lg ${scrolled ? 'text-gray-900 dark:text-white' : 'text-white'}`}
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               >
-                {mobileMenuOpen ? <X /> : <Menu />}
+                {mobileMenuOpen ? <X className="w-7 h-7" /> : <Menu className="w-7 h-7" />}
               </button>
             </div>
           </div>
         </div>
-
-        {mobileMenuOpen && (
-          <div className={`md:hidden backdrop-blur-xl border-t transition-colors ${
-            isInHero
-              ? 'bg-black/80 border-white/20'
-              : 'bg-white/95 dark:bg-gray-950/95 border-gray-200 dark:border-gray-800'
-          }`}>
-            <div className="container mx-auto px-4 py-6 space-y-4">
-              <a href="#about" className={`block transition-colors ${
-                isInHero 
-                  ? 'text-white/90 hover:text-violet-300' 
-                  : 'text-gray-600 dark:text-gray-300 hover:text-violet-600'
-              }`}>
-                About
-              </a>
-              <a href="#upcoming-events" className={`block transition-colors ${
-                isInHero 
-                  ? 'text-white/90 hover:text-violet-300' 
-                  : 'text-gray-600 dark:text-gray-300 hover:text-violet-600'
-              }`}>
-                Upcoming Events
-              </a>
-              <a href="#testimonials" className={`block transition-colors ${
-                isInHero 
-                  ? 'text-white/90 hover:text-violet-300' 
-                  : 'text-gray-600 dark:text-gray-300 hover:text-violet-600'
-              }`}>
-                Success Stories
-              </a>
-              <button className="w-full px-6 py-2.5 bg-violet-600 hover:bg-violet-700 text-white rounded-lg">
-                Enroll Now
-              </button>
-            </div>
-          </div>
-        )}
       </nav>
 
-      <section className="relative h-[750px] md:h-[1200px] flex items-center justify-center overflow-hidden">
-        {/* Background Image with Overlay */}
-        <div className="absolute inset-0">
+      {/* Mobile Menu Overlay */}
+      {mobileMenuOpen && (
+        <div className="fixed inset-0 z-40 bg-black/95 backdrop-blur-xl pt-24 px-6 lg:hidden">
+          <div className="flex flex-col gap-6 text-center">
+            {[
+              { label: 'About', href: '#about' },
+              { label: 'Events', href: '#upcoming-events' },
+              { label: 'Community', href: '#community' }
+            ].map((item) => (
+              <a
+                key={item.label}
+                href={item.href}
+                className="text-2xl font-bold text-white uppercase tracking-widest hover:text-violet-400 transition-colors"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                {item.label}
+              </a>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {/* Hero Section - High Impact Immersive */}
+      <section className="relative h-screen min-h-[800px] flex items-center justify-center overflow-hidden">
+        <motion.div 
+          style={{ opacity: heroOpacity, scale: heroScale }}
+          className="absolute inset-0"
+        >
           <img
             src="/group.jpg"
-            alt="Legal Tech Team"
+            alt="Legal Tech Revolution"
             className="w-full h-full object-cover object-center"
-            style={{ objectPosition: 'center 35%' }}
           />
-          {/* Dark overlay for text readability */}
-          <div className="absolute inset-0 bg-black/60 dark:bg-black/75" />
-          {/* Gradient overlay for depth */}
-          <div className="absolute inset-0 bg-linear-to-b from-black/40 via-transparent to-black/60" />
-        </div>
+          <div className="absolute inset-0 bg-linear-to-b from-black/70 via-black/40 to-black/90" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,rgba(0,0,0,0.6)_100%)]" />
+        </motion.div>
 
-        {/* Content */}
-        <div className="container mx-auto px-4 relative z-10 py-16">
-          <div className="max-w-4xl mx-auto text-center">
-            {/* Trust Badge */}
+        <div className="container mx-auto px-4 relative z-10 pt-20">
+          <div className="max-w-5xl mx-auto text-center">
             <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-white/20 backdrop-blur-md border border-white/30 text-white mb-4 sm:mb-6"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              className="mb-6 sm:mb-8"
             >
-              <Sparkles className="w-3 h-3 sm:w-4 sm:h-4" />
-              <span className="text-[10px] sm:text-xs font-medium text-center">Trusted by 25,000+ Legal Professionals Globally</span>
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white/90 mb-6">
+                <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
+                <span className="text-xs font-bold uppercase tracking-widest">Next Masterclass: Dec 5, 2025</span>
+              </div>
+              
+              <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black text-white leading-[0.9] tracking-tight uppercase mb-6 sm:mb-8 drop-shadow-2xl">
+                Empower Your <br />
+                <span className="text-transparent bg-clip-text bg-linear-to-r from-violet-400 to-purple-600">
+                  Legal Future
+                </span>
+              </h1>
             </motion.div>
 
-            {/* Main Headline */}
-            <motion.h1
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.3 }}
-              className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold mb-3 sm:mb-4 leading-tight text-white px-2"
-            >
-              Empowering the World Through
-              <br className="hidden sm:block" />
-              <span className="sm:inline"> </span>
-              <span className="bg-linear-to-r from-violet-400 via-purple-400 to-pink-400 bg-clip-text text-transparent inline-block">
-                Legal Tech{" "}
-                <Typewriter
-                  text={[
-                    "Workshops",
-                    "Training",
-                    "Masterclasses",
-                    "Education",
-                    "Programs"
-                  ]}
-                  speed={80}
-                  waitTime={2000}
-                  deleteSpeed={50}
-                  loop={true}
-                  showCursor={true}
-                  cursorChar="_"
-                  className="bg-linear-to-r from-violet-400 via-purple-400 to-pink-400 bg-clip-text text-transparent"
-                />
-              </span>
-            </motion.h1>
-
-            {/* Subtitle */}
-            <motion.p
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-              className="text-sm sm:text-base md:text-lg text-white/90 mb-4 sm:mb-6 max-w-2xl mx-auto leading-relaxed px-4"
-            >
-              Delivering world-class legal tech education to learners across 100+ countries
-            </motion.p>
-
-            {/* CTA Section */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.5 }}
-              className="flex flex-col sm:flex-col lg:flex-row gap-3 sm:gap-4 items-center justify-center mb-6 sm:mb-8 px-4"
+              transition={{ duration: 0.8, delay: 0.2 }}
             >
-              <motion.button
-                whileHover={{ scale: 1.05, boxShadow: '0 20px 40px rgba(139, 92, 246, 0.3)' }}
-                whileTap={{ scale: 0.95 }}
-                className="w-full sm:w-auto px-5 sm:px-6 py-2.5 sm:py-3 bg-linear-to-r from-violet-600 to-purple-600 hover:from-violet-700 hover:to-purple-700 text-white rounded-lg font-semibold text-sm sm:text-base shadow-xl transition-all flex items-center justify-center gap-2 group"
-              >
-                Join DueDraft Masterclass
-                <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform" />
-              </motion.button>
+              <div className="h-12 sm:h-16 text-xl sm:text-2xl md:text-3xl text-white/90 font-medium mb-8 sm:mb-12 flex items-center justify-center gap-2">
+                <span>Master</span>
+                <Typewriter
+                  text={["Legal Tech", "AI Drafting", "Automation", "Innovation"]}
+                  speed={70}
+                  waitTime={2000}
+                  className="text-violet-400 font-bold border-b-2 border-violet-500"
+                  cursorChar=" "
+                />
+              </div>
 
-              {/* Countdown Timer */}
-              <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-lg px-3 sm:px-4 py-2 w-full sm:w-auto">
-                <span className="text-[10px] sm:text-xs uppercase tracking-wider text-white/70 block mb-0.5 text-center">
-                  Next Masterclass Starts In
-                </span>
-                <span className="font-mono text-xs sm:text-base font-bold text-white block text-center">
-                  3 DAYS : 21 HRS : 04 MIN
-                </span>
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6">
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="w-full sm:w-auto px-10 py-5 bg-violet-600 hover:bg-violet-700 text-white rounded-full font-bold text-lg uppercase tracking-widest shadow-2xl shadow-violet-600/40 transition-all"
+                >
+                  Enroll Now
+                </motion.button>
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="w-full sm:w-auto px-10 py-5 bg-white hover:bg-gray-100 text-black rounded-full font-bold text-lg uppercase tracking-widest shadow-xl transition-all flex items-center justify-center gap-2"
+                >
+                  <Play className="w-5 h-5 fill-black" />
+                  Watch Demo
+                </motion.button>
               </div>
             </motion.div>
+          </div>
+        </div>
 
-            {/* Statistics Grid */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.6 }}
-              className="grid grid-cols-2 lg:grid-cols-4 gap-2 sm:gap-3 max-w-3xl mx-auto px-2"
-            >
+        {/* Stats Overlay */}
+        <motion.div 
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.6, duration: 0.8 }}
+          className="absolute bottom-0 left-0 right-0 bg-black/60 backdrop-blur-md border-t border-white/10 hidden md:block"
+        >
+          <div className="container mx-auto px-4 py-6">
+            <div className="flex justify-center items-center gap-12 lg:gap-24 divide-x divide-white/20">
               {[
-                { number: '07+', label: 'Workshops', icon: BookOpenText },
-                { number: '25K+', label: 'Students', icon: Users },
-                { number: '4.9/5', label: 'Rating', icon: Star },
-                { number: '95%', label: 'Success Rate', icon: TrendingUp },
-              ].map((stat, index) => {
-                const Icon = stat.icon;
-                return (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.5, delay: 0.7 + index * 0.1 }}
-                    whileHover={{ scale: 1.05, y: -3 }}
-                    className="bg-white/10 backdrop-blur-md border border-white/20 rounded-lg p-2 sm:p-3 text-center hover:bg-white/15 transition-all"
-                  >
-                    <Icon className="w-4 h-4 sm:w-5 sm:h-5 text-violet-400 mx-auto mb-1" />
-                    <div className="text-lg sm:text-xl md:text-2xl font-bold text-white mb-0.5">
-                      {stat.number}
-                    </div>
-                    <div className="text-[10px] sm:text-xs text-white/70 font-medium uppercase tracking-wider">
-                      {stat.label}
-                    </div>
-                  </motion.div>
-                );
-              })}
-            </motion.div>
+                { label: "Professionals Trained", value: "25,000+" },
+                { label: "Countries Reached", value: "100+" },
+                { label: "Success Rate", value: "95%" },
+                { label: "Partner Firms", value: "500+" }
+              ].map((stat, i) => (
+                <div key={i} className={`text-center ${i > 0 ? 'pl-12 lg:pl-24' : ''}`}>
+                  <div className="text-3xl font-black text-white">{stat.value}</div>
+                  <div className="text-xs font-bold text-white/60 uppercase tracking-widest mt-1">{stat.label}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </motion.div>
+      </section>
+
+      {/* Featured In Strip - Premium Authority */}
+      <section className="py-10 bg-gray-50 dark:bg-white border-b border-gray-200">
+        <div className="container mx-auto px-4">
+          <p className="text-center text-xs font-black text-gray-400 uppercase tracking-[0.2em] mb-6">
+            Trusted by Legal Professionals From
+          </p>
+          <div className="flex flex-wrap justify-center items-center gap-8 md:gap-16 opacity-60 grayscale hover:grayscale-0 transition-all duration-500">
+            {['Microsoft', 'Google', 'Meta', 'Amazon', 'Adobe', 'Uber'].map((partner) => (
+              <span key={partner} className="text-xl md:text-2xl font-black text-gray-800">
+                {partner}
+              </span>
+            ))}
           </div>
         </div>
       </section>
 
-      <motion.section 
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true, margin: "-100px" }}
-        transition={{ duration: 0.8 }}
-        className="py-12 sm:py-16 border-y border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-900"
-      >
-        <div className="container mx-auto px-4">
-          <motion.p 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="text-center text-xs sm:text-sm text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-6 sm:mb-8 px-2"
-          >
-            TRUSTED BY LEGAL PROFESSIONALS FROM LEADING ORGANIZATIONS
-          </motion.p>
-          <div className="flex flex-wrap justify-center items-center gap-6 sm:gap-8 md:gap-12 lg:gap-16">
-            {['Microsoft', 'Google', 'Meta', 'Amazon', 'Adobe', 'Uber'].map((partner, index) => (
-              <motion.div 
-                key={index}
+      <AboutPlatform />
+      
+      <UpcomingEvents />
+
+      {/* Events That Liberate Section (Past Events Redesign) */}
+      <section className="py-20 sm:py-28 bg-black text-white relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-1/2 h-full bg-violet-900/20 blur-3xl rounded-full transform translate-x-1/2" />
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="text-center mb-16">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="flex flex-col items-center"
+            >
+              <div className="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 md:px-5 py-1.5 sm:py-2 md:py-2.5 rounded-full bg-violet-600/20 border border-violet-500/50 text-violet-400 mb-6">
+                <span className="text-xs sm:text-sm font-semibold">Global Impact</span>
+              </div>
+              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black uppercase tracking-tight leading-tight mb-8">
+                Events That <span className="text-violet-500">Transform</span>
+              </h2>
+              <button className="group inline-flex items-center gap-3 text-sm font-bold uppercase tracking-widest hover:text-violet-400 transition-colors">
+                View All Past Events
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              </button>
+            </motion.div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {[
+              {
+                title: "AI for Everyday Legal Work",
+                loc: "London, UK",
+                img: "/1.png",
+                date: "OCT 2024",
+                tag: "SOLD OUT"
+              },
+              {
+                title: "Mastering Legal Tech Automation",
+                loc: "New York, USA",
+                img: "/2.png",
+                date: "SEP 2024",
+                tag: "VIRTUAL"
+              },
+              {
+                title: "Future of Law Summit",
+                loc: "Singapore",
+                img: "/3.png",
+                date: "AUG 2024",
+                tag: "HYBRID"
+              }
+            ].map((event, i) => (
+              <motion.div
+                key={i}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                whileHover={{ scale: 1.1, y: -5 }}
-                className="text-base sm:text-lg md:text-xl lg:text-2xl font-bold text-gray-400 dark:text-gray-600 hover:text-violet-600 dark:hover:text-violet-400 transition-colors cursor-pointer"
+                transition={{ delay: i * 0.1 }}
+                className="group cursor-pointer"
               >
-                {partner}
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </motion.section>
-
-      <AboutPlatform />
-      <UpcomingEvents />
-
-      {/* Past Events Section */}
-      <section className="py-12 sm:py-16 md:py-20 relative bg-white dark:bg-gray-950 overflow-hidden">
-        {/* Background decorative elements */}
-        <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-20 right-20 w-96 h-96 bg-violet-100/30 dark:bg-violet-500/5 rounded-full blur-3xl" />
-          <div className="absolute bottom-20 left-20 w-96 h-96 bg-violet-100/20 dark:bg-violet-500/5 rounded-full blur-3xl" />
-        </div>
-
-        <div className="container mx-auto px-4 relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="text-center mb-8 sm:mb-10 md:mb-12"
-          >
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-violet-100 dark:bg-violet-500/20 border border-violet-200 dark:border-violet-500/30 text-violet-700 dark:text-violet-300 mb-4 sm:mb-6 shadow-sm"
-            >
-              <Medal className="w-3 h-3 sm:w-4 sm:h-4" />
-              <span className="text-xs sm:text-sm font-medium">Achievements</span>
-            </motion.div>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 sm:mb-4 md:mb-6 px-2">
-              Past <span className="text-violet-600 dark:text-violet-400">Events</span>
-            </h2>
-            <p className="text-base sm:text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto px-4">
-              Highlights from the legal-tech events and training we've successfully delivered worldwide
-            </p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-6 md:gap-8 max-w-6xl mx-auto">
-            {[
-              {
-                title: 'AI for Everyday Legal Work: Practical Tools for Lawyers',
-                img: '/1.png',
-                time: '10 hours',
-                rating: '4.9',
-                participants: '240+',
-                desc: 'Practical tools to streamline everyday legal work with AI.',
-                badge: 'Most Popular',
-              },
-              {
-                title: 'Mastering Legal Tech: From Manual Tasks to Smart Automation',
-                img: '/2.png',
-                time: '06 hours',
-                rating: '4.5',
-                participants: '300+',
-                desc: 'Turn manual tasks into smart automation across legal workflows.',
-                badge: 'Trending',
-              },
-              {
-                title: 'How Lawyers Can Leverage AI for Research, Drafting & Compliance',
-                img: '/3.png',
-                time: '4.5 hours',
-                rating: '4.9',
-                participants: '1500+',
-                desc: 'Leverage AI for faster research, stronger drafting, and compliance.',
-                badge: 'Best Rated',
-              },
-            ].map((item, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.15, duration: 0.5 }}
-                whileHover={{ y: -8, scale: 1.02 }}
-                className="relative group rounded-2xl sm:rounded-3xl overflow-hidden border border-gray-200/50 dark:border-gray-800/50 bg-white dark:bg-gray-900 h-[420px] sm:h-[450px] md:h-[480px] hover:shadow-2xl hover:shadow-violet-500/10 dark:hover:shadow-violet-500/20 transition-all duration-500"
-              >
-                {/* Image Container */}
-                <div className="absolute inset-0 overflow-hidden">
+                <div className="relative h-64 md:h-80 mb-6 overflow-hidden rounded-none">
+                  <div className="absolute top-4 left-4 z-20 bg-white text-black text-xs font-bold px-3 py-1 uppercase tracking-wider">
+                    {event.tag}
+                  </div>
                   <img 
-                    src={item.img} 
-                    alt={item.title} 
-                    className="absolute inset-0 w-full h-full object-cover opacity-90 dark:opacity-80 grayscale group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-700 scale-100 group-hover:scale-110" 
-                    onError={(e) => {
-                      e.currentTarget.style.display = 'none';
-                    }}
+                    src={event.img} 
+                    alt={event.title}
+                    className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700 grayscale group-hover:grayscale-0"
+                    onError={(e) => { e.currentTarget.style.display = 'none' }}
                   />
-                  
-                  {/* Enhanced Gradient Overlay - Reduced opacity */}
-                  <div className="absolute inset-0 bg-linear-to-br from-violet-900/50 via-violet-700/45 to-violet-600/40 dark:from-violet-950/60 dark:via-violet-900/55 dark:to-violet-800/50" />
-                  
-                  {/* Animated gradient accent - Reduced opacity */}
-                  <motion.div
-                    animate={{
-                      background: [
-                        'radial-gradient(circle at 0% 0%, rgba(139, 92, 246, 0.2) 0%, transparent 50%)',
-                        'radial-gradient(circle at 100% 100%, rgba(139, 92, 246, 0.2) 0%, transparent 50%)',
-                        'radial-gradient(circle at 0% 0%, rgba(139, 92, 246, 0.2) 0%, transparent 50%)',
-                      ],
-                    }}
-                    transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
-                    className="absolute inset-0"
-                  />
+                  <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors" />
                 </div>
-
-                {/* Content */}
-                <div className="relative z-10 h-full p-4 sm:p-5 md:p-6 lg:p-8 flex flex-col justify-between text-white">
-                  {/* Top Section - Badge */}
-                  <div className="flex items-start justify-between">
-                    <motion.div
-                      whileHover={{ scale: 1.1 }}
-                      className="inline-flex items-center gap-1.5 sm:gap-2 px-2 sm:px-3 py-1 sm:py-1.5 rounded-full bg-white/20 dark:bg-white/10 backdrop-blur-md border border-white/30 text-[10px] sm:text-xs font-semibold shadow-lg"
-                    >
-                      <Sparkles className="w-2.5 h-2.5 sm:w-3 sm:h-3" />
-                      {item.badge}
-                    </motion.div>
-                    <motion.div
-                      animate={{ rotate: [0, 10, -10, 0] }}
-                      transition={{ duration: 2, repeat: Infinity, repeatDelay: 3 }}
-                      className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-white/10 dark:bg-white/5 backdrop-blur-md border border-white/20 flex items-center justify-center"
-                    >
-                      <Award className="w-4 h-4 sm:w-5 sm:h-5" />
-                    </motion.div>
+                <div className="flex items-start justify-between border-b border-white/20 pb-6 group-hover:border-violet-500 transition-colors">
+                  <div>
+                    <div className="text-sm font-bold text-violet-400 mb-2 uppercase tracking-wider">{event.date} • {event.loc}</div>
+                    <h3 className="text-2xl font-bold leading-tight group-hover:text-violet-300 transition-colors max-w-xs">
+                      {event.title}
+                    </h3>
                   </div>
-
-                  {/* Middle Section - Title & Description */}
-                  <div className="flex-1 flex flex-col justify-center mt-3 sm:mt-4">
-                    <motion.h3
-                      initial={{ opacity: 0, x: -20 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ delay: 0.2 }}
-                      className="text-lg sm:text-xl md:text-2xl font-bold mb-2 sm:mb-3 leading-tight group-hover:text-violet-100 transition-colors"
-                    >
-                      {item.title}
-                    </motion.h3>
-                    <motion.p
-                      initial={{ opacity: 0, x: -20 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ delay: 0.3 }}
-                      className="text-xs sm:text-sm md:text-base text-white/90 dark:text-white/80 leading-relaxed mb-4 sm:mb-6"
-                    >
-                      {item.desc}
-                    </motion.p>
-                  </div>
-
-                  {/* Bottom Section - Stats */}
-                  <div className="space-y-3 sm:space-y-4 pt-3 sm:pt-4 border-t border-white/20">
-                    <div className="grid grid-cols-3 gap-2 sm:gap-3">
-                      <motion.div
-                        whileHover={{ scale: 1.1, y: -2 }}
-                        className="flex flex-col items-center gap-1 sm:gap-1.5 bg-white/10 dark:bg-white/5 backdrop-blur-md rounded-lg px-2 sm:px-3 py-2 sm:py-2.5 border border-white/20"
-                      >
-                        <Clock className="w-3 h-3 sm:w-4 sm:h-4 text-violet-200" />
-                        <span className="text-[10px] sm:text-xs font-semibold">{item.time}</span>
-                        <span className="text-[8px] sm:text-[10px] text-white/60">Duration</span>
-                      </motion.div>
-                      <motion.div
-                        whileHover={{ scale: 1.1, y: -2 }}
-                        className="flex flex-col items-center gap-1 sm:gap-1.5 bg-white/10 dark:bg-white/5 backdrop-blur-md rounded-lg px-2 sm:px-3 py-2 sm:py-2.5 border border-white/20"
-                      >
-                        <Star className="w-3 h-3 sm:w-4 sm:h-4 text-yellow-400 fill-yellow-400" />
-                        <span className="text-[10px] sm:text-xs font-semibold">{item.rating}</span>
-                        <span className="text-[8px] sm:text-[10px] text-white/60">Rating</span>
-                      </motion.div>
-                      <motion.div
-                        whileHover={{ scale: 1.1, y: -2 }}
-                        className="flex flex-col items-center gap-1 sm:gap-1.5 bg-white/10 dark:bg-white/5 backdrop-blur-md rounded-lg px-2 sm:px-3 py-2 sm:py-2.5 border border-white/20"
-                      >
-                        <Users className="w-3 h-3 sm:w-4 sm:h-4 text-violet-200" />
-                        <span className="text-[10px] sm:text-xs font-semibold">{item.participants}</span>
-                        <span className="text-[8px] sm:text-[10px] text-white/60">Attended</span>
-                      </motion.div>
-                    </div>
-                  </div>
+                  <ArrowRight className="w-6 h-6 text-white/50 group-hover:text-violet-400 transform -rotate-45 group-hover:rotate-0 transition-all" />
                 </div>
-
-                {/* Shine effect on hover */}
-                <motion.div
-                  className="absolute inset-0 bg-linear-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 pointer-events-none"
-                  style={{ width: '200%' }}
-                />
-
-                {/* Corner accent */}
-                <div className="absolute top-0 right-0 w-32 h-32 bg-violet-500/10 rounded-full blur-2xl group-hover:bg-violet-500/20 transition-colors" />
               </motion.div>
             ))}
           </div>
@@ -638,224 +390,94 @@ function App() {
 
       <WhoThisIsFor />
 
-      <motion.section 
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true, margin: "-100px" }}
-        transition={{ duration: 0.8 }}
-        className="py-12 sm:py-16 md:py-20 bg-white dark:bg-gray-950"
-      >
+      {/* Success Stories - Premium Carousel Feel */}
+      <section className="py-20 sm:py-28 bg-gray-50 dark:bg-gray-900 overflow-hidden">
         <div className="container mx-auto px-4">
-          <motion.div 
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="text-center mb-8 sm:mb-10 md:mb-12"
-          >
-            <motion.div 
-              initial={{ scale: 0.8, opacity: 0 }}
-              whileInView={{ scale: 1, opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-              className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-violet-100 dark:bg-violet-500/20 border border-violet-200 dark:border-violet-500/30 text-violet-700 dark:text-violet-300 mb-4 sm:mb-6"
-            >
-              <Target className="w-3 h-3 sm:w-4 sm:h-4" />
-              <span className="text-xs sm:text-sm font-medium">How It Works</span>
-            </motion.div>
-            <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold px-2">How It Works</h3>
-            <p className="text-base sm:text-lg text-gray-600 dark:text-gray-300 mt-2 px-4">
-              Join a masterclass, complete the class material, and get a job or secure an internship.
-            </p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 gap-6 sm:gap-6 md:gap-8 max-w-6xl mx-auto">
-            {[
-              {
-                icon: GraduationCap,
-                number: '01',
-                title: 'Join a Masterclass',
-                desc: 'Sign up and join a live or hybrid masterclass to kickstart your journey.',
-              },
-              {
-                icon: BookOpen,
-                number: '02',
-                title: 'Complete the Material',
-                desc: 'Finish the lessons, projects, and assessments to build real skills.',
-              },
-              {
-                icon: Briefcase,
-                number: '03',
-                title: 'Get a Job or Internship',
-                desc: 'Leverage your skills to get a job, become an intern, or secure an internship.',
-              },
-            ].map((item, index) => {
-              const Icon = item.icon;
-              return (
-                <motion.div 
-                  key={index}
-                  initial={{ opacity: 0, y: 50 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: index * 0.2 }}
-                  whileHover={{ y: -10, scale: 1.02 }}
-                  className="relative"
-                >
-                  <div className="bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-xl p-6 sm:p-7 md:p-8 hover:border-violet-400/50 hover:shadow-lg transition-all h-full">
-                    <motion.div 
-                      initial={{ scale: 0 }}
-                      whileInView={{ scale: 1 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.5, delay: index * 0.2 + 0.3 }}
-                      className="absolute -top-3 -left-3 sm:-top-4 sm:-left-4 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-linear-to-br from-violet-600 to-violet-800 flex items-center justify-center text-white font-bold text-base sm:text-lg"
-                    >
-                      {item.number}
-                    </motion.div>
-                    <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-linear-to-br from-violet-600 to-violet-800 flex items-center justify-center mb-3 sm:mb-4">
-                      <Icon className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
-                    </div>
-                    <h4 className="text-lg sm:text-xl font-bold mb-2 sm:mb-3">{item.title}</h4>
-                    <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400">{item.desc}</p>
-                  </div>
-                </motion.div>
-              );
-            })}
-          </div>
-        </div>
-      </motion.section>
-
-      <motion.section 
-        id="testimonials"
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true, margin: "-100px" }}
-        transition={{ duration: 0.8 }}
-        className="py-12 sm:py-16 md:py-20 bg-linear-to-b from-violet-50 to-white dark:from-gray-900 dark:to-gray-950"
-      >
-        <div className="container mx-auto px-4">
-          <motion.div 
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="text-center mb-8 sm:mb-10 md:mb-12"
-          >
-            <motion.div 
-              initial={{ scale: 0.8, opacity: 0 }}
-              whileInView={{ scale: 1, opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-              className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-violet-100 dark:bg-violet-500/20 border border-violet-200 dark:border-violet-500/30 text-violet-700 dark:text-violet-300 mb-4 sm:mb-6"
-            >
-              <Star className="w-3 h-3 sm:w-4 sm:h-4" />
-              <span className="text-xs sm:text-sm font-medium">Real People, Real Results</span>
-            </motion.div>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6 px-2">
-              Success <span className="text-violet-600 dark:text-violet-400">Stories</span>
+          <div className="text-center max-w-4xl mx-auto mb-16">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black uppercase tracking-tight text-gray-900 dark:text-white mb-6">
+              NextGenLaws Equals <span className="text-violet-600">Results</span>
             </h2>
-            <p className="text-base sm:text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto px-4">
-              Hear from legal professionals who transformed their practice
+            <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+              Join thousands of legal professionals who have redefined their careers and firms through our transformative programs.
             </p>
-          </motion.div>
+          </div>
 
-          <div className="relative overflow-hidden w-screen mx-[calc(50%-50vw)] mb-12 sm:mb-16">
-            <motion.div
-              className="flex gap-3 sm:gap-4 md:gap-6"
-              animate={{ x: ['-50%', '0%'] }}
-              transition={{ duration: 40, ease: 'linear', repeat: Infinity }}
-            >
-              {[...testimonials, ...testimonials].map((testimonial, index) => (
-                <div
-                  key={index}
-                  className="bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-xl sm:rounded-2xl p-4 sm:p-5 md:p-6 hover:border-violet-400/50 hover:shadow-lg transition-all min-w-[280px] sm:min-w-[350px] md:min-w-[420px] max-w-[280px] sm:max-w-[350px] md:max-w-[420px] flex-none"
-                >
-                  <div className="flex gap-0.5 sm:gap-1 mb-2 sm:mb-3">
-                    {[...Array(testimonial.rating)].map((_, i) => (
-                      <Star key={i} className="w-3 h-3 sm:w-4 sm:h-4 fill-yellow-400 text-yellow-400" />
-                    ))}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {testimonials.map((t, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+                className="bg-white dark:bg-gray-800 p-8 md:p-10 shadow-xl hover:shadow-2xl transition-shadow border-t-4 border-violet-600 relative group"
+              >
+                <div className="absolute top-6 right-8 text-6xl font-serif text-gray-100 dark:text-gray-700 leading-none select-none">"</div>
+                <div className="flex items-center gap-1 mb-6">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+                  ))}
+                </div>
+                <p className="text-lg md:text-xl font-medium text-gray-800 dark:text-gray-100 mb-8 relative z-10 leading-relaxed">
+                  {t.content}
+                </p>
+                <div className="flex items-center gap-4 mt-auto">
+                  <div className="w-12 h-12 rounded-full overflow-hidden ring-2 ring-violet-100 dark:ring-violet-900">
+                    <img src={t.avatar} alt={t.name} className="w-full h-full object-cover" />
                   </div>
-                  <p className="text-sm sm:text-base text-gray-700 dark:text-gray-300 mb-4 sm:mb-5 leading-relaxed">
-                    "{testimonial.content}"
-                  </p>
-                  <div className="flex items-center gap-3 sm:gap-4">
-                    <img src={testimonial.avatar} onError={(e)=>{e.currentTarget.src='https://i.pravatar.cc/100';}} loading="lazy" alt={testimonial.name} className="w-9 h-9 sm:w-10 sm:h-10 rounded-full object-cover" />
-                    <div>
-                      <div className="text-sm sm:text-base font-semibold">{testimonial.name}</div>
-                      <div className="text-xs sm:text-sm text-gray-500 dark:text-gray-400">{testimonial.role}</div>
-                    </div>
+                  <div>
+                    <div className="font-bold text-gray-900 dark:text-white uppercase tracking-wide text-sm">{t.name}</div>
+                    <div className="text-xs text-violet-600 dark:text-violet-400 font-medium">{t.role}</div>
                   </div>
                 </div>
-              ))}
-            </motion.div>
+              </motion.div>
+            ))}
+          </div>
+          
+          <div className="text-center mt-16">
+            <button className="px-8 py-4 bg-transparent border-2 border-gray-900 dark:border-white text-gray-900 dark:text-white rounded-full font-bold text-sm uppercase tracking-widest hover:bg-gray-900 hover:text-white dark:hover:bg-white dark:hover:text-black transition-all">
+              Read More Success Stories
+            </button>
           </div>
         </div>
-      </motion.section>
+      </section>
 
       <RealTransformations />
 
-      <motion.section 
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true, margin: "-100px" }}
-        transition={{ duration: 0.8 }}
-        className="py-12 sm:py-16 md:py-20 bg-linear-to-b from-violet-50 to-white dark:from-gray-900 dark:to-gray-950"
-      >
+      {/* Pillars of Future Law Section */}
+      <section className="py-20 bg-black text-white">
         <div className="container mx-auto px-4">
-          <motion.div 
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="text-center mb-8 sm:mb-10 md:mb-12"
-          >
-            <motion.div 
-              initial={{ scale: 0.8, opacity: 0 }}
-              whileInView={{ scale: 1, opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-              className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-violet-100 dark:bg-violet-500/20 border border-violet-200 dark:border-violet-500/30 text-violet-700 dark:text-violet-300 mb-4 sm:mb-6"
-            >
-              <Briefcase className="w-3 h-3 sm:w-4 sm:h-4" />
-              <span className="text-xs sm:text-sm font-medium">Career Outcomes</span>
-            </motion.div>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6 px-2">
-              Your Future <span className="text-violet-600 dark:text-violet-400">Career Paths</span>
+          <div className="text-center mb-12">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black uppercase tracking-tight leading-tight">
+              Your Pathway <span className="text-gray-500">To Power</span>
             </h2>
-          </motion.div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-5 md:gap-6 max-w-7xl mx-auto">
-            {careerPaths.map((career, index) => {
+          </div>
+          
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+            {careerPaths.map((career, idx) => {
               const Icon = career.icon;
               return (
                 <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 50 }}
+                  key={idx}
+                  initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  whileHover={{ y: -10, scale: 1.05 }}
-                  className="bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-xl p-5 sm:p-6 hover:border-violet-400/50 hover:shadow-lg transition-all text-center"
+                  transition={{ delay: idx * 0.1 }}
+                  whileHover={{ y: -5 }}
+                  className="bg-gray-900 hover:bg-violet-900/20 p-6 border border-gray-800 hover:border-violet-500/50 transition-all cursor-pointer group"
                 >
-                  <motion.div 
-                    initial={{ scale: 0 }}
-                    whileInView={{ scale: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5, delay: index * 0.1 + 0.2 }}
-                    className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-linear-to-br from-violet-600 to-violet-800 flex items-center justify-center mx-auto mb-3 sm:mb-4"
-                  >
-                    <Icon className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
-                  </motion.div>
-                  <h3 className="text-sm sm:text-base font-bold mb-1.5 sm:mb-2">{career.title}</h3>
-                  <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400">{career.desc}</p>
+                  <Icon className="w-8 h-8 text-violet-500 mb-4 group-hover:text-white transition-colors" />
+                  <h3 className="font-bold text-lg leading-tight mb-2 group-hover:text-violet-300 transition-colors">{career.title}</h3>
+                  <div className="h-1 w-8 bg-gray-700 group-hover:bg-violet-500 transition-all mb-4" />
+                  <p className="text-sm text-gray-400 leading-relaxed">{career.desc}</p>
                 </motion.div>
-              );
+              )
             })}
           </div>
         </div>
-      </motion.section>
+      </section>
 
       <GlobalCommunity />
-
       <Footer />
     </div>
   );
