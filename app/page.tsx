@@ -25,7 +25,6 @@ import {
   Sun,
   BookOpenText,
   Medal,
-  Calendar,
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { Typewriter } from '@/components/ui/typewriter';
@@ -34,6 +33,7 @@ import { UpcomingEvents } from '@/components/sections/upcoming-events';
 import { WhoThisIsFor } from '@/components/sections/who-this-is-for';
 import { GlobalCommunity } from '@/components/sections/global-community';
 import { RealTransformations } from '@/components/sections/real-transformations';
+import { Footer } from '@/components/sections/footer';
 
 function App() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -899,194 +899,7 @@ function App() {
 
       <GlobalCommunity />
 
-      <section className="py-12 sm:py-16 md:py-20 bg-linear-to-b from-violet-50 to-white dark:from-gray-900 dark:to-gray-950 relative overflow-hidden">
-        {/* Background decorative elements */}
-        <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-20 right-20 w-96 h-96 bg-violet-200/30 dark:bg-violet-500/10 rounded-full blur-3xl" />
-          <div className="absolute bottom-20 left-20 w-96 h-96 bg-violet-200/20 dark:bg-violet-500/5 rounded-full blur-3xl" />
-        </div>
-
-        <div className="container mx-auto px-4 relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="max-w-5xl mx-auto"
-          >
-            <div className="bg-linear-to-r from-violet-600 via-violet-700 to-violet-800 rounded-2xl sm:rounded-3xl p-6 sm:p-8 md:p-12 text-center text-white relative overflow-hidden shadow-2xl shadow-violet-500/20">
-              {/* Animated background effects */}
-              <div className="absolute inset-0 opacity-20">
-                <motion.div
-                  animate={{
-                    scale: [1, 1.2, 1],
-                    opacity: [0.3, 0.5, 0.3],
-                  }}
-                  transition={{
-                    duration: 8,
-                    repeat: Infinity,
-                    ease: 'easeInOut',
-                  }}
-                  className="absolute top-10 left-10 w-64 h-64 bg-white rounded-full blur-3xl"
-                />
-                <motion.div
-                  animate={{
-                    scale: [1.2, 1, 1.2],
-                    opacity: [0.5, 0.3, 0.5],
-                  }}
-                  transition={{
-                    duration: 8,
-                    repeat: Infinity,
-                    ease: 'easeInOut',
-                    delay: 0.5,
-                  }}
-                  className="absolute bottom-10 right-10 w-64 h-64 bg-white rounded-full blur-3xl"
-                />
-              </div>
-
-              <div className="relative z-10">
-                {/* Badge */}
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: true }}
-                  className="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-white/20 backdrop-blur-md border border-white/30 mb-4 sm:mb-6"
-                >
-                  <Sparkles className="w-3 h-3 sm:w-4 sm:h-4" />
-                  <span className="text-xs sm:text-sm font-semibold">Limited Time Offer</span>
-                </motion.div>
-
-                {/* Main Heading */}
-                <motion.h2
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.2 }}
-                  className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-3 sm:mb-4 px-2"
-                >
-                  Start Your Legal AI Journey Today
-                </motion.h2>
-
-                {/* Subtitle */}
-                <motion.p
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.3 }}
-                  className="text-base sm:text-lg md:text-xl mb-6 sm:mb-8 text-violet-100 max-w-2xl mx-auto px-4"
-                >
-                  Empower your legal career with the skills of tomorrow
-                </motion.p>
-
-                {/* Countdown Section */}
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.4 }}
-                  className="mb-8 sm:mb-10"
-                >
-                  <div className="inline-flex flex-col items-center gap-2 sm:gap-3 bg-white/10 backdrop-blur-md rounded-xl sm:rounded-2xl px-4 sm:px-6 md:px-8 py-4 sm:py-6 border border-white/20">
-                    <div className="flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm md:text-base text-violet-100 mb-1 sm:mb-2">
-                      <Calendar className="w-3 h-3 sm:w-4 sm:h-4" />
-                      <span className="font-semibold">DueDraft Starting In</span>
-                    </div>
-                    <div className="flex items-center gap-2 sm:gap-3 md:gap-4">
-                      <div className="flex flex-col items-center">
-                        <div className="text-2xl sm:text-3xl md:text-4xl font-bold font-mono bg-white/20 backdrop-blur-md rounded-lg px-2.5 sm:px-3 md:px-4 py-2 sm:py-2.5 md:py-3 min-w-[50px] sm:min-w-[60px] md:min-w-[70px] border border-white/30">
-                          3
-                        </div>
-                        <span className="text-[10px] sm:text-xs md:text-sm text-violet-200 mt-1 sm:mt-2 uppercase tracking-wider">Days</span>
-                      </div>
-                      <span className="text-xl sm:text-2xl md:text-3xl font-bold text-violet-200">:</span>
-                      <div className="flex flex-col items-center">
-                        <div className="text-2xl sm:text-3xl md:text-4xl font-bold font-mono bg-white/20 backdrop-blur-md rounded-lg px-2.5 sm:px-3 md:px-4 py-2 sm:py-2.5 md:py-3 min-w-[50px] sm:min-w-[60px] md:min-w-[70px] border border-white/30">
-                          21
-                        </div>
-                        <span className="text-[10px] sm:text-xs md:text-sm text-violet-200 mt-1 sm:mt-2 uppercase tracking-wider">Hours</span>
-                      </div>
-                      <span className="text-xl sm:text-2xl md:text-3xl font-bold text-violet-200">:</span>
-                      <div className="flex flex-col items-center">
-                        <div className="text-2xl sm:text-3xl md:text-4xl font-bold font-mono bg-white/20 backdrop-blur-md rounded-lg px-2.5 sm:px-3 md:px-4 py-2 sm:py-2.5 md:py-3 min-w-[50px] sm:min-w-[60px] md:min-w-[70px] border border-white/30">
-                          04
-                        </div>
-                        <span className="text-[10px] sm:text-xs md:text-sm text-violet-200 mt-1 sm:mt-2 uppercase tracking-wider">Mins</span>
-                      </div>
-                    </div>
-                  </div>
-                </motion.div>
-
-                {/* CTA Button */}
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.5 }}
-                  className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center px-4"
-                >
-                  <motion.button
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    className="w-full sm:w-auto text-base sm:text-lg px-6 sm:px-8 md:px-12 py-3 sm:py-4 bg-white text-violet-600 hover:bg-gray-50 rounded-lg font-semibold transition-all shadow-lg hover:shadow-xl flex items-center justify-center gap-2"
-                  >
-                    Enroll Now
-                    <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
-                  </motion.button>
-                </motion.div>
-              </div>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      <footer className="border-t border-gray-200 dark:border-gray-800 py-8 sm:py-10 md:py-12 bg-gray-50 dark:bg-gray-900">
-        <div className="container mx-auto px-4">
-          <div className="max-w-6xl mx-auto">
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 sm:gap-7 md:gap-8 mb-6 sm:mb-7 md:mb-8">
-              <div className="sm:col-span-2 md:col-span-1">
-                <div className="flex items-center gap-2 mb-3 sm:mb-4">
-                  <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-linear-to-br from-violet-600 to-violet-800 flex items-center justify-center">
-                    <Scale className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
-                  </div>
-                  <span className="text-lg sm:text-xl font-bold">
-                    NextGen<span className="text-violet-600 dark:text-violet-400">Laws</span>
-                  </span>
-                </div>
-                <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400">
-                  Empowering legal professionals to master AI and transform their careers.
-                </p>
-              </div>
-              <div>
-                <h4 className="text-sm sm:text-base font-semibold mb-3 sm:mb-4">Programs</h4>
-                <ul className="space-y-1.5 sm:space-y-2 text-xs sm:text-sm text-gray-600 dark:text-gray-400">
-                  <li><a href="#" className="hover:text-violet-600 transition-colors">AI for Legal</a></li>
-                  <li><a href="#" className="hover:text-violet-600 transition-colors">DueDraft Masterclass</a></li>
-                  <li><a href="#" className="hover:text-violet-600 transition-colors">Legal Tech</a></li>
-                </ul>
-              </div>
-              <div>
-                <h4 className="text-sm sm:text-base font-semibold mb-3 sm:mb-4">Company</h4>
-                <ul className="space-y-1.5 sm:space-y-2 text-xs sm:text-sm text-gray-600 dark:text-gray-400">
-                  <li><a href="#" className="hover:text-violet-600 transition-colors">About Us</a></li>
-                  <li><a href="#" className="hover:text-violet-600 transition-colors">Contact</a></li>
-                  <li><a href="#" className="hover:text-violet-600 transition-colors">Careers</a></li>
-                </ul>
-              </div>
-              <div>
-                <h4 className="text-sm sm:text-base font-semibold mb-3 sm:mb-4">Legal</h4>
-                <ul className="space-y-1.5 sm:space-y-2 text-xs sm:text-sm text-gray-600 dark:text-gray-400">
-                  <li><a href="#" className="hover:text-violet-600 transition-colors">Privacy Policy</a></li>
-                  <li><a href="#" className="hover:text-violet-600 transition-colors">Terms of Service</a></li>
-                  <li><a href="#" className="hover:text-violet-600 transition-colors">Refund Policy</a></li>
-                </ul>
-              </div>
-            </div>
-            <div className="pt-6 sm:pt-7 md:pt-8 border-t border-gray-200 dark:border-gray-800 text-center text-xs sm:text-sm text-gray-600 dark:text-gray-400">
-              <p>© 2025 NextGenLaws. All rights reserved.</p>
-            </div>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }
